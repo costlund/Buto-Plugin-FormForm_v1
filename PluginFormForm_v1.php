@@ -157,7 +157,8 @@ class PluginFormForm_v1{
         'script' => null,
         'ajax' => false,
         'url' => '/doc/_',
-        'items' => array()
+        'items' => array(),
+        'target' => null
         );
     /**
      * Merge defaults with widget data.
@@ -177,7 +178,8 @@ class PluginFormForm_v1{
       }
       $buttons[] = wfDocument::createHtmlElement('a', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
     }  else {
-      $buttons[] = wfDocument::createHtmlElement('input', null, array('type' => 'submit', 'value' => $default['submit_value'], 'class' => $default['submit_class']));
+      $onclick = "document.getElementById('".$default['id']."').submit();";
+      $buttons[] = wfDocument::createHtmlElement('a', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
     }
     if($form_form_v1->getData('buttons')){
       foreach ($form_form_v1->getData('buttons') as $key => $value) {
@@ -226,6 +228,9 @@ class PluginFormForm_v1{
      * Attribute.
      */
     $form_attribute = array('id' => $default['id'], 'method' => 'post', 'role' => 'form');
+    if($default['target']){
+      $form_attribute['target'] = $default['target'];
+    }
     if(!$default['ajax']){
       $form_attribute['action'] = $default['url'];
     }
