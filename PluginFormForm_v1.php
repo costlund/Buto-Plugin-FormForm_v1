@@ -162,9 +162,14 @@ class PluginFormForm_v1{
     /**
      * Merge defaults with widget data.
      */
-    //$default = array_merge($default, $form_data->get());
     $default = array_merge($default, $form_form_v1->data);
     $default['url'] = wfSettings::replaceClass($default['url']);
+    /**
+     * 
+     */
+    if($form_form_v1->getData('layout')){
+      $scripts[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.renderLayout({id: '".$default['id']."'});");
+    }
     /**
      * Buttons.
      */
@@ -197,8 +202,13 @@ class PluginFormForm_v1{
     $form_row = array();
     if(sizeof($default['items']) > 0){
       foreach ($default['items'] as $key => $value) {
-        //$form_row[] = PluginFormForm_v1::getRow($key, $value, $default);
-        $form_row[] = $form_form_v1->getRow($key, $value, $default);
+        $row = $form_form_v1->getRow($key, $value, $default);
+        if($row){
+          $form_row[] = $row['element'];
+          foreach ($row['script'] as $key => $value) {
+            $scripts[] = $value;
+          }
+        }
       }
     }else{
       exit('No items or schema/table/mysql is set.');
@@ -209,8 +219,7 @@ class PluginFormForm_v1{
      */
     if($form_form_v1->getData('layout')){
       $form_element[] = wfDocument::createHtmlElement('div', $form_form_v1->getData('layout'), array('id' => $default['id'].'_layout'));
-      $form_element[] = wfDocument::createHtmlElement('script', "document.getElementById('".$default['id']."_controls').style.display='none';");
-      $form_element[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.renderLayout({id: '".$default['id']."'});");
+      $scripts[] = wfDocument::createHtmlElement('script', "document.getElementById('".$default['id']."_controls').style.display='none';");
     }
     /**
      * Elements below.
@@ -233,11 +242,11 @@ class PluginFormForm_v1{
     /**
      * Move buttons to footer if Bootstrap modal.
      */
-    $script_move_btn = wfDocument::createHtmlElement('script', "if(typeof PluginWfBootstrapjs == 'object'){PluginWfBootstrapjs.moveModalButtons('".$form_form_v1->getData('id')."');}");
+    $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginWfBootstrapjs == 'object'){PluginWfBootstrapjs.moveModalButtons('".$form_form_v1->getData('id')."');}");
     /**
      * Render.
      */
-    wfDocument::renderElement(array($form_render, $script_move_btn));
+    wfDocument::renderElement(array($form_render));
     wfDocument::renderElement($scripts);
   }
   /**
@@ -281,6 +290,9 @@ class PluginFormForm_v1{
         'html' => false
             );
     $default_value = array_merge($default_value, $value);
+    if($default_value['type']=='checkbox'){
+      $default_value['class'] = null;
+    }
     $type = null;
     $innerHTML = null;
     $attribute = array('name' => $default_value['name'], 'id' => $default_value['element_id'], 'class' => $default_value['class'], 'style' => $default_value['style']);
@@ -374,19 +386,33 @@ class PluginFormForm_v1{
       if($type=='div'){
         return $value;
       }else{
-        $temp = array();
+        $element = array();
+        $input = wfDocument::createHtmlElement($type, $innerHTML, $attribute);
+        /**
+         * Label.
+         */
         if(wfArray::get($attribute, 'type') != 'hidden'){
-          $temp['label'] = PluginFormForm_v1::getLabel($default_value);
+          $label = PluginFormForm_v1::getLabel($default_value);
+          if($default_value['type']=='checkbox'){
+            $label->set('innerHTML', array($input, wfDocument::createHtmlElement('span', $label->get('innerHTML'))));
+          }
+          $element['label'] = $label->get();
+          /**
+           * Mandatory label.
+           */
           if($default_value['mandatory']){
-            $temp['mandatory'] = wfDocument::createHtmlElement('label', '*', array('id' => 'label_mandatory_'.$default_value['element_id']));
+            $element['mandatory'] = wfDocument::createHtmlElement('label', '*', array('id' => 'label_mandatory_'.$default_value['element_id']));
           }
         }
+        /**
+         * Map.
+         */
         if($default_value['type'] == 'map'){
           $display = 'none';
           if(strlen($default_value['default'])){
             $display = '';
           }
-          $temp['map_icon'] = wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', null, array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginFormForm_v1.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right"));
+          $element['map_icon'] = wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', null, array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginFormForm_v1.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right"));
         }
         /**
          * Add Bootstrap glyphicon.
@@ -396,7 +422,7 @@ class PluginFormForm_v1{
           if(wfArray::get($value, 'info/position')){
             $data_placement = wfArray::get($value, 'info/position');
           }
-          $temp['glyphicon_info'] = wfDocument::createHtmlElement('span', null, array(
+          $element['glyphicon_info'] = wfDocument::createHtmlElement('span', null, array(
               'id' => 'info_'.$default_value['element_id'],
               'title' => $default_value['label'], 
               'class' => 'wf_form_v2 glyphicon glyphicon-info-sign', 
@@ -408,26 +434,30 @@ class PluginFormForm_v1{
               'data-content' => wfArray::get($value, 'info/text'),
               'onclick' => "$('.wf_form_v2').popover('hide');"
               ));
-          $temp['script'] = wfDocument::createHtmlElement('script', " $(function () {  $('[data-toggle=\"popover\"]').popover()}) ");
+          $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('[data-toggle=\"popover\"]').popover()}) ");
         }
-        $temp['input'] = wfDocument::createHtmlElement($type, $innerHTML, $attribute);
-        if($scripts){
-          foreach ($scripts as $key2 => $value2) {
-            $temp["script$key2"] = $value2;
-          }
+        if($default_value['type']!='checkbox'){
+          $element['input'] = $input;
         }
-        return wfDocument::createHtmlElement('div', $temp, array(
+        /**
+         * Class.
+         */
+        $class_div = 'form-group';
+        if($default_value['type']=='checkbox'){
+          $class_div = 'checkbox';
+        }
+        return array('element' => wfDocument::createHtmlElement('div', $element, array(
                 'id' => 'div_'.$default['id'].'_'.$key, 
-                'class' => 'form-group '.wfArray::get($value, 'container_class'), 
+                'class' => $class_div.' '.wfArray::get($value, 'container_class'), 
                 'style' => wfArray::get($value, 'container_style')
-                ), array('class' => 'wf_form_row'));
+                ), array('class' => 'wf_form_row')), 'script' => $scripts);
       }
     }else{
       return null;
     }
   }
   private static function getLabel($default_value){
-    return wfDocument::createHtmlElement('label', $default_value['label'], array('for' => $default_value['element_id'], 'id' => 'label_'.$default_value['element_id']));
+    return wfDocument::createHtmlElementAsObject('label', $default_value['label'], array('for' => $default_value['element_id'], 'id' => 'label_'.$default_value['element_id']));
   }
   /**
    * Capture post from form via ajax.
