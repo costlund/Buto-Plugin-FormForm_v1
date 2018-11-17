@@ -1,7 +1,9 @@
-version: 1.4
+version: '1.4'
 sys:
-  name: mercury
-  version: 2.2
+  -
+    name: mercury
+    version:
+      - '2.2'
+plugin:
 php:
-  version: 7.0.10
-dependencies: {}
+  - 7.0.10
