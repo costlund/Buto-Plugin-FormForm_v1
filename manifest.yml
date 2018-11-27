@@ -1,9 +1,32 @@
-version: '1.4'
+version: '1.5'
+history:
+  '1.5':
+    date: '2018-11-27'
+    description: 'Add i18n param to item in form to avoid translation.'
+  '1.0':
+    date: '2018-11-27'
+    description: 'First version.'
+plugin:
+  -
+    name: wf/array
+    version: 1.0.1
+  -
+    name: i18n/translate_v1
+    version: '1.2'
+  -
+    name: wf/mysql
+    version: '1.1'
+  -
+    name: wysiwyg/nicedit
+    version: '1.0'
 sys:
   -
     name: mercury
     version:
-      - '2.2'
-plugin:
+      - '1.0'
 php:
-  - 7.0.10
+  - '7.2'
+author: Claes Östlund
+links:
+  Github: 'https://github.com'
+description: ''

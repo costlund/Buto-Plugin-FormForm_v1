@@ -292,7 +292,8 @@ class PluginFormForm_v1{
         'class' => 'form-control',
         'style' => null,
         'placeholder' => null,
-        'html' => false
+        'html' => false,
+        'i18n' => true
             );
     $default_value = array_merge($default_value, $value);
     if($default_value['type']=='checkbox'){
@@ -365,13 +366,17 @@ class PluginFormForm_v1{
            */
           $type = 'select';
           $option = array();
+          $settings = new PluginWfArray();
+          if($default_value['i18n']===false){
+            $settings->set('event/document_render_string/disabled', true);
+          }
           foreach ($default_value['option'] as $key2 => $value2) {
             $temp = array();
             $temp['value'] = $key2;
             if((string)$default_value['default']===(string)$key2){
               $temp['selected'] = 'true';
             }
-            $option[] = wfDocument::createHtmlElement('option', $value2, $temp);
+            $option[] = wfDocument::createHtmlElement('option', $value2, $temp, $settings->get());
           }
           $innerHTML = $option;
         }
