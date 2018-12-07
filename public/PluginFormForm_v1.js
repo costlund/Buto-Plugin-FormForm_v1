@@ -194,21 +194,37 @@ function plugin_form_form_v1(){
           map: PluginGoogleMaps.getMap(),
           title: 'Hello World!'
         });
-    
-        
-        
+  }
+  this.submit = function(data){
+    if(data.ajax_element){
+      if(typeof PluginBootstrapAlertwait == 'object'){
+        PluginBootstrapAlertwait.run(function(){
+          PluginWfCallbackjson.setElement(data.ajax_element, data.url, data.id )     
+        }); 
+        return false; 
+      }else{
+        PluginWfCallbackjson.setElement(data.ajax_element, data.url, data.id ); 
+        return false;
+      }
+    }else{
+      if(typeof PluginBootstrapAlertwait == 'object'){
+        PluginBootstrapAlertwait.run(function(){
+          $.post(data.url, $('#'+data.id).serialize()).done(function(data) {
+            PluginWfCallbackjson.call( data );
+          })}); 
+        return false;
+      }else{
+        $.post(data.url, $('#'+data.id).serialize()).done(function(data) { 
+          PluginWfCallbackjson.call( data );
+        });
+        return false; 
+      }
+    }
+  }
+  this.keypress = function(element, data){
+    if(element.keyCode==13 && (element.target.tagName=='INPUT' || element.target.tagName=='SELECT') ){
+      PluginFormForm_v1.submit(data);
+    }
   }
 }
 var PluginFormForm_v1 = new plugin_form_form_v1();
-
-
-
-
-
-
-
-
-
-
-
-

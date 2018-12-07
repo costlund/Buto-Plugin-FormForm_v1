@@ -1,5 +1,8 @@
-version: '1.5'
+version: '1.6'
 history:
+  '1.6':
+    date: '2018-12-07'
+    description: 'Add submit on keypress enter for Input and Select elements.'
   '1.5':
     date: '2018-11-27'
     description: 'Add i18n param to item in form to avoid translation.'

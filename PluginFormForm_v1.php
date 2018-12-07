@@ -158,7 +158,8 @@ class PluginFormForm_v1{
         'ajax' => false,
         'url' => '/doc/_',
         'items' => array(),
-        'target' => null
+        'target' => null,
+        'submit_on_enter' => true
         );
     /**
      * Merge defaults with widget data.
@@ -175,12 +176,10 @@ class PluginFormForm_v1{
      * Buttons.
      */
     $buttons = array();
+    $form_submit_data = "{ajax_element: '".$data_obj->get('data/ajax_element')."', url: '".$default['url']."', id: '".$default['id']."'}";
     if($default['ajax']) {
-      if(!$data_obj->get('data/ajax_element')){
-        $onclick = "if(typeof PluginBootstrapAlertwait == 'object'){PluginBootstrapAlertwait.run(function(){  $.post('".$default['url']."', $('#".$default['id']."').serialize()).done(function(data) { PluginWfCallbackjson.call( data ); })     }); return false;}else{ $.post('".$default['url']."', $('#".$default['id']."').serialize()).done(function(data) { PluginWfCallbackjson.call( data ); }); return false; }";
-      }else{
-        $onclick = "if(typeof PluginBootstrapAlertwait == 'object'){PluginBootstrapAlertwait.run(function(){PluginWfCallbackjson.setElement('".$data_obj->get('data/ajax_element')."', '".$default['url']."', '".$default['id']."' )     }); return false; }else{ PluginWfCallbackjson.setElement('".$data_obj->get('data/ajax_element')."', '".$default['url']."', '".$default['id']."' ); return false; }";
-      }
+      //$onclick = "PluginFormForm_v1.submit('".$data_obj->get('data/ajax_element')."', '".$default['url']."', '".$default['id']."')";
+      $onclick = "PluginFormForm_v1.submit(".$form_submit_data.")";
       $buttons[] = wfDocument::createHtmlElement('a', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
     }  else {
       $onclick = "document.getElementById('".$default['id']."').submit();";
@@ -233,6 +232,12 @@ class PluginFormForm_v1{
      * Buttons.
      */
     $form_element[] = wfDocument::createHtmlElement('div', $buttons, array('class' => 'wf_form_row'));
+    /**
+     * Allow post via keypress, enter in input field.
+     */
+    if($default['submit_on_enter']){
+      $scripts[] = wfDocument::createHtmlElement('script', "document.getElementById('".$default['id']."').onkeypress=function(element){PluginFormForm_v1.keypress(element, ".$form_submit_data.");}");
+    }
     /**
      * Attribute.
      */
