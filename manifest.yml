@@ -1,5 +1,8 @@
-version: '1.7'
+version: '1.8'
 history:
+  '1.8':
+    date: '2018-12-10'
+    description: 'Add file time when including js as a parameter.'
   '1.7':
     date: '2018-12-10'
     description: 'New form param submit_method.'

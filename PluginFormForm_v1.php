@@ -1135,7 +1135,8 @@ class PluginFormForm_v1{
    */
   public static function widget_include(){
     $element = array();
-    $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/form/form_v1/PluginFormForm_v1.js', 'type' => 'text/javascript'));
+    $filetime = wfFilesystem::getFiletime(wfGlobals::getWebDir().'/plugin/form/form_v1/PluginFormForm_v1.js');
+    $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/form/form_v1/PluginFormForm_v1.js?x='.$filetime, 'type' => 'text/javascript'));
     wfDocument::renderElement($element);
   }
   /**
