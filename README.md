@@ -2,6 +2,10 @@
 Form plugin.
 
 
+Set optional submit method.
+```
+submit_method: 'my_form_method()'
+```
 
 
 
