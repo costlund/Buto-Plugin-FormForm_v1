@@ -1,5 +1,8 @@
-version: '1.6'
+version: '1.7'
 history:
+  '1.7':
+    date: '2018-12-10'
+    description: 'New form param submit_method.'
   '1.6':
     date: '2018-12-07'
     description: 'Add submit on keypress enter for Input and Select elements.'

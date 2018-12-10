@@ -196,7 +196,10 @@ function plugin_form_form_v1(){
         });
   }
   this.submit = function(data){
-    if(data.ajax_element){
+    if(data.submit_method && data.submit_method!='null'){
+      eval(data.submit_method);
+      return false;
+    }else if(data.ajax_element){
       if(typeof PluginBootstrapAlertwait == 'object'){
         PluginBootstrapAlertwait.run(function(){
           PluginWfCallbackjson.setElement(data.ajax_element, data.url, data.id )     

@@ -159,7 +159,8 @@ class PluginFormForm_v1{
         'url' => '/doc/_',
         'items' => array(),
         'target' => null,
-        'submit_on_enter' => true
+        'submit_on_enter' => true,
+        'submit_method' => 'null'
         );
     /**
      * Merge defaults with widget data.
@@ -176,9 +177,8 @@ class PluginFormForm_v1{
      * Buttons.
      */
     $buttons = array();
-    $form_submit_data = "{ajax_element: '".$data_obj->get('data/ajax_element')."', url: '".$default['url']."', id: '".$default['id']."'}";
+    $form_submit_data = "{ajax_element: '".$data_obj->get('data/ajax_element')."', url: '".$default['url']."', id: '".$default['id']."', submit_method: '".$default['submit_method']."'}";
     if($default['ajax']) {
-      //$onclick = "PluginFormForm_v1.submit('".$data_obj->get('data/ajax_element')."', '".$default['url']."', '".$default['id']."')";
       $onclick = "PluginFormForm_v1.submit(".$form_submit_data.")";
       $buttons[] = wfDocument::createHtmlElement('a', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
     }  else {
