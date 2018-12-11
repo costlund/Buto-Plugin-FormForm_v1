@@ -349,7 +349,7 @@ class PluginFormForm_v1{
       case 'varchar':
       case 'date':
         if($default_value['type']=='date'){
-          $scripts[] = wfDocument::createHtmlElement('script', "if($('#".$default['id']."_$key').datepicker){this.datepicker = $('#".$default['id']."_$key').datepicker({ format: 'yyyy-mm-dd', weekStart: 1, daysOfWeekHighlighted: '0,6', autoclose: true, todayHighlight: true, forceParse: false  });}");
+          $scripts[] = wfDocument::createHtmlElement('script', "if($('#".$default['id']."_$key').datepicker){this.datepicker = $('#".$default['id']."_$key').datepicker({ format: 'yyyy-mm-dd', weekStart: 1, daysOfWeekHighlighted: '0,6', autoclose: true, todayHighlight: true });}");
         }
         if(!$default_value['option']){
           $type = 'input';

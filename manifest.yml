@@ -1,5 +1,8 @@
-version: '1.8'
+version: '1.9'
 history:
+  '1.9':
+    date: '2018-12-11'
+    description: 'Remove param forceParse in datepicker to allow enter.'
   '1.8':
     date: '2018-12-10'
     description: 'Add file time when including js as a parameter.'
