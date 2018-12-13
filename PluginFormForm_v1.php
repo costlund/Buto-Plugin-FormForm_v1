@@ -433,24 +433,34 @@ class PluginFormForm_v1{
          * Add Bootstrap glyphicon.
          */
         if(wfArray::get($value, 'info/text')){
-          $data_placement = 'left';
-          if(wfArray::get($value, 'info/position')){
-            $data_placement = wfArray::get($value, 'info/position');
+          $user = wfUser::getSession();
+          if($user->get('plugin/twitter/bootstrap413v/include')){
+            /**
+             * Here should code be...
+             */
+          }else{
+            $data_placement = 'left';
+            if(wfArray::get($value, 'info/position')){
+              $data_placement = wfArray::get($value, 'info/position');
+            }
+            $element['glyphicon_info'] = wfDocument::createHtmlElement('span', null, array(
+                'id' => 'info_'.$default_value['element_id'],
+                'title' => $default_value['label'], 
+                'class' => 'wf_form_v2 glyphicon glyphicon-info-sign', 
+                'style' => 'float:right;cursor:pointer;',
+                'data-toggle' => 'popover',
+                'data-trigger' => 'click',
+                'data-html' => true,
+                'data-placement' => $data_placement,
+                'data-content' => wfArray::get($value, 'info/text'),
+                'onclick' => "$('.wf_form_v2').popover('hide');"
+                ));
+            $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('[data-toggle=\"popover\"]').popover()}) ");
           }
-          $element['glyphicon_info'] = wfDocument::createHtmlElement('span', null, array(
-              'id' => 'info_'.$default_value['element_id'],
-              'title' => $default_value['label'], 
-              'class' => 'wf_form_v2 glyphicon glyphicon-info-sign', 
-              'style' => 'float:right;cursor:pointer;',
-              'data-toggle' => 'popover',
-              'data-trigger' => 'click',
-              'data-html' => true,
-              'data-placement' => $data_placement,
-              'data-content' => wfArray::get($value, 'info/text'),
-              'onclick' => "$('.wf_form_v2').popover('hide');"
-              ));
-          $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('[data-toggle=\"popover\"]').popover()}) ");
         }
+        /**
+         * 
+         */
         if($default_value['type']!='checkbox'){
           $element['input'] = $input;
         }
