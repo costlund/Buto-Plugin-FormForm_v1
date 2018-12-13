@@ -229,5 +229,20 @@ function plugin_form_form_v1(){
       PluginFormForm_v1.submit(data);
     }
   }
+  /**
+   * Set focus on first element in form after 0.5 sec.
+   */
+  this.focus = function(data){
+    var x = document.getElementById(data.id).elements;    
+    var y = null;
+    for (var i = 0; i < x.length; i++) {
+      x[i].focus();
+      if(y == null){
+        y = x[i];
+      }
+    }
+    setTimeout(plugin_form_form_v1_focus, 500);
+    function plugin_form_form_v1_focus(){y.focus();}    
+  }
 }
 var PluginFormForm_v1 = new plugin_form_form_v1();

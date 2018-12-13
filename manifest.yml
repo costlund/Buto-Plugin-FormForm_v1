@@ -1,5 +1,8 @@
-version: '1.10'
+version: '1.11'
 history:
+  '1.11':
+    date: '2018-12-13'
+    description: 'Set focus on first element in form.'
   '1.10':
     date: '2018-12-13'
     description: 'Only render Bootstrap Popover if Bootstrap 3.'

@@ -254,6 +254,10 @@ class PluginFormForm_v1{
      */
     $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginWfBootstrapjs == 'object'){PluginWfBootstrapjs.moveModalButtons('".$form_form_v1->getData('id')."');}");
     /**
+     * Set focus on first element.
+     */
+    $scripts[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.focus({id: '".$form_form_v1->getData('id')."'});");
+    /**
      * Render.
      */
     wfDocument::renderElement(array($form_render));
