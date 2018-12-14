@@ -1,5 +1,8 @@
-version: '1.11'
+version: '1.12'
 history:
+  '1.12':
+    date: '2018-12-14'
+    description: 'Bug in settings params form buttons. New method validate_integer.'
   '1.11':
     date: '2018-12-13'
     description: 'Set focus on first element in form.'

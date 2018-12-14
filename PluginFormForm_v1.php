@@ -187,7 +187,7 @@ class PluginFormForm_v1{
     }
     if($form_form_v1->getData('buttons')){
       foreach ($form_form_v1->getData('buttons') as $key => $value) {
-        $buttons[] = wfDocument::createHtmlElement($value['type'], $value['innerHTML'], $value['attribute']);
+        $buttons[] = $value;
       }
     }
     /**
@@ -256,7 +256,7 @@ class PluginFormForm_v1{
     /**
      * Set focus on first element.
      */
-    $scripts[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.focus({id: '".$form_form_v1->getData('id')."'});");
+    $scripts[] = wfDocument::createHtmlElement('script', "if(PluginFormForm_v1.focus==undefined){alert('Method PluginFormForm_v1.focus is undefined!');}else{PluginFormForm_v1.focus({id: '".$form_form_v1->getData('id')."'});}");
     /**
      * Render.
      */
@@ -978,6 +978,29 @@ class PluginFormForm_v1{
       }
     }
     return $form;
+  }
+  /**
+   * Validate integer.
+   * @param type $field
+   * @param type $form
+   * @param type $data
+   * @return type
+   */
+  public function validate_integer($field, $form, $data = array()){
+    if(wfArray::get($form, "items/$field/is_valid") && strlen(wfArray::get($form, "items/$field/post_value"))){ // Only if valid and has data.
+      if (!$this->is_integer(wfArray::get($form, "items/$field/post_value"))) {
+        $form = wfArray::set($form, "items/$field/is_valid", false);
+        $form = wfArray::set($form, "items/$field/errors/", __('?label is not an integer!', array('?label' => wfArray::get($form, "items/$field/label"))));
+      }
+    }
+    return $form;    
+  }
+  private function is_integer($num){
+    if(preg_match('/^\d+$/',$num)){
+      return true;
+    }else{
+      return false;
+    }
   }
   /**
    * Check double and decimals.
