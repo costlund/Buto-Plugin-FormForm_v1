@@ -1192,6 +1192,7 @@ class PluginFormForm_v1{
    #code#
    */
   public function send($form){
+    $form = new PluginWfArray($form);
     /**
      * Mail settings.
      */
