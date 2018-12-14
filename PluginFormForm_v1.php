@@ -256,7 +256,7 @@ class PluginFormForm_v1{
     /**
      * Set focus on first element.
      */
-    $scripts[] = wfDocument::createHtmlElement('script', "if(PluginFormForm_v1.focus==undefined){alert('Method PluginFormForm_v1.focus is undefined!');}else{PluginFormForm_v1.focus({id: '".$form_form_v1->getData('id')."'});}");
+    $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginFormForm_v1.focus=='undefined'){alert('Method PluginFormForm_v1.focus is undefined!');}else{PluginFormForm_v1.focus({id: '".$form_form_v1->getData('id')."'});}");
     /**
      * Render.
      */

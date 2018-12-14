@@ -235,14 +235,23 @@ function plugin_form_form_v1(){
   this.focus = function(data){
     var x = document.getElementById(data.id).elements;    
     var y = null;
+    var focus_element = false;
     for (var i = 0; i < x.length; i++) {
-      x[i].focus();
-      if(y == null){
+      if(x[i].tagName=='INPUT' && x[i].getAttribute('type')!='hidden'){
+        focus_element = true;
+      }else if(x[i].tagName=='SELECT'){
+        focus_element = true;
+      }else if(x[i].tagName=='TEXTAREA'){
+        focus_element = true;
+      }
+      if(y == null && focus_element){
         y = x[i];
       }
     }
-    setTimeout(plugin_form_form_v1_focus, 500);
-    function plugin_form_form_v1_focus(){y.focus();}    
+    if(y != null && focus_element){
+      setTimeout(plugin_form_form_v1_focus, 500);
+    }
+    function plugin_form_form_v1_focus(){console.log(y);y.focus();}    
   }
 }
 var PluginFormForm_v1 = new plugin_form_form_v1();
