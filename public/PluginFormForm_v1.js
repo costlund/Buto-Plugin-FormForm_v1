@@ -251,7 +251,7 @@ function plugin_form_form_v1(){
     if(y != null && focus_element){
       setTimeout(plugin_form_form_v1_focus, 500);
     }
-    function plugin_form_form_v1_focus(){console.log(y);y.focus();}    
+    function plugin_form_form_v1_focus(){y.focus();}    
   }
 }
 var PluginFormForm_v1 = new plugin_form_form_v1();
