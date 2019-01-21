@@ -1193,6 +1193,9 @@ class PluginFormForm_v1{
    */
   public function send($form){
     $form = new PluginWfArray($form);
+    if(!is_array($form->get('capture/data'))){
+      $form->set('capture/data', wfSettings::getSettingsFromYmlString($form->get('capture/data')));
+    }
     /**
      * Mail settings.
      */

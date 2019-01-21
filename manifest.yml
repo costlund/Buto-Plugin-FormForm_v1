@@ -1,5 +1,8 @@
-version: '1.14'
+version: '1.15'
 history:
+  '1.15':
+    date: '2019-01-21'
+    description: 'Add support for send method where capture/data could be path to yml.'
   '1.14':
     date: '2018-12-14'
     description: 'Bug in send method.'
