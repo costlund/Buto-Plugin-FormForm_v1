@@ -126,13 +126,27 @@ class PluginFormForm_v1{
     }else{
       throw new Exception("Param data is not set.");
     }
+    /**
+     * 
+     */
+    $widget_data = new PluginWfArray($data['data']);
+    /**
+     * Set data from request param on get:_name_ items.
+     */
+    $widget_data->setByTag(wfRequest::getAll(), 'get');
+    /**
+     * 
+     */
     $form_form_v1 = new PluginFormForm_v1(true);
-    $form_form_v1->setData($data['data']);
+    $form_form_v1->setData($widget_data->get());
+    /**
+     * 
+     */
     /**
      * Create form and include dependencies.
      */
     wfPlugin::includeonce('wf/array');
-    $form_data = new PluginWfArray($data['data']);
+    //$form_data = new PluginWfArray($widget_data->get());
     $data_obj = new PluginWfArray($data);
     $scripts = array();
     /**
