@@ -1,5 +1,8 @@
-version: '1.16'
+version: '1.17'
 history:
+  '1.17':
+    date: '2019-01-30'
+    description: 'Add keyboard ctrl+s support to post a form.'
   '1.16':
     date: '2019-01-23'
     description: 'Add request param when render form.'

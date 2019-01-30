@@ -33,12 +33,17 @@ items:
 
 
 
-## Submit method
+### Submit method
 Set optional submit javascript method. Could be handy for extra validation.
 ```
 submit_method: 'my_form_method()'
 ```
 
+### Save on CTRL+S
+Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be included.
+```
+ctrl_s_save: true
+```
 
 
 ## PHP
