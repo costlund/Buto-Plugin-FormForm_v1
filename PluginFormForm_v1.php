@@ -464,7 +464,7 @@ class PluginFormForm_v1{
              * Here should code be...
              */
           }else{
-            $data_placement = 'left';
+            $data_placement = 'bottom';
             if(wfArray::get($value, 'info/position')){
               $data_placement = wfArray::get($value, 'info/position');
             }
@@ -472,7 +472,7 @@ class PluginFormForm_v1{
                 'id' => 'info_'.$default_value['element_id'],
                 'title' => $default_value['label'], 
                 'class' => 'wf_form_v2 glyphicon glyphicon-info-sign', 
-                'style' => 'float:right;cursor:pointer;',
+                'style' => 'float:right;cursor:pointer',
                 'data-toggle' => 'popover',
                 'data-trigger' => 'click',
                 'data-html' => true,
