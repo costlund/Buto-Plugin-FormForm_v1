@@ -5,6 +5,7 @@ Form plugin.
 ## Basic usage
 
 *Param items/id/default will get value from request param name id.* 
+Param capture is called after validation.
 
 ```
 url: _url_where_to_post_
@@ -27,6 +28,9 @@ items:
   date:
     type: date
     label: Date
+capture:
+  plugin: xxx/yyy
+  method: form_capture
 ```
 
 
@@ -47,6 +51,24 @@ ctrl_s_save: true
 
 
 ## PHP
+
+Render form.
+
+```
+$form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
+$widget = wfDocument::createWidget('form/form_v1', 'render', $form->get());
+wfDocument::renderElement(array($widget));
+```
+
+Capture form.
+
+```
+$form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
+$widget = wfDocument::createWidget('form/form_v1', 'capture', $form->get());
+wfDocument::renderElement(array($widget));
+```
+
+
 Set defaults from array.
 
 ```
@@ -56,6 +78,14 @@ $obj->setDefaultsFromArray(array('name' => 'James Smith'));
 $form = new PluginWfArray($obj->data);
 ```
 
+## Wait indicator
 
+Include this widget in head section to get an wait indicator.
 
+```
+type: widget
+data:
+  plugin: bootstrap/alertwait
+  method: include            
+```
 
