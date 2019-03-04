@@ -276,7 +276,7 @@ class PluginFormForm_v1{
      * Onkeypress
      */
     if($default['ctrl_s_save']){
-      $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginWfOnkeypress=='object'){PluginWfOnkeypress.set('".$default['id']."', {ctrlKey: true, which: 115}, function(){document.getElementById('".$default['id']."_save').click();});}");
+      $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginWfOnkeypress=='object'){PluginWfOnkeypress.set('".$default['id']."', {ctrlKey: true, which: 83}, function(){document.getElementById('".$default['id']."_save').click();});}");
     }
     /**
      * Render.
