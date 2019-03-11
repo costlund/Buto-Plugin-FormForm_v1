@@ -1,6 +1,16 @@
 # Buto-Plugin-FormForm_v1
 Form plugin.
 
+## Include in head
+
+Include in head section.
+
+```
+type: widget
+data:
+  plugin: 'form/form_v1'
+  method: include               
+```
 
 ## Basic usage
 
