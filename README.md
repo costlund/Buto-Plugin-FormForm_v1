@@ -28,6 +28,14 @@ items:
   date:
     type: date
     label: Date
+  memb_account_id:
+    type: varchar
+    label: Member
+    mandatory: true
+    default: rs:memb_account_id
+    option: method:memb_inc/abo:option_memb_account
+    info:
+      text: 'Select a member.'
 capture:
   plugin: xxx/yyy
   method: form_capture
