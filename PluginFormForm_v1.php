@@ -256,7 +256,7 @@ class PluginFormForm_v1{
     /**
      * Attribute.
      */
-    $form_attribute = array('id' => $default['id'], 'method' => 'post', 'role' => 'form');
+    $form_attribute = array('id' => $default['id'], 'method' => 'post', 'role' => 'form', 'onsubmit' => 'return false');
     if($default['target']){
       $form_attribute['target'] = $default['target'];
     }
