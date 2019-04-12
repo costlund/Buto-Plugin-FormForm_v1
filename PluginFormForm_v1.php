@@ -1206,6 +1206,7 @@ class PluginFormForm_v1{
       method: send
       data:
         phpmailer: 'Phpmailer data...'
+        mailqueue: true
         email:
           - 'me@world.com'
         script:
@@ -1216,17 +1217,6 @@ class PluginFormForm_v1{
     $form = new PluginWfArray($form);
     if(!is_array($form->get('capture/data'))){
       $form->set('capture/data', wfSettings::getSettingsFromYmlString($form->get('capture/data')));
-    }
-    /**
-     * Mail settings.
-     */
-    $phpmailer = wfSettings::getSettingsFromYmlString($form->get('capture/data/phpmailer'));
-    $phpmailer = new PluginWfArray($phpmailer);
-    /**
-     * Reply to.
-     */
-    if(wfRequest::get('email')){
-      $phpmailer->set('ReplyTo', wfRequest::get('email'));
     }
     /**
      * Body.
@@ -1240,15 +1230,40 @@ class PluginFormForm_v1{
       $body .= "<p>$post_value</p>";
     }
     $body = "<html><body>".$body."</body></html>";
-    $phpmailer->set('Body', $body);
     /**
-     * Send.
+     * Send
      */
-    wfPlugin::includeonce('wf/phpmailer');
-    $wf_phpmailer = new PluginWfPhpmailer();
-    foreach ($form->get('capture/data/email') as $key => $value) {
-      $phpmailer->set('To', $value);
-      $wf_phpmailer->send($phpmailer->get());
+    if(!$form->get('capture/data/mailqueue')){
+      /**
+       * phpmailer.
+       */
+      $phpmailer = wfSettings::getSettingsFromYmlString($form->get('capture/data/phpmailer'));
+      $phpmailer = new PluginWfArray($phpmailer);
+      /**
+       * Reply to.
+       */
+      if(wfRequest::get('email')){
+        $phpmailer->set('ReplyTo', wfRequest::get('email'));
+      }
+      $phpmailer->set('Body', $body);
+      /**
+       * Send.
+       */
+      wfPlugin::includeonce('wf/phpmailer');
+      $wf_phpmailer = new PluginWfPhpmailer();
+      foreach ($form->get('capture/data/email') as $key => $value) {
+        $phpmailer->set('To', $value);
+        $wf_phpmailer->send($phpmailer->get());
+      }
+    }else{
+      /**
+       * mailqueue
+       */
+      wfPlugin::includeonce('mail/queue');
+      $mail = new PluginMailQueue(true);
+      foreach ($form->get('capture/data/email') as $key => $email) {
+        $mail->create($form->get('capture/data/subject'), $body, $email, null, null, null, null, wfUser::getSession()->get('user_id'), 'contact');      
+      }
     }
     /**
      * Return script.

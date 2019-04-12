@@ -107,3 +107,19 @@ data:
   method: include            
 ```
 
+## Send form as mail using send method.
+If param mailqueue is true phpmailer is omited. Proper settings for PluginMailQueue is required.
+Param subject is only in usage if mailqueue is in use.
+```
+capture:
+  plugin: 'form/form_v1'
+  method: send
+  data:
+    phpmailer: 'yml:/theme/[theme]/config/phpmailer.yml'
+    mailqueue: true
+    subject: 'Contact from my homepage'
+    email:
+      - 'me@world.com'
+    script:
+      - "alert('Message was sent.');location.href='/';"  
+```
