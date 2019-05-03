@@ -1238,6 +1238,9 @@ class PluginFormForm_v1{
        * phpmailer.
        */
       $phpmailer = wfSettings::getSettingsFromYmlString($form->get('capture/data/phpmailer'));
+      if(!$phpmailer){
+        throw new Exception('PluginFormForm_v1 says: No data.');
+      }
       $phpmailer = new PluginWfArray($phpmailer);
       /**
        * Reply to.
