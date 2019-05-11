@@ -175,7 +175,8 @@ class PluginFormForm_v1{
         'target' => null,
         'submit_on_enter' => true,
         'submit_method' => 'null',
-        'ctrl_s_save' => false
+        'ctrl_s_save' => false,
+        'focus_first_element' => true
         );
     /**
      * Merge defaults with widget data.
@@ -274,7 +275,9 @@ class PluginFormForm_v1{
     /**
      * Set focus on first element.
      */
-    $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginFormForm_v1=='undefined'){alert('Method PluginFormForm_v1.focus is undefined!');}else{PluginFormForm_v1.focus({id: '".$form_form_v1->getData('id')."'});}");
+    if($default['focus_first_element']){
+      $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginFormForm_v1=='undefined'){alert('Method PluginFormForm_v1.focus is undefined!');}else{PluginFormForm_v1.focus({id: '".$form_form_v1->getData('id')."'});}");
+    }
     /**
      * Onkeypress
      */

@@ -22,6 +22,7 @@ url: _url_where_to_post_
 ajax: true
 submit_value: Save
 id: _my_form_
+focus_first_element: true
 items:
   id:
     type: varchar
@@ -122,4 +123,11 @@ capture:
       - 'me@world.com'
     script:
       - "alert('Message was sent.');location.href='/';"  
+```
+
+## Focus first element
+As default focus is on first element. One could turn it of by this parameter.
+
+```
+focus_first_element: false
 ```
