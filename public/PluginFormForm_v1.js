@@ -201,9 +201,9 @@ function plugin_form_form_v1(){
       return false;
     }else if(data.ajax_element){
       if(typeof PluginBootstrapAlertwait == 'object'){
-        PluginBootstrapAlertwait.run(function(){
-          PluginWfCallbackjson.setElement(data.ajax_element, data.url, data.id )     
-        }); 
+        PluginBootstrapAlertwait.run();
+        PluginWfCallbackjson.setElement(data.ajax_element, data.url, data.id )     
+        PluginBootstrapAlertwait.close();
         return false; 
       }else{
         PluginWfCallbackjson.setElement(data.ajax_element, data.url, data.id ); 
@@ -211,10 +211,11 @@ function plugin_form_form_v1(){
       }
     }else{
       if(typeof PluginBootstrapAlertwait == 'object'){
-        PluginBootstrapAlertwait.run(function(){
-          $.post(data.url, $('#'+data.id).serialize()).done(function(data) {
-            PluginWfCallbackjson.call( data );
-          })}); 
+        PluginBootstrapAlertwait.run();
+        $.post(data.url, $('#'+data.id).serialize()).done(function(data) {
+          PluginBootstrapAlertwait.close();
+          PluginWfCallbackjson.call( data );
+        });
         return false;
       }else{
         $.post(data.url, $('#'+data.id).serialize()).done(function(data) { 
