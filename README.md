@@ -68,6 +68,16 @@ Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be
 ctrl_s_save: true
 ```
 
+### Settings
+Settings param will be set for form element. This example show how to change i18n path.
+```
+settings:
+  globals:
+    -
+      path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
+      value: '/plugin/_folder_/_folder_/i18n'
+```
+
 
 ## PHP
 

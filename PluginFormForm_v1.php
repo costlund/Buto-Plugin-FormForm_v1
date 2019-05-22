@@ -264,7 +264,7 @@ class PluginFormForm_v1{
     if(!$default['ajax']){
       $form_attribute['action'] = $default['url'];
     }
-    $form_render = wfDocument::createHtmlElement('form', $form_element, $form_attribute);
+    $form_render = wfDocument::createHtmlElement('form', $form_element, $form_attribute, $widget_data->get('settings'));
     /**
      * Move buttons to footer if Bootstrap modal and NOT Bootstrap 4.
      */

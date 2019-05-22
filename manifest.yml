@@ -1,5 +1,8 @@
-version: '1.21'
+version: '1.22'
 history:
+  '1.22':
+    date: '2019-05-22'
+    description: 'Settings parameter.'
   '1.21':
     date: '2019-05-11'
     description: 'Focus parameter.'
