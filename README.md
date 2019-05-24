@@ -145,7 +145,12 @@ focus_first_element: false
 
 ## Placeholder
 
+### Script
+
 If type is date and placeholder is empty it will be set to YYYY-MM-DD.
 If placeholder is 0.* a script to replace comma (,) with dot (.) is added.
+
+### Validators
+
 If placeholder is 0 validator validate_integer is added in widget_capture.
 If placeholder is 0.* validator validate_double is added in widget_capture.
