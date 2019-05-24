@@ -1,5 +1,8 @@
-version: '1.23'
+version: '1.24'
 history:
+  '1.24':
+    date: '2019-05-23'
+    description: 'Add script to replace comma with dot if placeholder is 0.*.'
   '1.23':
     date: '2019-05-23'
     description: 'If type is date placeholder is set if empty.'

@@ -254,5 +254,10 @@ function plugin_form_form_v1(){
     }
     function plugin_form_form_v1_focus(){y.focus();}    
   }
+  this.input_placeholder = function(data){
+    if(data.placeholder.indexOf('0.') != -1){
+      document.getElementById(data.id).onchange = function(){ this.value = this.value.replace(',', '.'); }    
+    }
+  }
 }
 var PluginFormForm_v1 = new plugin_form_form_v1();

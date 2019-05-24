@@ -493,6 +493,15 @@ class PluginFormForm_v1{
           }
         }
         /**
+         * Input placeholder
+         */
+        if($default_value['type']=='varchar' && strstr($default_value['placeholder'], '0.')){
+          /**
+           * Add script.
+           */
+          $scripts[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.input_placeholder(". json_encode(array('id' => $default_value['element_id'], 'placeholder' => $default_value['placeholder'])).");");
+        }
+        /**
          * 
          */
         if($default_value['type']!='checkbox'){

@@ -142,3 +142,8 @@ As default focus is on first element. One could turn it of by this parameter.
 ```
 focus_first_element: false
 ```
+
+## Placeholder
+
+If type is date and placeholder is empty it will be set to YYYY-MM-DD.
+If placeholder is 0.* a script to replace comma (,) with dot (.) is added.
