@@ -1,5 +1,8 @@
-version: '1.22'
+version: '1.23'
 history:
+  '1.23':
+    date: '2019-05-23'
+    description: 'If type is date placeholder is set if empty.'
   '1.22':
     date: '2019-05-22'
     description: 'Settings parameter.'

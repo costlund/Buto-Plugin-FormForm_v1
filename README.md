@@ -39,6 +39,7 @@ items:
   date:
     type: date
     label: Date
+    placeholder: 'yyyy-mm-dd'
   memb_account_id:
     type: varchar
     label: Member

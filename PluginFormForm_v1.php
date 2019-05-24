@@ -335,6 +335,9 @@ class PluginFormForm_v1{
     if($default_value['type']=='checkbox'){
       $default_value['class'] = null;
     }
+    if($default_value['type']=='date' && !$default_value['placeholder']){
+      $default_value['placeholder'] = 'YYYY-MM-DD';
+    }
     $type = null;
     $innerHTML = null;
     $attribute = array('name' => $default_value['name'], 'id' => $default_value['element_id'], 'class' => $default_value['class'], 'style' => $default_value['style']);
