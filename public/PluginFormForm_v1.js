@@ -256,7 +256,7 @@ function plugin_form_form_v1(){
   }
   this.input_placeholder = function(data){
     if(data.placeholder.indexOf('0.') != -1){
-      document.getElementById(data.id).onchange = function(){ this.value = this.value.replace(',', '.'); }    
+      document.getElementById(data.id).onkeyup = function(){ this.value = this.value.replace(',', '.'); }    
     }
   }
 }
