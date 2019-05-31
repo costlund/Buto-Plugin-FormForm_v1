@@ -218,12 +218,24 @@ function plugin_form_form_v1(){
         });
         return false;
       }else{
-        $.post(data.url, $('#'+data.id).serialize()).done(function(data) { 
+        this.loading_add(data);
+        $.post(data.url, $('#'+data.id).serialize()).done(function(data) {
+          PluginFormForm_v1.loading_remove();
           PluginWfCallbackjson.call( data );
         });
         return false; 
       }
     }
+  }
+  this.loading_add = function(data){
+    var img = document.createElement('img');
+    img.src = '/plugin/form/form_v1/loading.gif';
+    img.className = 'plugin_form_form_v1_loading';
+    img.style.marginLeft = '10px';
+    document.getElementById(data.id+'_save').appendChild(img);
+  }
+  this.loading_remove = function(){
+    $(".plugin_form_form_v1_loading").remove();
   }
   this.keypress = function(element, data){
     if(element.keyCode==13 && (element.target.tagName=='INPUT' || element.target.tagName=='SELECT') ){

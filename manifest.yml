@@ -1,5 +1,8 @@
-version: '1.25'
+version: '1.26'
 history:
+  '1.26':
+    date: '2019-05-31'
+    description: 'Add loading indicator to form button.'
   '1.25':
     date: '2019-05-23'
     description: 'Add validate_integer if placeholder is 0 or validate_double if placeholder is 0.*.'

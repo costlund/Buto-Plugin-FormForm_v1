@@ -110,6 +110,12 @@ $form = new PluginWfArray($obj->data);
 
 ## Wait indicator
 
+A loading image will appears in form button when form is submitted.
+
+## Wait indicator (deprecated)
+
+Deprecated due to scroll problem.
+
 Include this widget in head section to get an wait indicator.
 
 ```
