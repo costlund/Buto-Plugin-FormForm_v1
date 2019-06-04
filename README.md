@@ -50,6 +50,8 @@ items:
     option: method:memb_inc/abo:option_memb_account
     info:
       text: 'Select a member.'
+    settings:
+      enabled: false
 capture:
   plugin: xxx/yyy
   method: form_capture

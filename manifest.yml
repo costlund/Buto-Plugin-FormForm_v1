@@ -1,5 +1,8 @@
-version: '1.27'
+version: '1.28'
 history:
+  '1.28':
+    date: '2019-06-04'
+    description: 'New parameter settings in form item.'
   '1.27':
     date: '2019-06-04'
     description: 'New parameter class_add in form item.'

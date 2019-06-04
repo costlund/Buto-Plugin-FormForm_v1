@@ -329,7 +329,8 @@ class PluginFormForm_v1{
         'style' => null,
         'placeholder' => null,
         'html' => false,
-        'i18n' => true
+        'i18n' => true,
+        'settings' => array()
             );
     $value = new PluginWfArray($value);
     if($value->get('class_add')){
@@ -522,7 +523,7 @@ class PluginFormForm_v1{
                 'id' => 'div_'.$default['id'].'_'.$key, 
                 'class' => $class_div.' '.$value->get('container_class'), 
                 'style' => $value->get('container_style')
-                ), array('class' => 'wf_form_row')), 'script' => $scripts);
+                ), $default_value['settings']), 'script' => $scripts);
       }
     }else{
       return null;
