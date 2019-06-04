@@ -40,6 +40,8 @@ items:
     type: date
     label: Date
     placeholder: 'yyyy-mm-dd'
+    class: _user_only_this_class_
+    class_add: _add_a_class_
   memb_account_id:
     type: varchar
     label: Member

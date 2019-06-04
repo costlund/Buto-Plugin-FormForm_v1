@@ -331,7 +331,11 @@ class PluginFormForm_v1{
         'html' => false,
         'i18n' => true
             );
-    $default_value = array_merge($default_value, $value);
+    $value = new PluginWfArray($value);
+    if($value->get('class_add')){
+      $default_value['class'] = $default_value['class'].' '.$value->get('class_add');
+    }
+    $default_value = array_merge($default_value, $value->get());
     if($default_value['type']=='checkbox'){
       $default_value['class'] = null;
     }
@@ -433,7 +437,7 @@ class PluginFormForm_v1{
     }
     if($type){
       if($type=='div'){
-        return $value;
+        return $value->get();
       }else{
         $element = array();
         $input = wfDocument::createHtmlElement($type, $innerHTML, $attribute);
@@ -466,7 +470,7 @@ class PluginFormForm_v1{
         /**
          * Add Bootstrap glyphicon.
          */
-        if(wfArray::get($value, 'info/text')){
+        if($value->get('info/text')){
           $user = wfUser::getSession();
           if($user->get('plugin/twitter/bootstrap413v/include')){
             /**
@@ -474,8 +478,8 @@ class PluginFormForm_v1{
              */
           }else{
             $data_placement = 'bottom';
-            if(wfArray::get($value, 'info/position')){
-              $data_placement = wfArray::get($value, 'info/position');
+            if($value->get('info/position')){
+              $data_placement = $value->get('info/position');
             }
             $element['glyphicon_info'] = wfDocument::createHtmlElement('span', null, array(
                 'id' => 'info_'.$default_value['element_id'],
@@ -486,7 +490,7 @@ class PluginFormForm_v1{
                 'data-trigger' => 'click',
                 'data-html' => true,
                 'data-placement' => $data_placement,
-                'data-content' => wfArray::get($value, 'info/text'),
+                'data-content' => $value->get('info/text'),
                 'onclick' => "$('.wf_form_v2').popover('hide');"
                 ));
             $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('[data-toggle=\"popover\"]').popover()}) ");
@@ -516,8 +520,8 @@ class PluginFormForm_v1{
         }
         return array('element' => wfDocument::createHtmlElement('div', $element, array(
                 'id' => 'div_'.$default['id'].'_'.$key, 
-                'class' => $class_div.' '.wfArray::get($value, 'container_class'), 
-                'style' => wfArray::get($value, 'container_style')
+                'class' => $class_div.' '.$value->get('container_class'), 
+                'style' => $value->get('container_style')
                 ), array('class' => 'wf_form_row')), 'script' => $scripts);
       }
     }else{
