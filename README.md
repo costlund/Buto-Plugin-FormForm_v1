@@ -162,5 +162,6 @@ If placeholder is 0.* a script to replace comma (,) with dot (.) is added.
 
 ### Validators
 
-If placeholder is 0 validator validate_integer is added in widget_capture.
-If placeholder is 0.* validator validate_double is added in widget_capture.
+- If placeholder is 0 validator validate_integer is added in widget_capture.
+- If placeholder is 0.* validator validate_double is added in widget_capture.
+- If placeholder is "Text (1-4)" validator is added for min/max length.

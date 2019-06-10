@@ -540,20 +540,6 @@ class PluginFormForm_v1{
     wfPlugin::includeonce('wf/array');
     $json = new PluginWfArray();
     /**
-     * Add validators
-     */
-    foreach ($data['data']['items'] as $k => $v) {
-      $i = new PluginWfArray($v);
-      if($i->get('type')=='varchar' && !$i->get('validator')){
-        if($i->get('placeholder')==='0'){
-          $data['data']['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_integer');
-        }elseif(substr($i->get('placeholder'), 0, 2)==='0.'){
-          $decimals = strlen($i->get('placeholder'))-2;
-          $data['data']['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_double', 'data' => array('decimals' => $decimals));
-        }
-      }
-    }
-    /**
      * 
      */
     $form_form_v1 = new PluginFormForm_v1(true);
@@ -621,6 +607,36 @@ class PluginFormForm_v1{
    */
   public function bind($preserve_default = false){
     $form = $this->data;
+    /**
+     * Set validators if empty and placeholder value.
+     */
+    foreach ($form['items'] as $k => $v) {
+      $i = new PluginWfArray($v);
+      if($i->get('type')=='varchar' && !$i->get('validator')){
+        if($i->get('placeholder')==='0'){
+          $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_integer');
+        }elseif(substr($i->get('placeholder'), 0, 2)==='0.'){
+          $decimals = strlen($i->get('placeholder'))-2;
+          $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_double', 'data' => array('decimals' => $decimals));
+        }elseif(substr($i->get('placeholder'), 0, 6)==='Text ('){
+          /**
+           * Example: Text (4-8)
+           */
+          $str = substr($i->get('placeholder'), 6);
+          $str = substr($str, 0, strlen($str)-1);
+          /**
+           * 
+           */
+          wfPlugin::includeonce('string/array');
+          $plugin = new PluginStringArray();
+          $str = new PluginWfArray($plugin->from_char($str, '-'));
+          $form['items'][$k]['validator'][] = array('plugin' => 'validate/string', 'method' => 'validate_length_minmax', 'data' => array('min' => $str->get('0'), 'max' => $str->get('1')));
+        }
+      }
+    }
+    /**
+     * 
+     */
     foreach ($form['items'] as $key => $value) {
       $str = wfRequest::get($key);
       if($form['items'][$key]['type']=='checkbox'){

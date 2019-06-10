@@ -1,5 +1,8 @@
-version: '1.28'
+version: '1.29'
 history:
+  '1.29':
+    date: '2019-06-10'
+    description: 'Placeholder (Text (1-4)) will add a validator.'
   '1.28':
     date: '2019-06-04'
     description: 'New parameter settings in form item.'
@@ -90,6 +93,12 @@ plugin:
     version: '1.0'
   -
     name: eternicode/bootstrapdatepicker2
+    version: '1.0'
+  -
+    name: string/array
+    version: '1.2'
+  -
+    name: validate/string
     version: '1.0'
 sys:
   -
