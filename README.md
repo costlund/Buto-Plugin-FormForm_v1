@@ -55,6 +55,11 @@ items:
 capture:
   plugin: xxx/yyy
   method: form_capture
+settings:
+  globals:
+    -
+      path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
+      value: '/plugin/_folder_/_folder_/i18n'
 ```
 
 
