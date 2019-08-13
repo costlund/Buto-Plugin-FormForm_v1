@@ -60,6 +60,22 @@ settings:
     -
       path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
       value: '/plugin/_folder_/_folder_/i18n'
+elements_above:
+  -
+    type: p
+    innerHTML: Element inside form element first.
+elements_below:
+  -
+    type: p
+    innerHTML: Element inside form element below.
+elements_before:
+  -
+    type: p
+    innerHTML: Element before form element.
+elements_after:
+  -
+    type: p
+    innerHTML: Element after form element.
 ```
 
 

@@ -1,5 +1,8 @@
-version: '1.29'
+version: '1.3'
 history:
+  '1.3':
+    date: '2019-08-13'
+    description: 'Add elements before and after form element.'
   '1.29':
     date: '2019-06-10'
     description: 'Placeholder (Text (1-4)) will add a validator.'
