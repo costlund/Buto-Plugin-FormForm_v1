@@ -247,7 +247,7 @@ class PluginFormForm_v1{
     /**
      * Buttons.
      */
-    $form_element[] = wfDocument::createHtmlElement('div', $buttons, array('class' => 'wf_form_row'));
+    $form_element[] = wfDocument::createHtmlElement('div', $buttons, array('class' => 'wf_form_row', 'style' => 'margin-bottom:10px'));
     /**
      * Allow post via keypress, enter in input field.
      */
@@ -285,10 +285,26 @@ class PluginFormForm_v1{
       $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginWfOnkeypress=='object'){PluginWfOnkeypress.set('".$default['id']."', {ctrlKey: true, which: 83}, function(){document.getElementById('".$default['id']."_save').click();});}");
     }
     /**
+     * Elements first.
+     */
+    if($form_form_v1->getData('elements_before')){
+      $element = array();
+      $element[] = wfDocument::createHtmlElement('div', array(wfDocument::createHtmlElement('div', $form_form_v1->getData('elements_before'), array('class' => 'col-12'))), array('class' => 'row', 'id' => $default['id'].'_elements_before'));
+      wfDocument::renderElement($element);
+    }
+    /**
      * Render.
      */
     wfDocument::renderElement(array($form_render));
     wfDocument::renderElement($scripts);
+    /**
+     * Elements after.
+     */
+    if($form_form_v1->getData('elements_after')){
+      $element = array();
+      $element[] = wfDocument::createHtmlElement('div', array(wfDocument::createHtmlElement('div', $form_form_v1->getData('elements_after'), array('class' => 'col-12'))), array('class' => 'row', 'id' => $default['id'].'_elements_after'));
+      wfDocument::renderElement($element);
+    }
   }
   /**
    * Get fields via schema.
