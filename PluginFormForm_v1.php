@@ -395,6 +395,18 @@ class PluginFormForm_v1{
           $attribute['type'] = 'text';
           $attribute['value'] = htmlentities($default_value['default']);
           $attribute['placeholder'] = $default_value['placeholder'];
+          if($attribute['placeholder']==='0'){
+            $attribute['type'] = 'number';
+          }elseif($attribute['placeholder']==='0.0'){
+            $attribute['type'] = 'number';
+            $attribute['step'] = '0.1';
+          }elseif($attribute['placeholder']==='0.00'){
+            $attribute['type'] = 'number';
+            $attribute['step'] = '0.01';
+          }elseif($attribute['placeholder']==='0.000'){
+            $attribute['type'] = 'number';
+            $attribute['step'] = '0.001';
+          }
         }else{
           /**
            * Set data from yml file if 'yml:_pat_to_yml_file_'.
