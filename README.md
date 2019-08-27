@@ -133,6 +133,17 @@ $obj->setDefaultsFromArray(array('name' => 'James Smith'));
 $form = new PluginWfArray($obj->data);
 ```
 
+Capture method.
+
+```
+public function form_capture(){
+  // To something...
+  return array("alert('Some javascript to be fired.');");
+}
+```
+
+
+
 ## Wait indicator
 
 A loading image will appears in form button when form is submitted.
