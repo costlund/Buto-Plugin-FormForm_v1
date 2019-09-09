@@ -48,6 +48,7 @@ items:
     mandatory: true
     default: rs:memb_account_id
     option: method:memb_inc/abo:option_memb_account
+    option_OR_FROM_YML_STRING_: yml:/plugin/_folder_/_folder_/mysql/schema.yml:field/level/option 
     info:
       text: 'Select a member.'
     settings:
