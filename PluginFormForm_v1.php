@@ -442,14 +442,28 @@ class PluginFormForm_v1{
           if($default_value['i18n']===false){
             $settings->set('event/document_render_string/disabled', true);
           }
+          $option_match = false;
           foreach ($default_value['option'] as $key2 => $value2) {
             $temp = array();
             $temp['value'] = $key2;
             if((string)$default_value['default']===(string)$key2){
               $temp['selected'] = 'true';
+              $option_match = true;
             }
             $option[] = wfDocument::createHtmlElement('option', $value2, $temp, $settings->get());
           }
+          /**
+           * If default value not match.
+           */
+          if($default_value['option'] && $default_value['default'] && !$option_match){
+            $temp = array();
+            $temp['value'] = $default_value['default'];
+            $temp['selected'] = 'true';
+            $option[] = wfDocument::createHtmlElement('option', '(No match on '.$default_value['default'].')', $temp, $settings->get());
+          }
+          /**
+           * 
+           */
           $innerHTML = $option;
         }
         break;
