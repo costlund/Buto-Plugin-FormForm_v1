@@ -346,7 +346,8 @@ class PluginFormForm_v1{
         'placeholder' => null,
         'html' => false,
         'i18n' => true,
-        'settings' => array()
+        'settings' => array(),
+        'script' => array()
             );
     $value = new PluginWfArray($value);
     if($value->get('class_add')){
@@ -362,6 +363,19 @@ class PluginFormForm_v1{
     $type = null;
     $innerHTML = null;
     $attribute = array('name' => $default_value['name'], 'id' => $default_value['element_id'], 'class' => $default_value['class'], 'style' => $default_value['style']);
+    /**
+     * Add scripts to control.
+     */
+    foreach ($default_value['script'] as $event => $item_scripts) {
+      $str_script = null;
+      foreach ($item_scripts as $key2 => $value2) {
+        $str_script .= $value2.';';
+      }
+      $attribute[$event] = $str_script;
+    }
+    /**
+     * 
+     */
     switch ($default_value['type']) {
       case 'checkbox':
         $type = 'input';
