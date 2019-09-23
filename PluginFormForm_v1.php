@@ -610,13 +610,20 @@ class PluginFormForm_v1{
     if($form_form_v1->isValid()){
       if($form_form_v1->hasCapture()){
         $form_form_v1->runCaptureMethod('capture');
-        //$json->set('script', $form_form_v1->runCaptureMethod('capture'));
         $json->set('script', $form_form_v1->data);
       }else{
         $json->set('script', array("alert(\"Param capture is missing in form data!\");"));
       }
     }else{
-      $json->set('script', array("alert(\"".$form_form_v1->getErrors("\\n")."\");"));
+      $errors = array();
+      $errors[] = "alert(\"".$form_form_v1->getErrors("\\n")."\");";
+      /**
+       * Set errors_script.
+       */
+      foreach ($form_form_v1->getErrorsScript() as $key => $value) {
+        $errors[] = $value;
+      }
+      $json->set('script', $errors);
     }
     exit(json_encode($json->get()));
   }
@@ -881,14 +888,14 @@ class PluginFormForm_v1{
    * @return string
    */
   public function getErrors($nl = '<br>'){
-    $form = $this->data;
+    $form = new PluginWfArray($this->data);
     $errors = null;
-    if(isset($form['errors'])){
-      foreach ($form['errors'] as $key => $value){
+    if($form->get('errors')){
+      foreach ($form->get('errors') as $key => $value){
         $errors .= $value.$nl;
       }
     }
-    foreach ($form['items'] as $key => $value) {
+    foreach ($form->get('items') as $key => $value) {
       if(!$value['is_valid']){
         foreach ($value['errors'] as $key2 => $value2){
           $errors .= '- '.$value2.$nl;
@@ -896,6 +903,19 @@ class PluginFormForm_v1{
       }
     }
     return $errors;
+  }
+  public function getErrorsScript(){
+    $form = new PluginWfArray($this->data);
+    $errors_script = array();
+    foreach ($form->get('items') as $key => $value) {
+      $i = new PluginWfArray($value);
+      if(!$i->get('is_valid') && $i->get('errors_script')){
+        foreach ($i->get('errors_script') as $key2 => $value2){
+          $errors_script[] = $value2;
+        }
+      }
+    }
+    return $errors_script;
   }
   /**
    * Get all form errors as array.
@@ -1048,7 +1068,7 @@ class PluginFormForm_v1{
    * @return type
    */
   public function validate_date($field, $form, $data = array()){
-    if(wfArray::get($form, "items/$field/is_valid")){
+    if(wfArray::get($form, "items/$field/is_valid") && wfArray::get($form, "items/$field/post_value")){
       if (!PluginFormForm_v1::isDate(wfArray::get($form, "items/$field/post_value"))){
         $form = wfArray::set($form, "items/$field/is_valid", false);
         $form = wfArray::set($form, "items/$field/errors/", __('?label is not a date!', array('?label' => wfArray::get($form, "items/$field/label"))));
