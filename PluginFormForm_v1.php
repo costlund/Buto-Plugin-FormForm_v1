@@ -347,7 +347,7 @@ class PluginFormForm_v1{
         'html' => false,
         'i18n' => true,
         'settings' => array(),
-        'script' => array()
+        'attribute' => array()
             );
     $value = new PluginWfArray($value);
     if($value->get('class_add')){
@@ -364,15 +364,9 @@ class PluginFormForm_v1{
     $innerHTML = null;
     $attribute = array('name' => $default_value['name'], 'id' => $default_value['element_id'], 'class' => $default_value['class'], 'style' => $default_value['style']);
     /**
-     * Add scripts to control.
+     * Add extra attribute to control.
      */
-    foreach ($default_value['script'] as $event => $item_scripts) {
-      $str_script = null;
-      foreach ($item_scripts as $key2 => $value2) {
-        $str_script .= $value2.';';
-      }
-      $attribute[$event] = $str_script;
-    }
+    $attribute = array_merge($attribute, $default_value['attribute']);
     /**
      * 
      */

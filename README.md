@@ -53,12 +53,11 @@ items:
       text: 'Select a member.'
     settings:
       enabled: false
-  script_example:
+  attribute_example:
     type: varchar
     label: To upper case
-    script:
-      onkeyup:
-        - this.value=this.value.toUpperCase()
+    attribute:
+      onkeyup: this.value=this.value.toUpperCase()
 capture:
   plugin: xxx/yyy
   method: form_capture
