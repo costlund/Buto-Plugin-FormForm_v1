@@ -419,17 +419,25 @@ class PluginFormForm_v1{
           $attribute['type'] = 'text';
           $attribute['value'] = htmlentities($default_value['default']);
           $attribute['placeholder'] = $default_value['placeholder'];
-          if($attribute['placeholder']==='0'){
-            $attribute['type'] = 'number';
-          }elseif($attribute['placeholder']==='0.0'){
-            $attribute['type'] = 'number';
-            $attribute['step'] = '0.1';
-          }elseif($attribute['placeholder']==='0.00'){
-            $attribute['type'] = 'number';
-            $attribute['step'] = '0.01';
-          }elseif($attribute['placeholder']==='0.000'){
-            $attribute['type'] = 'number';
-            $attribute['step'] = '0.001';
+          if(false){
+            /**
+             * 191004.
+             * This does not work well. Consider not to use type=number for inputs.
+             * When typing "-" for a negative number the character disappear.
+             * Not sure if it was external event scripts causing this.
+             */
+            if($attribute['placeholder']==='0'){
+              $attribute['type'] = 'number';
+            }elseif($attribute['placeholder']==='0.0'){
+              $attribute['type'] = 'number';
+              $attribute['step'] = '0.1';
+            }elseif($attribute['placeholder']==='0.00'){
+              $attribute['type'] = 'number';
+              $attribute['step'] = '0.01';
+            }elseif($attribute['placeholder']==='0.000'){
+              $attribute['type'] = 'number';
+              $attribute['step'] = '0.001';
+            }
           }
         }else{
           /**
