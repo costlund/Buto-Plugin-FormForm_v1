@@ -221,7 +221,28 @@ function plugin_form_form_v1(){
         this.loading_add(data);
         $.post(data.url, $('#'+data.id).serialize()).done(function(data) {
           PluginFormForm_v1.loading_remove();
-          PluginWfCallbackjson.call( data );
+          var json_data = JSON.parse(data);
+          if(!json_data.data || json_data.data.is_valid){
+            PluginWfCallbackjson.call( data );
+          }else{
+            if(!document.getElementById(json_data.data.id+'_alert')){
+              PluginWfCallbackjson.call( data );
+            }else{
+              var html = '';
+              for(var i=0;i<json_data.data.errors.length;i++){
+                html += '<strong>'+json_data.data.errors[i]+'</strong><br>';
+              }
+              for(var item in json_data.data.items){
+                if(!json_data.data.items[item].is_valid){
+                  for(var j=0;j<json_data.data.items[item].errors.length;j++){
+                    html += json_data.data.items[item].errors[j]+'<br>';
+                  }
+                }
+              }
+              document.getElementById(json_data.data.id+'_alert').style.display='';
+              document.getElementById(json_data.data.id+'_alert').innerHTML=html;
+            }
+          }
         });
         return false; 
       }

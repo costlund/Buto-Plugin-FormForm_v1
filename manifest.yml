@@ -1,5 +1,9 @@
-version: '1.7'
+version: '1.8'
 history:
+  '1.8':
+    date: '2019-10-18'
+    title: Embed alert
+    description: 'Embed alert in form.'
   '1.7':
     date: '2019-10-18'
     title: I18N

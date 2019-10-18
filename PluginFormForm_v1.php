@@ -176,7 +176,8 @@ class PluginFormForm_v1{
         'submit_on_enter' => true,
         'submit_method' => 'null',
         'ctrl_s_save' => false,
-        'focus_first_element' => true
+        'focus_first_element' => true,
+        'embed_alert' => true
         );
     /**
      * Merge defaults with widget data.
@@ -243,6 +244,12 @@ class PluginFormForm_v1{
      */
     if($form_form_v1->getData('elements_below')){
       $form_element[] = wfDocument::createHtmlElement('div', $form_form_v1->getData('elements_below'), array('id' => $default['id'].'_elements_below'));
+    }
+    /**
+     * Embed alert.
+     */
+    if($default['embed_alert']){
+      $form_element[] = wfDocument::createHtmlElement('div', '', array('class' => 'alert alert-warning', 'id' => $default['id'].'_alert', 'style' => 'display:none'));
     }
     /**
      * Buttons.
@@ -609,6 +616,7 @@ class PluginFormForm_v1{
     $form_form_v1->validate();
     $json->set('success', false);
     $json->set('uid', wfCrypt::getUid());
+    $json->set('data', $form_form_v1->data);
     if($form_form_v1->isValid()){
       if($form_form_v1->hasCapture()){
         $form_form_v1->runCaptureMethod('capture');
