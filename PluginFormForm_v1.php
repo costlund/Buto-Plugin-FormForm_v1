@@ -789,6 +789,16 @@ class PluginFormForm_v1{
      */
     wfPlugin::includeonce('i18n/translate_v1');
     $i18n = new PluginI18nTranslate_v1();
+    /**
+     * Translate labels.
+     */
+    foreach ($form['items'] as $key => $value) {
+      $form['items'][$key]['label'] = $i18n->translateFromTheme($form['items'][$key]['label']);
+    }
+    /**
+     * Then set i18n path to translate the rest from this plugin.
+     */
+    $i18n->set_path('/plugin/form/form_v1/i18n');
     //Validate mandatory.
     foreach ($form['items'] as $key => $value) {
       /**
@@ -802,30 +812,31 @@ class PluginFormForm_v1{
                 $form['items'][$key]['is_valid'] = true;
             }else{
                 $form['items'][$key]['is_valid'] = false;
-                //$form['items'][$key]['errors'][] = __('?label is empty.', array('?label' => $form['items'][$key]['label']));
-                $form['items'][$key]['errors'][] = $i18n->translateFromTheme('?label is empty.', array('?label' => $i18n->translateFromTheme($form['items'][$key]['label'])));
+                $form['items'][$key]['errors'][] = $i18n->translateFromTheme('?label is empty.', array('?label' => $form['items'][$key]['label']));
             }
         }else{
             $form['items'][$key]['is_valid'] = true;
         }
     }
-    //Validate email.
-    foreach ($form['items'] as $key => $value) {
-        if($value['is_valid']){
-            if(isset($value['validate_as_email']) && $value['validate_as_email']){
-                if (!filter_var($value['post_value'], FILTER_VALIDATE_EMAIL)) {
-                    // invalid emailaddress
-                    $form['items'][$key]['errors'][] = __('?label is not an email.', array('?label' => $form['items'][$key]['label']));
-                    $form['items'][$key]['is_valid'] = false;
-                }                
-            }
-        }
+    //Validate email (should be removed, 191018).
+    if(false){
+      foreach ($form['items'] as $key => $value) {
+          if($value['is_valid']){
+              if(isset($value['validate_as_email']) && $value['validate_as_email']){
+                  if (!filter_var($value['post_value'], FILTER_VALIDATE_EMAIL)) {
+                      // invalid emailaddress
+                      $form['items'][$key]['errors'][] = __('?label is not an email.', array('?label' => $form['items'][$key]['label']));
+                      $form['items'][$key]['is_valid'] = false;
+                  }                
+              }
+          }
+      }
     }
     //Validate php code injection.
     foreach ($form['items'] as $key => $value) {
       if($value['is_valid']){
         if (isset($value['post_value']) && (strstr($value['post_value'], '<?php') || strstr($value['post_value'], '?>'))) {
-            $form['items'][$key]['errors'][] = __('?label has illegal character.', array('?label' => $form['items'][$key]['label']));
+            $form['items'][$key]['errors'][] = $i18n->translateFromTheme('?label has illegal character.', array('?label' => $form['items'][$key]['label']));
             $form['items'][$key]['is_valid'] = false;
         }                
       }

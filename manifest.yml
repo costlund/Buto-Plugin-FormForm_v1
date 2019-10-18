@@ -1,5 +1,9 @@
-version: '1.6'
+version: '1.7'
 history:
+  '1.7':
+    date: '2019-10-18'
+    title: I18N
+    description: 'Improvement in I18N.'
   '1.6':
     date: '2019-09-30'
     description: 'Replace script param with attribute.'
