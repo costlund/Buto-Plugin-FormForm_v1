@@ -210,7 +210,7 @@ function plugin_form_form_v1(){
         return false;
       }
     }else{
-      if(typeof PluginBootstrapAlertwait == 'object'){
+      if(false && typeof PluginBootstrapAlertwait == 'object'){
         PluginBootstrapAlertwait.run();
         $.post(data.url, $('#'+data.id).serialize()).done(function(data) {
           PluginBootstrapAlertwait.close();
@@ -241,6 +241,7 @@ function plugin_form_form_v1(){
               }
               document.getElementById(json_data.data.id+'_alert').style.display='';
               document.getElementById(json_data.data.id+'_alert').innerHTML=html;
+              $('#'+json_data.data.id+'_alert').collapse('show');
             }
           }
         });
