@@ -1,5 +1,9 @@
-version: '1.8'
+version: '1.9'
 history:
+  '1.9':
+    date: '2019-10-18'
+    title: Embed alert collapse.
+    description: 'Add bootstrap collapse on embed alert.'
   '1.8':
     date: '2019-10-18'
     title: Embed alert
