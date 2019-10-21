@@ -18,6 +18,7 @@ data:
 Param capture is called after validation.
 
 ```
+buttons_align_right: false
 url: _url_where_to_post_
 ajax: true
 submit_value: Save
@@ -84,9 +85,9 @@ elements_after:
     innerHTML: Element after form element.
 ```
 
+### Buttons align right
 
-
-
+Set to true if buttons should be align right.
 
 ### Submit method
 Set optional submit javascript method. Could be handy for extra validation.

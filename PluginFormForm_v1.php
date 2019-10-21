@@ -177,7 +177,8 @@ class PluginFormForm_v1{
         'submit_method' => 'null',
         'ctrl_s_save' => false,
         'focus_first_element' => true,
-        'embed_alert' => true
+        'embed_alert' => true,
+        'buttons_align_right' => false
         );
     /**
      * Merge defaults with widget data.
@@ -254,7 +255,11 @@ class PluginFormForm_v1{
     /**
      * Buttons.
      */
-    $form_element[] = wfDocument::createHtmlElement('div', $buttons, array('class' => 'wf_form_row', 'style' => 'margin-bottom:10px'));
+    $class = 'wf_form_row';
+    if($default['buttons_align_right']){
+      $class .= ' text-right';
+    }
+    $form_element[] = wfDocument::createHtmlElement('div', $buttons, array('class' => $class, 'style' => 'margin-bottom:10px'));
     /**
      * Allow post via keypress, enter in input field.
      */
