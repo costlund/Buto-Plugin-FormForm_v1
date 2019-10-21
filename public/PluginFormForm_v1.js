@@ -228,6 +228,20 @@ function plugin_form_form_v1(){
             if(!document.getElementById(json_data.data.id+'_alert')){
               PluginWfCallbackjson.call( data );
             }else{
+              /**
+               * Run script.
+               * Avoid first script because that should be the alert with errors.
+               */
+              if(json_data.script){
+                for(var i = 0; i<json_data.script.length; i++){
+                  if(i>0){
+                    eval(json_data.script[i]);
+                  }
+                }
+              }
+              /**
+               * 
+               */
               var html = '';
               for(var i=0;i<json_data.data.errors.length;i++){
                 html += '<strong>'+json_data.data.errors[i]+'</strong><br>';
