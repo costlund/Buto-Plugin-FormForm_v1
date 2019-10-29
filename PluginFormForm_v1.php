@@ -1143,8 +1143,8 @@ class PluginFormForm_v1{
         $form = wfArray::set($form, "items/$field/errors/", __('?label is not numeric!', array('?label' => wfArray::get($form, "items/$field/label"))));
       }else{
         if(
-                (int)wfArray::get($form, "items/$field/post_value") < (int)$data->get('min') || 
-                (int)wfArray::get($form, "items/$field/post_value") > (int)$data->get('max')
+                (double)wfArray::get($form, "items/$field/post_value") < (double)$data->get('min') || 
+                (double)wfArray::get($form, "items/$field/post_value") > (double)$data->get('max')
                 ){
         $form = wfArray::set($form, "items/$field/is_valid", false);
         $form = wfArray::set($form, "items/$field/errors/", __('?label must be between ?min and ?max!', array(

@@ -1,5 +1,9 @@
-version: '1.10'
+version: '1.39.0'
 history:
+  '1.39.0':
+    date: '2019-10-29'
+    title: Validate numeric
+    description: 'Min and max could be double types.'
   '1.38.0':
     date: '2019-10-21'
     title: Buttons.
