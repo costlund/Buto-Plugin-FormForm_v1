@@ -1,5 +1,9 @@
-version: '1.39.0'
+version: '1.40.0'
 history:
+  '1.40.0':
+    date: '2019-11-04'
+    title: Post button
+    description: 'Change post button from A tag to Button tag. Also set submit_on_enter to false as default.'
   '1.39.0':
     date: '2019-10-29'
     title: Validate numeric

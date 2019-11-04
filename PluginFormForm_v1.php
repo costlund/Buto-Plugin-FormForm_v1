@@ -173,7 +173,7 @@ class PluginFormForm_v1{
         'url' => '/doc/_',
         'items' => array(),
         'target' => null,
-        'submit_on_enter' => true,
+        'submit_on_enter' => false,
         'submit_method' => 'null',
         'ctrl_s_save' => false,
         'focus_first_element' => true,
@@ -198,10 +198,10 @@ class PluginFormForm_v1{
     $form_submit_data = "{ajax_element: '".$data_obj->get('data/ajax_element')."', url: '".$default['url']."', id: '".$default['id']."', submit_method: '".$default['submit_method']."'}";
     if($default['ajax']) {
       $onclick = "PluginFormForm_v1.submit(".$form_submit_data.")";
-      $buttons[] = wfDocument::createHtmlElement('a', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
+      $buttons[] = wfDocument::createHtmlElement('button', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
     }  else {
       $onclick = "document.getElementById('".$default['id']."').submit();";
-      $buttons[] = wfDocument::createHtmlElement('a', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
+      $buttons[] = wfDocument::createHtmlElement('button', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
     }
     if($form_form_v1->getData('buttons')){
       foreach ($form_form_v1->getData('buttons') as $key => $value) {
