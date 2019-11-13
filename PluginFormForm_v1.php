@@ -806,7 +806,9 @@ class PluginFormForm_v1{
      * Translate labels.
      */
     foreach ($form['items'] as $key => $value) {
-      $form['items'][$key]['label'] = $i18n->translateFromTheme($form['items'][$key]['label']);
+      if(isset($form['items'][$key]['label'])){
+        $form['items'][$key]['label'] = $i18n->translateFromTheme($form['items'][$key]['label']);
+      }
     }
     /**
      * Then set i18n path to translate the rest from this plugin.
