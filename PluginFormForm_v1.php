@@ -803,6 +803,12 @@ class PluginFormForm_v1{
     wfPlugin::includeonce('i18n/translate_v1');
     $i18n = new PluginI18nTranslate_v1();
     /**
+     * Set i18n path.
+     */
+    if(isset($form['i18n']['path'])){
+      $i18n->set_path($form['i18n']['path']);
+    }
+    /**
      * Translate labels.
      */
     foreach ($form['items'] as $key => $value) {

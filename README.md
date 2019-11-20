@@ -16,6 +16,7 @@ data:
 
 *Param items/id/default will get value from request param name id.* 
 Param capture is called after validation.
+Param i18n/path is used on validate.
 
 ```
 buttons_align_right: false
@@ -24,6 +25,8 @@ ajax: true
 submit_value: Save
 id: _my_form_
 focus_first_element: true
+i18n:
+  path: /plugin/vara/pat/i18n
 items:
   id:
     type: varchar

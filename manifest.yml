@@ -1,5 +1,9 @@
-version: '1.41.0'
+version: '1.42.0'
 history:
+  '1.42.0':
+    date: '2019-11-20'
+    title: Translate
+    description: 'Add param i18n/path to validate labels on validation.'
   '1.41.0':
     date: '2019-11-13'
     title: Translate bug
