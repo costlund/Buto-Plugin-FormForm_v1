@@ -1,5 +1,9 @@
-version: '1.42.0'
+version: '1.42.1'
 history:
+  '1.42.1':
+    date: '2019-11-21'
+    title: I18N
+    description: 'Improved translations in validation methods.'
   '1.42.0':
     date: '2019-11-20'
     title: Translate

@@ -1,3 +1,12 @@
 The form does not pass validation.: Formuläret klarade inte valideringen.
 ?label is empty.: ?label är tomt.
 ?label has illegal character.: ?label har felaktiga tecken.
+?label is not a date!: ?label är inte ett datum!
+?label is not an email!: ?label är inte en epost-adress!
+?label must have at lest one uppercase, lowercase, number and a minimum length of 8!: ?label måste ha minst en stor bokstav, liten bokstav, nummer och minst 8 tecken!
+?label is not equal to expected value!: ?label är inte lika med önskat värde!
+?label is not numeric!: ?label är inte numeriskt!
+?label must be between ?min and ?max!: ?label måste vara mellan ?min och ?max!
+?label is not an integer!: ?label är inte ett heltal!
+?label is not a double!: ?label är inte ett decimaltal!
+?label has more than ?decimals decimals!: ?label har mer än ?decimals decimaler!

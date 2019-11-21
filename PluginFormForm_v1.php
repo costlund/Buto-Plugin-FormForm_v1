@@ -846,7 +846,7 @@ class PluginFormForm_v1{
               if(isset($value['validate_as_email']) && $value['validate_as_email']){
                   if (!filter_var($value['post_value'], FILTER_VALIDATE_EMAIL)) {
                       // invalid emailaddress
-                      $form['items'][$key]['errors'][] = __('?label is not an email.', array('?label' => $form['items'][$key]['label']));
+                      $form['items'][$key]['errors'][] = __('?label is not an email!', array('?label' => $form['items'][$key]['label']));
                       $form['items'][$key]['is_valid'] = false;
                   }                
               }
@@ -882,7 +882,6 @@ class PluginFormForm_v1{
     foreach ($form['items'] as $key => $value) {
         if(!$value['is_valid']){
             $form['is_valid'] = false;
-            //$form['errors'][] = __('The form does not pass validation.');
             $form['errors'][] = $i18n->translateFromTheme('The form does not pass validation.');
             break;
         }
@@ -985,7 +984,6 @@ class PluginFormForm_v1{
     if(wfArray::get($form, "items/$field/is_valid") && wfArray::get($form, "items/$field/post_value")){
       if (!filter_var(wfArray::get($form, "items/$field/post_value"), FILTER_VALIDATE_EMAIL)) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        //$form = wfArray::set($form, "items/$field/errors/", __('?label is not an email!', array('?label' => wfArray::get($form, "items/$field/label"))));
         $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not an email!', array('?label' => $this->i18n->translateFromTheme(wfArray::get($form, "items/$field/label")))));
       }
     }
@@ -1003,7 +1001,7 @@ class PluginFormForm_v1{
       $validate = $this->validatePasswordAbcdef09(wfArray::get($form, "items/$field/post_value"));
       if (!wfArray::get($validate, 'success')) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        $form = wfArray::set($form, "items/$field/errors/", __('?label must have at lest one uppercase, lowercase, number and a minimum length of 8!', array('?label' => wfArray::get($form, "items/$field/label"))));
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label must have at lest one uppercase, lowercase, number and a minimum length of 8!', array('?label' => wfArray::get($form, "items/$field/label"))));
       }
     }
     return $form;
@@ -1089,7 +1087,7 @@ class PluginFormForm_v1{
     if(wfArray::get($form, "items/$field/is_valid")){
       if (wfArray::get($form, "items/$field/post_value") != wfArray::get($data, 'value')) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        $form = wfArray::set($form, "items/$field/errors/", __('?label is not equal to expected value!', array('?label' => wfArray::get($form, "items/$field/label"))));
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not equal to expected value!', array('?label' => wfArray::get($form, "items/$field/label"))));
       }
     }
     return $form;
@@ -1105,7 +1103,7 @@ class PluginFormForm_v1{
     if(wfArray::get($form, "items/$field/is_valid") && wfArray::get($form, "items/$field/post_value")){
       if (!PluginFormForm_v1::isDate(wfArray::get($form, "items/$field/post_value"))){
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        $form = wfArray::set($form, "items/$field/errors/", __('?label is not a date!', array('?label' => wfArray::get($form, "items/$field/label"))));
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not a date!', array('?label' => wfArray::get($form, "items/$field/label"))));
       }
     }
     return $form;
@@ -1148,14 +1146,14 @@ class PluginFormForm_v1{
     if(wfArray::get($form, "items/$field/is_valid") && strlen(wfArray::get($form, "items/$field/post_value"))){
       if (!is_numeric(wfArray::get($form, "items/$field/post_value"))) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        $form = wfArray::set($form, "items/$field/errors/", __('?label is not numeric!', array('?label' => wfArray::get($form, "items/$field/label"))));
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not numeric!', array('?label' => wfArray::get($form, "items/$field/label"))));
       }else{
         if(
                 (double)wfArray::get($form, "items/$field/post_value") < (double)$data->get('min') || 
                 (double)wfArray::get($form, "items/$field/post_value") > (double)$data->get('max')
                 ){
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        $form = wfArray::set($form, "items/$field/errors/", __('?label must be between ?min and ?max!', array(
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label must be between ?min and ?max!', array(
           '?label' => wfArray::get($form, "items/$field/label"),
           '?min' => $data->get('min'),
           '?max' => $data->get('max')
@@ -1176,7 +1174,7 @@ class PluginFormForm_v1{
     if(wfArray::get($form, "items/$field/is_valid") && strlen(wfArray::get($form, "items/$field/post_value"))){ // Only if valid and has data.
       if (!$this->is_integer(wfArray::get($form, "items/$field/post_value"))) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        $form = wfArray::set($form, "items/$field/errors/", __('?label is not an integer!', array('?label' => wfArray::get($form, "items/$field/label"))));
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not an integer!', array('?label' => wfArray::get($form, "items/$field/label"))));
       }
     }
     return $form;    
@@ -1203,10 +1201,10 @@ class PluginFormForm_v1{
     if(wfArray::get($form, "items/$field/is_valid") && strlen(wfArray::get($form, "items/$field/post_value"))){ // Only if valid and has data.
       if (!$this->is_double(wfArray::get($form, "items/$field/post_value"), $data)) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        $form = wfArray::set($form, "items/$field/errors/", __('?label is not a double!', array('?label' => wfArray::get($form, "items/$field/label"))));
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not a double!', array('?label' => wfArray::get($form, "items/$field/label"))));
       }elseif(!$this->check_decimals(wfArray::get($form, "items/$field/post_value"), $data)){
         $form = wfArray::set($form, "items/$field/is_valid", false);
-        $form = wfArray::set($form, "items/$field/errors/", __('?label has more than ?decimals decimals!', array('?label' => wfArray::get($form, "items/$field/label"), '?decimals' => $data['decimals'])));
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label has more than ?decimals decimals!', array('?label' => wfArray::get($form, "items/$field/label"), '?decimals' => $data['decimals'])));
       }
     }
     return $form;    
