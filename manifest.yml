@@ -1,5 +1,9 @@
-version: '1.42.0'
+version: '1.43.0'
 history:
+  '1.43.0':
+    date: '2019-11-25'
+    title: Error handling
+    description: 'Check if response text is json to detect an error when post a form.'
   '1.42.1':
     date: '2019-11-21'
     title: I18N

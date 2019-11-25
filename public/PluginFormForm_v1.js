@@ -219,14 +219,26 @@ function plugin_form_form_v1(){
         return false;
       }else{
         this.loading_add(data);
-        $.post(data.url, $('#'+data.id).serialize()).done(function(data) {
+        $.post(data.url, $('#'+data.id).serialize()).done(function(d) {
           PluginFormForm_v1.loading_remove();
-          var json_data = JSON.parse(data);
+          /**
+           * 
+           */
+          var json_data = null;
+          try {
+            json_data = JSON.parse(d);
+          } catch(e) {
+            alert('PluginFormForm_v1 says: There was a problem when trying to post this form to '+data.url+'!');
+            return null;
+          }          
+          /**
+           * 
+           */
           if(!json_data.data || json_data.data.is_valid){
-            PluginWfCallbackjson.call( data );
+            PluginWfCallbackjson.call( d );
           }else{
             if(!document.getElementById(json_data.data.id+'_alert')){
-              PluginWfCallbackjson.call( data );
+              PluginWfCallbackjson.call( d );
             }else{
               /**
                * Run script.
