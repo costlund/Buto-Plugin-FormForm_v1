@@ -258,8 +258,6 @@ function plugin_form_form_v1(){
               $('#'+json_data.data.id+'_alert').collapse('show');
             }
           }
-        }).fail(function(x){
-          alert("PluginFormForm_v1 says: Error requesting page " + data.url + " ("+x.responseText+")");
         });
         return false; 
       }
