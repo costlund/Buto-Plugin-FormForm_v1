@@ -806,7 +806,7 @@ class PluginFormForm_v1{
      * Set i18n path.
      */
     if(isset($form['i18n']['path'])){
-      $i18n->set_path($form['i18n']['path']);
+      $i18n->path = $form['i18n']['path'];
     }
     /**
      * Translate labels.
@@ -819,7 +819,7 @@ class PluginFormForm_v1{
     /**
      * Then set i18n path to translate the rest from this plugin.
      */
-    $i18n->set_path('/plugin/form/form_v1/i18n');
+    $i18n->setPath('/plugin/form/form_v1/i18n');
     //Validate mandatory.
     foreach ($form['items'] as $key => $value) {
       /**

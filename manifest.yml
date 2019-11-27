@@ -1,5 +1,9 @@
-version: '1.43.0'
+version: '1.43.1'
 history:
+  '1.43.1':
+    date: '2019-11-27'
+    title: I18N
+    description: 'Set I18N not in Globals param.'
   '1.43.0':
     date: '2019-11-25'
     title: Error handling
