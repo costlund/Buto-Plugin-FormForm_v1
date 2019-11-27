@@ -1,5 +1,9 @@
-version: '1.44.0'
+version: '1.45.0'
 history:
+  '1.45.0':
+    date: '2019-11-27'
+    title: Validation I18N
+    description: 'Validate translations from own i18n folder.'
   '1.44.0':
     date: '2019-11-27'
     title: Submit button

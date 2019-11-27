@@ -11,6 +11,7 @@ class PluginFormForm_v1{
       wfPlugin::includeonce('wf/array');
       wfPlugin::includeonce('i18n/translate_v1');
       $this->i18n = new PluginI18nTranslate_v1();
+      $this->i18n->setPath('/plugin/form/form_v1/i18n');
     }
   }
   public function setData($data){
