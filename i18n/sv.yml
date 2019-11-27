@@ -10,3 +10,4 @@ The form does not pass validation.: Formuläret klarade inte valideringen.
 ?label is not an integer!: ?label är inte ett heltal!
 ?label is not a double!: ?label är inte ett decimaltal!
 ?label has more than ?decimals decimals!: ?label har mer än ?decimals decimaler!
+Save: Spara

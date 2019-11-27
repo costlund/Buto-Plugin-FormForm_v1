@@ -280,7 +280,7 @@ function plugin_form_form_v1(){
     img.src = '/plugin/form/form_v1/loading.gif';
     img.className = 'plugin_form_form_v1_loading';
     img.style.marginLeft = '10px';
-    document.getElementById(data.id+'_save').appendChild(img);
+    document.getElementById(data.id+'_save').parentNode.appendChild(img);
   }
   this.loading_remove = function(){
     $(".plugin_form_form_v1_loading").remove();

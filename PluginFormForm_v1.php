@@ -109,6 +109,12 @@ class PluginFormForm_v1{
    */
   public static function widget_render($data){
     /**
+     * i18n.
+     */
+    wfPlugin::includeonce('i18n/translate_v1');
+    $i18n = new PluginI18nTranslate_v1();
+    $i18n->setPath('/plugin/form/form_v1/i18n');
+    /**
      * Handle data param.
      */
     if(wfArray::isKey($data, 'data')){
@@ -198,7 +204,7 @@ class PluginFormForm_v1{
     $form_submit_data = "{ajax_element: '".$data_obj->get('data/ajax_element')."', url: '".$default['url']."', id: '".$default['id']."', submit_method: '".$default['submit_method']."'}";
     if($default['ajax']) {
       $onclick = "PluginFormForm_v1.submit(".$form_submit_data.")";
-      $buttons[] = wfDocument::createHtmlElement('button', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
+      $buttons[] = wfDocument::createHtmlElement('input', null, array('type' => 'button', 'value' => $i18n->translateFromTheme($default['submit_value']), 'class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
     }  else {
       $onclick = "document.getElementById('".$default['id']."').submit();";
       $buttons[] = wfDocument::createHtmlElement('button', $default['submit_value'], array('class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));

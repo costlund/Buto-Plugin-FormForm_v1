@@ -1,5 +1,9 @@
-version: '1.43.1'
+version: '1.44.0'
 history:
+  '1.44.0':
+    date: '2019-11-27'
+    title: Submit button
+    description: 'Change submit button from button to input type button.'
   '1.43.1':
     date: '2019-11-27'
     title: I18N
