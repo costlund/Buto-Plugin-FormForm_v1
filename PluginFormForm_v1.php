@@ -17,9 +17,13 @@ class PluginFormForm_v1{
   public function setData($data){
     $this->data = $data;
   }
-  public function getData($key){
-    $data = new PluginWfArray($this->data);
-    return $data->get($key);
+  public function getData($key = null){
+    if(!is_null($key)){
+      $data = new PluginWfArray($this->data);
+      return $data->get($key);
+    }else{
+      return $this->data;
+    }
   }
   public function setDataFromFile($file, $root_path_to_key = null){
     $file = wfSettings::replaceTheme($file);
