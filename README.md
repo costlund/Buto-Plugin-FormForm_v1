@@ -22,6 +22,7 @@ Param i18n/path is used on validate.
 buttons_align_right: false
 url: _url_where_to_post_
 ajax: true
+_ajax_element: Use this to put ajax request in an element. 
 submit_value: Save
 id: _my_form_
 focus_first_element: true
