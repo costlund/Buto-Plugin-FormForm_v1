@@ -1,5 +1,9 @@
-version: '1.45.0'
+version: '1.45.1'
 history:
+  '1.45.1':
+    date: '2020-04-21'
+    title: Move buttons in modals
+    description: 'Move buttons critera improvement in modals.'
   '1.45.0':
     date: '2019-11-27'
     title: Validation I18N

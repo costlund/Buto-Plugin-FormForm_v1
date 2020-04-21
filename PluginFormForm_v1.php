@@ -291,10 +291,7 @@ class PluginFormForm_v1{
     /**
      * Move buttons to footer if Bootstrap modal and NOT Bootstrap 4.
      */
-    $user = wfUser::getSession();
-    if(!$user->get('plugin/twitter/bootstrap413v/include')){
-      $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginWfBootstrapjs == 'object'){PluginWfBootstrapjs.moveModalButtons('".$form_form_v1->getData('id')."');}");
-    }
+    $scripts[] = wfDocument::createHtmlElement('script', "if(typeof PluginWfBootstrapjs == 'object' && document.getElementById('PluginTwitterBootstrap335v')){PluginWfBootstrapjs.moveModalButtons('".$form_form_v1->getData('id')."');}");
     /**
      * Set focus on first element.
      */
