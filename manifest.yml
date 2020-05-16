@@ -1,5 +1,9 @@
-version: '1.45.1'
+version: '1.45.2'
 history:
+  '1.45.2':
+    date: '2020-05-16'
+    title: Readme
+    description: 'Add layout in readme.'
   '1.45.1':
     date: '2020-04-21'
     title: Move buttons in modals

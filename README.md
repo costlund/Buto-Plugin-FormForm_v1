@@ -89,6 +89,36 @@ elements_after:
     innerHTML: Element after form element.
 ```
 
+### Layout
+Using param layout to place controls. Using type div to move div with label and form element.
+```
+layout:
+  -
+    type: div
+    attribute: {class: row}
+    innerHTML:
+      -
+        type: div
+        attribute: {class: col-md-6}
+        innerHTML: 'item[{"id": "name", "type": "div"}]'
+```
+Using type control to only move the form element.
+```
+layout:
+  -
+    type: div
+    attribute: {class: row}
+    innerHTML:
+      -
+        type: div
+        attribute: {class: col-md-12 font-weight-bold}
+        innerHTML: Description
+      -
+        type: div
+        attribute: {class: col-md-12}
+        innerHTML: 'item[{"id": "description", "type": "control"}]'
+```
+
 ### Buttons align right
 
 Set to true if buttons should be align right.
