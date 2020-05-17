@@ -547,14 +547,30 @@ class PluginFormForm_v1{
           $element['map_icon'] = wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', null, array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginFormForm_v1.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right"));
         }
         /**
-         * Add Bootstrap glyphicon.
+         * Info icon.
          */
         if($value->get('info/text')){
           $user = wfUser::getSession();
           if($user->get('plugin/twitter/bootstrap413v/include')){
-            /**
-             * Here should code be...
-             */
+            $data_placement = 'bottom';
+            if($value->get('info/position')){
+              $data_placement = $value->get('info/position');
+            }
+            $element['glyphicon_info'] = wfDocument::createHtmlElement('span', array(wfDocument::createWidget('icons/octicons', 'svg', array('name' => 'info'))), array(
+                'id' => 'info_'.$default_value['element_id'],
+                'class' => 'glyphicon-info-sign',
+                'style' => 'float:right',
+                'tabindex' => '-1',
+                'data-toggle' => 'popover',
+                'data-trigger' => 'focus',
+                'data-htmlzzz' => true,
+                'data-content' => $value->get('info/text'),
+                'data-original-title' => $default_value['label'],
+                'data-placement' => $data_placement,
+                'onclick' => "$('.wf_form_v2').popover('hide');"
+                ));
+            $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('#info_".$default_value['element_id']."').popover(); }) ");
+            
           }else{
             $data_placement = 'bottom';
             if($value->get('info/position')){
