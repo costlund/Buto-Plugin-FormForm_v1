@@ -1,9 +1,13 @@
-version: '1.45.4'
+version: '1.45.5'
 history:
-  '1.45.4':
+  '1.45.5':
     date: '2020-05-18'
     title: Enable plugin
     description: 'Enable plugin icons/octicons.'
+  '1.45.4':
+    date: '2020-05-18'
+    title: Clean up
+    description: 'Removed not used params in icons.'
   '1.45.3':
     date: '2020-05-17'
     title: Info icon
