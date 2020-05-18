@@ -558,7 +558,6 @@ class PluginFormForm_v1{
             }
             $element['glyphicon_info'] = wfDocument::createHtmlElement('span', array(wfDocument::createWidget('icons/octicons', 'svg', array('name' => 'info'))), array(
                 'id' => 'info_'.$default_value['element_id'],
-                'class' => 'glyphicon-info-sign',
                 'style' => 'float:right',
                 'tabindex' => '-1',
                 'data-toggle' => 'popover',
@@ -566,8 +565,7 @@ class PluginFormForm_v1{
                 'data-htmlzzz' => true,
                 'data-content' => $value->get('info/text'),
                 'data-original-title' => $default_value['label'],
-                'data-placement' => $data_placement,
-                'onclick' => "$('.wf_form_v2').popover('hide');"
+                'data-placement' => $data_placement
                 ));
             $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('#info_".$default_value['element_id']."').popover(); }) ");
             
