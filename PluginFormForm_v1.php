@@ -12,6 +12,7 @@ class PluginFormForm_v1{
       wfPlugin::includeonce('i18n/translate_v1');
       $this->i18n = new PluginI18nTranslate_v1();
       $this->i18n->setPath('/plugin/form/form_v1/i18n');
+      wfPlugin::enable('icons/octicons');
     }
   }
   public function setData($data){
