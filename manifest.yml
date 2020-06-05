@@ -1,201 +1,204 @@
-version: '1.45.5'
+version: 1.45.5
 history:
-  '1.45.5':
+  1.45.5:
     date: '2020-05-18'
-    title: Enable plugin
+    title: 'Enable plugin'
     description: 'Enable plugin icons/octicons.'
-  '1.45.4':
+  1.45.4:
     date: '2020-05-18'
-    title: Clean up
+    title: 'Clean up'
     description: 'Removed not used params in icons.'
-  '1.45.3':
+  1.45.3:
     date: '2020-05-17'
-    title: Info icon
+    title: 'Info icon'
     description: 'Add missing info icon for Bootstrap 4.'
-  '1.45.2':
+  1.45.2:
     date: '2020-05-16'
     title: Readme
     description: 'Add layout in readme.'
-  '1.45.1':
+  1.45.1:
     date: '2020-04-21'
-    title: Move buttons in modals
+    title: 'Move buttons in modals'
     description: 'Move buttons critera improvement in modals.'
-  '1.45.0':
+  1.45.0:
     date: '2019-11-27'
-    title: Validation I18N
+    title: 'Validation I18N'
     description: 'Validate translations from own i18n folder.'
-  '1.44.0':
+  1.44.0:
     date: '2019-11-27'
-    title: Submit button
+    title: 'Submit button'
     description: 'Change submit button from button to input type button.'
-  '1.43.1':
+  1.43.1:
     date: '2019-11-27'
     title: I18N
     description: 'Set I18N not in Globals param.'
-  '1.43.0':
+  1.43.0:
     date: '2019-11-25'
-    title: Error handling
+    title: 'Error handling'
     description: 'Check if response text is json to detect an error when post a form.'
-  '1.42.1':
+  1.42.1:
     date: '2019-11-21'
     title: I18N
     description: 'Improved translations in validation methods.'
-  '1.42.0':
+  1.42.0:
     date: '2019-11-20'
     title: Translate
     description: 'Add param i18n/path to validate labels on validation.'
-  '1.41.0':
+  1.41.0:
     date: '2019-11-13'
-    title: Translate bug
+    title: 'Translate bug'
     description: 'Bug when translate not existing label.'
-  '1.40.0':
+  1.40.0:
     date: '2019-11-04'
-    title: Post button
+    title: 'Post button'
     description: 'Change post button from A tag to Button tag. Also set submit_on_enter to false as default.'
-  '1.39.0':
+  1.39.0:
     date: '2019-10-29'
-    title: Validate numeric
+    title: 'Validate numeric'
     description: 'Min and max could be double types.'
-  '1.38.0':
+  1.38.0:
     date: '2019-10-21'
     title: Buttons.
     description: 'Buttons align right as a parameter.'
-  '1.37.0':
+  1.37.0:
     date: '2019-10-18'
-    title: Embed alert collapse.
+    title: 'Embed alert collapse.'
     description: 'Add bootstrap collapse on embed alert.'
-  '1.36.0':
+  1.36.0:
     date: '2019-10-18'
-    title: Embed alert
+    title: 'Embed alert'
     description: 'Embed alert in form.'
-  '1.35.0':
+  1.35.0:
     date: '2019-10-18'
     title: I18N
     description: 'Improvement in I18N.'
-  '1.34.0':
+  1.34.0:
     date: '2019-09-30'
     description: 'Replace script param with attribute.'
-  '1.33.0':
+  1.33.0:
     date: '2019-09-23'
     description: 'Errors script.'
-  '1.32.0':
+  1.32.0:
     date: '2019-08-27'
     description: 'Add script to a control.'
-  '1.31.0':
+  1.31.0:
     date: '2019-08-27'
     description: 'Set input type to number if placeholder has value 0 to 0.000.'
-  '1.30.0':
+  1.30.0:
     date: '2019-08-13'
     description: 'Add elements before and after form element.'
-  '1.29.0':
+  1.29.0:
     date: '2019-06-10'
     description: 'Placeholder (Text (1-4)) will add a validator.'
-  '1.28.0':
+  1.28.0:
     date: '2019-06-04'
     description: 'New parameter settings in form item.'
-  '1.27.0':
+  1.27.0:
     date: '2019-06-04'
     description: 'New parameter class_add in form item.'
-  '1.26.0':
+  1.26.0:
     date: '2019-05-31'
     description: 'Add loading indicator to form button.'
-  '1.25.0':
+  1.25.0:
     date: '2019-05-23'
     description: 'Add validate_integer if placeholder is 0 or validate_double if placeholder is 0.*.'
-  '1.24.0':
+  1.24.0:
     date: '2019-05-23'
     description: 'Add script to replace comma with dot if placeholder is 0.*.'
-  '1.23.0':
+  1.23.0:
     date: '2019-05-23'
     description: 'If type is date placeholder is set if empty.'
-  '1.22.0':
+  1.22.0:
     date: '2019-05-22'
     description: 'Settings parameter.'
-  '1.21.0':
+  1.21.0:
     date: '2019-05-11'
     description: 'Focus parameter.'
-  '1.20.0':
+  1.20.0:
     date: '2019-04-12'
     description: 'Add PluginMailQueue to send method.'
-  '1.19.0':
+  1.19.0:
     date: '2019-03-04'
     description: 'Changes according to PluginWfOnkeypress changes.'
-  '1.18.0':
+  1.18.0:
     date: '2019-02-22'
     description: 'Modifying according to PluginEternicodeBootstrapdatepicker2 new js file.'
-  '1.17.0':
+  1.17.0:
     date: '2019-01-30'
     description: 'Add keyboard ctrl+s support to post a form.'
-  '1.16.0':
+  1.16.0:
     date: '2019-01-23'
     description: 'Add request param when render form.'
-  '1.15.0':
+  1.15.0:
     date: '2019-01-21'
     description: 'Add support for send method where capture/data could be path to yml.'
-  '1.14.0':
+  1.14.0:
     date: '2018-12-14'
     description: 'Bug in send method.'
-  '1.13.0':
+  1.13.0:
     date: '2018-12-14'
     description: 'Improvement on set focus.'
-  '1.12.0':
+  1.12.0:
     date: '2018-12-14'
     description: 'Bug in settings params form buttons. New method validate_integer.'
-  '1.11.0':
+  1.11.0:
     date: '2018-12-13'
     description: 'Set focus on first element in form.'
-  '1.10.0':
+  1.10.0:
     date: '2018-12-13'
     description: 'Only render Bootstrap Popover if Bootstrap 3.'
-  '1.9.0':
+  1.9.0:
     date: '2018-12-11'
     description: 'Remove param forceParse in datepicker to allow enter.'
-  '1.8.0':
+  1.8.0:
     date: '2018-12-10'
     description: 'Add file time when including js as a parameter.'
-  '1.7.0':
+  1.7.0:
     date: '2018-12-10'
     description: 'New form param submit_method.'
-  '1.6.0':
+  1.6.0:
     date: '2018-12-07'
     description: 'Add submit on keypress enter for Input and Select elements.'
-  '1.5.0':
+  1.5.0:
     date: '2018-11-27'
     description: 'Add i18n param to item in form to avoid translation.'
-  '1.0.0':
+  1.0.0:
     date: '2018-11-27'
     description: 'First version.'
 plugin:
   -
     name: wf/array
-    version: 1.0.1
+    version: 1.2.0
   -
     name: i18n/translate_v1
-    version: '1.6'
+    version: 1.7.0
   -
     name: wf/mysql
-    version: '1.9'
+    version: 1.11.0
   -
     name: wysiwyg/nicedit
     version: '1.0'
   -
     name: eternicode/bootstrapdatepicker2
-    version: '1.2'
+    version: 1.3.0
   -
     name: string/array
     version: '1.2'
   -
     name: validate/string
-    version: '1.0'
+    version: 1.1.0
   -
     name: mail/queue
     version: '1.2'
   -
     name: wf/yml
-    version: '1.1'
+    version: 1.2.2
   -
     name: wf/phpmailer
     version: '1.0'
+  -
+    name: icons/octicons
+    version: '1.1'
 sys:
   -
     name: mercury
@@ -203,7 +206,7 @@ sys:
       - '1.0'
 php:
   - '7.2'
-author: Claes Östlund
+author: 'Claes Östlund'
 links:
   Github: 'https://github.com'
 description: ''
