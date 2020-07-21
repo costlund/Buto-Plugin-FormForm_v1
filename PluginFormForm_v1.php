@@ -732,6 +732,8 @@ class PluginFormForm_v1{
           $plugin = new PluginStringArray();
           $str = new PluginWfArray($plugin->from_char($str, '-'));
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/string', 'method' => 'validate_length_minmax', 'data' => array('min' => $str->get('0'), 'max' => $str->get('1')));
+        }elseif($i->get('placeholder')==='@'){
+          $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_email');
         }
       }elseif($i->get('type')=='date' && !$i->get('validator')){
         $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_date');

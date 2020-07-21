@@ -1,5 +1,9 @@
-version: 1.45.5
+version: 1.46.0
 history:
+  1.46.0:
+    date: '2020-07-21'
+    title: 'Email validator'
+    description: 'Add email validator if placeholder is @.'
   1.45.5:
     date: '2020-05-18'
     title: 'Enable plugin'
