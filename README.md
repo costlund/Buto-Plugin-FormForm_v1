@@ -260,3 +260,36 @@ items:
     errors_script:
       - alert('Error script for name field.')
 ```
+
+### Options method
+SQL
+```
+db_option:
+  sql: |
+    select
+    id,
+    name
+    from friends
+    order by name
+  select:
+    - value
+    - option
+```
+Method
+```
+  public function option_friends(){
+    $temp = $this->db_option();
+    $obj = new PluginFormForm_v1();
+    $option = $obj->getOption($temp);
+    return $option;
+  }
+```
+Form settings
+```
+items:
+  friends_id:
+    type: varchar
+    label: Friend
+    default: rs:friends_id
+    option: method:my/plugin:option_friends
+```

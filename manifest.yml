@@ -1,5 +1,9 @@
-version: 1.46.0
+version: 1.46.1
 history:
+  1.46.1:
+    date: '2020-09-21'
+    title: 'Option method'
+    description: 'Readme about option method.'
   1.46.0:
     date: '2020-07-21'
     title: 'Email validator'
