@@ -258,10 +258,20 @@ function plugin_form_form_v1(){
               for(var i=0;i<json_data.data.errors.length;i++){
                 html += '<strong>'+json_data.data.errors[i]+'</strong><br>';
               }
+              /**
+               * Remove class is-invalid.
+               */
+              for(var item in json_data.data.items){
+                $('#'+json_data.data.id+'_'+item).removeClass('is-invalid');
+              }
               for(var item in json_data.data.items){
                 if(!json_data.data.items[item].is_valid){
                   for(var j=0;j<json_data.data.items[item].errors.length;j++){
                     html += json_data.data.items[item].errors[j]+'<br>';
+                    /**
+                     * Add class is-invalid.
+                     */
+                    $('#'+json_data.data.id+'_'+item).addClass('is-invalid');
                   }
                 }
               }

@@ -1,5 +1,9 @@
-version: 1.46.1
+version: 1.47.0
 history:
+  1.47.0:
+    date: '2020-10-03'
+    title: 'Is invalid'
+    description: 'Add class is-invalid to invalid fields on submit.'
   1.46.1:
     date: '2020-09-21'
     title: 'Option method'
