@@ -1,4 +1,5 @@
 function plugin_form_form_v1(){
+  this.btn_submit = null;
   /**
    * Move controls if form has own layout.
    * @param {type} data
@@ -195,7 +196,8 @@ function plugin_form_form_v1(){
           title: 'Hello World!'
         });
   }
-  this.submit = function(data){
+  this.submit = function(data, btn_submit){
+    this.btn_submit = btn_submit;
     if(data.submit_method && data.submit_method!='null'){
       eval(data.submit_method);
       return false;
@@ -290,10 +292,23 @@ function plugin_form_form_v1(){
     img.src = '/plugin/form/form_v1/loading.gif';
     img.className = 'plugin_form_form_v1_loading';
     img.style.marginLeft = '10px';
-    document.getElementById(data.id+'_save').parentNode.appendChild(img);
+    img.style.marginRight = '10px';
+    if(!data.buttons_align_right){
+      document.getElementById(data.id+'_save').parentNode.appendChild(img);
+    }else{
+      document.getElementById(data.id+'_save').parentNode.insertBefore(img, document.getElementById(data.id+'_save'));
+    }
+    /**
+     * Button disabled
+     */
+    this.btn_submit.setAttribute('disabled', 'disabled');
   }
   this.loading_remove = function(){
     $(".plugin_form_form_v1_loading").remove();
+    /**
+     * Button disabled
+     */
+    this.btn_submit.removeAttribute('disabled');
   }
   this.keypress = function(element, data){
     if(element.keyCode==13 && (element.target.tagName=='INPUT' || element.target.tagName=='SELECT') ){

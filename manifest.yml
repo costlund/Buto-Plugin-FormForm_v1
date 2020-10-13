@@ -1,5 +1,9 @@
-version: 1.47.0
+version: 1.48.0
 history:
+  1.48.0:
+    date: '2020-10-13'
+    title: 'Submit button'
+    description: 'Disable submit button on click. Adjust loading indicator according to buttons_align_right value.'
   1.47.0:
     date: '2020-10-03'
     title: 'Is invalid'

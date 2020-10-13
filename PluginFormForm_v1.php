@@ -207,9 +207,9 @@ class PluginFormForm_v1{
      * Buttons.
      */
     $buttons = array();
-    $form_submit_data = "{ajax_element: '".$data_obj->get('data/ajax_element')."', url: '".$default['url']."', id: '".$default['id']."', submit_method: '".$default['submit_method']."'}";
+    $form_submit_data = "{ajax_element: '".$data_obj->get('data/ajax_element')."', url: '".$default['url']."', id: '".$default['id']."', submit_method: '".$default['submit_method']."', buttons_align_right: '".$default['buttons_align_right']."'}";
     if($default['ajax']) {
-      $onclick = "PluginFormForm_v1.submit(".$form_submit_data.")";
+      $onclick = "PluginFormForm_v1.submit(".$form_submit_data.", this)";
       $buttons[] = wfDocument::createHtmlElement('input', null, array('type' => 'button', 'value' => $i18n->translateFromTheme($default['submit_value']), 'class' => $default['submit_class'], 'onclick' => $onclick, 'id' => $default['id'].'_save'));
     }  else {
       $onclick = "document.getElementById('".$default['id']."').submit();";
