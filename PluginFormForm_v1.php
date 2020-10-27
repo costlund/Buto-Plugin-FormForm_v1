@@ -563,7 +563,7 @@ class PluginFormForm_v1{
                 'tabindex' => '-1',
                 'data-toggle' => 'popover',
                 'data-trigger' => 'focus',
-                'data-htmlzzz' => true,
+                'data-html' => "true",
                 'data-content' => $value->get('info/text'),
                 'data-original-title' => $default_value['label'],
                 'data-placement' => $data_placement

@@ -1,5 +1,9 @@
-version: 1.48.0
+version: 1.48.1
 history:
+  1.48.1:
+    date: '2020-10-27'
+    title: 'Popover'
+    description: 'Popover attribute for render html.'
   1.48.0:
     date: '2020-10-13'
     title: 'Submit button'
