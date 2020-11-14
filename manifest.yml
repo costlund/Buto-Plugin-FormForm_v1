@@ -1,5 +1,9 @@
-version: 1.48.1
+version: 1.48.2
 history:
+  1.48.2:
+    date: '2020-11-14'
+    title: 'Readme'
+    description: 'Improvement in Readme about layout and using alax_element param.'
   1.48.1:
     date: '2020-10-27'
     title: 'Popover'

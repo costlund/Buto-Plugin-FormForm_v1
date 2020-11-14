@@ -27,7 +27,7 @@ submit_value: Save
 id: _my_form_
 focus_first_element: true
 i18n:
-  path: /plugin/vara/pat/i18n
+  path: /plugin/_some_/_plugin_/i18n
 items:
   id:
     type: varchar
@@ -96,7 +96,7 @@ validation_before:
 ```
 
 ### Layout
-Using param layout to place controls. Using type div to move div with label and form element.
+Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.
 ```
 layout:
   -
@@ -107,6 +107,13 @@ layout:
         type: div
         attribute: {class: col-md-6}
         innerHTML: 'item[{"id": "name", "type": "div"}]'
+      -
+        type: div
+        attribute: 
+          class: col-md-4
+          style: 
+            padding-top: 30px
+        innerHTML: 'item[{"id": "save", "type": "control"}]'
 ```
 Using type control to only move the form element.
 ```
@@ -293,3 +300,29 @@ items:
     default: rs:friends_id
     option: method:my/plugin:option_friends
 ```
+### Using param ajax_element
+When this is set form will be sent to this element by id. In this case one has to deal with validation like this.
+```
+public function page_form_capture(){
+  /**
+    * Form data.
+    */
+  $data = new PluginWfYml(__DIR__.'/form_data.yml');
+  /**
+    * Form plugin.
+    */
+  wfPlugin::includeonce('form/form_v1');
+  $form = new PluginFormForm_v1();
+  $form->setData($data->get());
+  $form->bindAndValidate();
+  /**
+    * Is valid/invalid?
+    */
+  if(!$form->getData('is_valid')){
+    exit('Some validation problem...');
+  }else{
+    exit('Do stuff...');
+  }
+}
+```
+
