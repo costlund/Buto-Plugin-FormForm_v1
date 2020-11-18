@@ -198,7 +198,7 @@ plugin:
     version: 1.7.0
   -
     name: wf/mysql
-    version: 1.11.0
+    version: 1.12.0
   -
     name: wysiwyg/nicedit
     version: '1.0'
