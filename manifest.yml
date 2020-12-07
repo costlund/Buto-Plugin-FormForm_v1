@@ -1,5 +1,9 @@
-version: 1.48.3
+version: 1.48.4
 history:
+  1.48.4:
+    date: '2020-12-07'
+    title: 'Form submit'
+    description: 'There was a problem when trying to submit.'
   1.48.3:
     date: '2020-12-07'
     title: 'Form submit'
