@@ -237,6 +237,7 @@ function plugin_form_form_v1(){
            * 
            */
           if(!json_data.data || json_data.data.is_valid){
+            $('#'+json_data.data.id+'_alert').collapse('hide');
             PluginWfCallbackjson.call( d );
           }else{
             if(!document.getElementById(json_data.data.id+'_alert')){

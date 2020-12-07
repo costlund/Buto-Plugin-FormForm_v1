@@ -1,5 +1,9 @@
-version: 1.48.2
+version: 1.48.3
 history:
+  1.48.3:
+    date: '2020-12-07'
+    title: 'Form submit'
+    description: 'Hide alert div when submit on success.'
   1.48.2:
     date: '2020-11-14'
     title: Readme
