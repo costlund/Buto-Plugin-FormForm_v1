@@ -1,5 +1,9 @@
-version: 1.48.4
+version: 1.49.0
 history:
+  1.49.0:
+    date: '2020-12-14'
+    title: 'Validators'
+    description: 'Using plugin validate/double and validate/integer.'
   1.48.4:
     date: '2020-12-07'
     title: 'Form submit'
@@ -231,6 +235,12 @@ plugin:
   -
     name: icons/octicons
     version: '1.1'
+  -
+    name: validate/double
+    version: 1.0.0
+  -
+    name: validate/integer
+    version: 1.0.0
 sys:
   -
     name: mercury
