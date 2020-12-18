@@ -2,7 +2,7 @@ version: 1.49.0
 history:
   1.49.0:
     date: '2020-12-14'
-    title: 'Validators'
+    title: Validators
     description: 'Using plugin validate/double and validate/integer.'
   1.48.4:
     date: '2020-12-07'
@@ -210,7 +210,7 @@ plugin:
     version: 1.7.0
   -
     name: wf/mysql
-    version: 1.12.0
+    version: 1.13.0
   -
     name: wysiwyg/nicedit
     version: '1.0'
@@ -225,7 +225,7 @@ plugin:
     version: 1.2.1
   -
     name: mail/queue
-    version: 1.4.0
+    version: 1.4.1
   -
     name: wf/yml
     version: 1.2.2
