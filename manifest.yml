@@ -1,5 +1,9 @@
-version: 1.49.0
+version: 1.50.0
 history:
+  1.50.0:
+    date: '2020-12-23'
+    title: Placehoder validation
+    description: 'Add param validator_data to be used along with placeholder validation.'
   1.49.0:
     date: '2020-12-14'
     title: Validators

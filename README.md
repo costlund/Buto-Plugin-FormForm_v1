@@ -252,6 +252,19 @@ If placeholder is 0.* a script to replace comma (,) with dot (.) is added.
 - If placeholder is 0.* validator validate_double is added in widget_capture.
 - If placeholder is "Text (1-4)" validator is added for min/max length.
 
+One could add validator data via param validator_data.
+```
+items:
+  price:
+    type: varchar
+    label: Price
+    placeholder: '0'
+    validator_data:
+      min: 1
+      max: 10
+```
+
+
 ### Errors in PHP
 
 Params is_valid, errors and errors_script should be set in a validator script.

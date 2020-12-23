@@ -715,10 +715,10 @@ class PluginFormForm_v1{
       $i = new PluginWfArray($v);
       if($i->get('type')=='varchar' && !$i->get('validator')){
         if($i->get('placeholder')==='0'){
-          $form['items'][$k]['validator'][] = array('plugin' => 'validate/integer', 'method' => 'validate_integer');
+          $form['items'][$k]['validator'][] = array('plugin' => 'validate/integer', 'method' => 'validate_integer', 'data' => $i->get('validator_data'));
         }elseif(substr($i->get('placeholder'), 0, 2)==='0.'){
-          $decimals = strlen($i->get('placeholder'))-2;
-          $form['items'][$k]['validator'][] = array('plugin' => 'validate/double', 'method' => 'validate_double', 'data' => array('decimals' => $decimals));
+          $i->set('validator_data/decimals', strlen($i->get('placeholder'))-2);
+          $form['items'][$k]['validator'][] = array('plugin' => 'validate/double', 'method' => 'validate_double', 'data' => $i->get('validator_data'));
         }elseif(substr($i->get('placeholder'), 0, 6)==='Text ('){
           /**
            * Example: Text (4-8)
