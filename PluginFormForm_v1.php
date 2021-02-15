@@ -1389,6 +1389,10 @@ class PluginFormForm_v1{
     $element = array();
     wfPlugin::enable('include/js');
     $element[] = wfDocument::createWidget('include/js', 'include', array('src' => '/plugin/form/form_v1/PluginFormForm_v1.js'));
+    /**
+     * Unset Bootstrap width attribute form select elements.
+     */
+    $element[] = wfDocument::createHtmlElement('style', "select.form-control{width:unset !important}");
     wfDocument::renderElement($element);
   }
   /**

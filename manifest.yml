@@ -1,5 +1,9 @@
-version: 1.51.0
+version: 1.51.1
 history:
+  1.51.1:
+    date: '2020-12-23'
+    title: 'Select element width'
+    description: 'Unset Bootstrap width attribute for select elements.'
   1.51.0:
     date: '2020-12-23'
     title: Include
