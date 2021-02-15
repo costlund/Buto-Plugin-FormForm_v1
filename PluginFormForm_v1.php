@@ -1387,8 +1387,8 @@ class PluginFormForm_v1{
    */
   public static function widget_include(){
     $element = array();
-    $filetime = wfFilesystem::getFiletime(wfGlobals::getWebDir().'/plugin/form/form_v1/PluginFormForm_v1.js');
-    $element[] = wfDocument::createHtmlElement('script', null, array('src' => '/plugin/form/form_v1/PluginFormForm_v1.js?x='.$filetime, 'type' => 'text/javascript'));
+    wfPlugin::enable('include/js');
+    $element[] = wfDocument::createWidget('include/js', 'include', array('src' => '/plugin/form/form_v1/PluginFormForm_v1.js'));
     wfDocument::renderElement($element);
   }
   /**

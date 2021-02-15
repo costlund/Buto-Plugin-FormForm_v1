@@ -1,8 +1,12 @@
-version: 1.50.1
+version: 1.51.0
 history:
+  1.51.0:
+    date: '2020-12-23'
+    title: Include
+    description: 'Using plugin include/js when to include js file.'
   1.50.1:
     date: '2020-12-23'
-    title: 'Layout'
+    title: Layout
     description: 'Removed float right for Info icon and add opacity 0.4.'
   1.50.0:
     date: '2020-12-23'
@@ -248,6 +252,9 @@ plugin:
     version: 1.1.0
   -
     name: validate/integer
+    version: 1.1.0
+  -
+    name: include/js
     version: 1.1.0
 sys:
   -
