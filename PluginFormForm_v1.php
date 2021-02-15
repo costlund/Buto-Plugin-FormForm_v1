@@ -559,7 +559,7 @@ class PluginFormForm_v1{
             }
             $element['glyphicon_info'] = wfDocument::createHtmlElement('span', array(wfDocument::createWidget('icons/octicons', 'svg', array('name' => 'info'))), array(
                 'id' => 'info_'.$default_value['element_id'],
-                'style' => 'float:right',
+                'style' => 'opacity:0.4',
                 'tabindex' => '-1',
                 'data-toggle' => 'popover',
                 'data-trigger' => 'focus',
