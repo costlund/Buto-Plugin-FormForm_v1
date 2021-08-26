@@ -1,5 +1,9 @@
-version: 1.51.1
+version: 1.51.2
 history:
+  1.51.2:
+    date: '2021-08-26'
+    title: 'I18N'
+    description: 'Add languages en, lt, no.'
   1.51.1:
     date: '2021-02-15'
     title: 'Select element width'

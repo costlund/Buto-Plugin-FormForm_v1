@@ -1,0 +1,14 @@
+'The form does not pass validation.': 'The form does not pass validation.'
+'?label is empty.': '?label is empty.'
+'?label has illegal character.': '?label has illegal character.'
+'?label is not a date!': '?label is not a date!'
+'?label is not an email!': '?label is not an email!'
+'?label must have at lest one uppercase, lowercase, number and a minimum length of 8!': '?label must have at lest one uppercase, lowercase, number and a minimum length of 8!'
+'?label is not equal to expected value!': '?label is not equal to expected value!'
+'?label is not numeric!': '?label is not numeric!'
+'?label must be between ?min and ?max!': '?label must be between ?min and ?max!'
+'?label is not an integer!': '?label is not an integer!'
+'?label is not a double!': '?label is not a double!'
+'?label has more than ?decimals decimals!': '?label has more than ?decimals decimals!'
+Save: Save
+Edit: Edit

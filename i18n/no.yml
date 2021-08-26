@@ -1,0 +1,14 @@
+'The form does not pass validation.': 'Skjemaet består ikke validering.'
+'?label is empty.': '?label er tom.'
+'?label has illegal character.': '?label har ulovlig karakter.'
+'?label is not a date!': '?label er ikke en dato!'
+'?label is not an email!': '?label er ikke en e -post!'
+'?label must have at lest one uppercase, lowercase, number and a minimum length of 8!': '?label må ha minst én stor bokstav, små bokstaver, tall og en minimumslengde på 8!'
+'?label is not equal to expected value!': '?label er ikke lik forventet verdi!'
+'?label is not numeric!': '?label er ikke numerisk!'
+'?label must be between ?min and ?max!': '?label må være mellom? min og? maks!'
+'?label is not an integer!': '?label er ikke et helt tall!'
+'?label is not a double!': '?label er ikke en dobbel!'
+'?label has more than ?decimals decimals!': '?label har mer enn? desimaler desimaler!'
+Save: Lagre
+Edit: Redigere

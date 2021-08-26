@@ -1,0 +1,14 @@
+'The form does not pass validation.': 'Forma neperduoda patvirtinimo.'
+'?label is empty.': '?label tuščia.'
+'?label has illegal character.': '?label turi neteisėtą pobūdį.'
+'?label is not a date!': '?label nėra data!'
+'?label is not an email!': '?label nėra el. laiškas!'
+'?label must have at lest one uppercase, lowercase, number and a minimum length of 8!': '?labelje turi būti bent viena didžioji, mažoji raidė, skaičius ir minimalus ilgis 8!'
+'?label is not equal to expected value!': '?label nelygi tikėtinai vertei!'
+'?label is not numeric!': '?label nėra skaitinė!'
+'?label must be between ?min and ?max!': '?label turi būti tarp? min ir? max!'
+'?label is not an integer!': '?label nėra sveikas skaičius!'
+'?label is not a double!': '?label nėra dviguba!'
+'?label has more than ?decimals decimals!': 'etiketėje yra daugiau nei „dešimtainis kablelis“!'
+Save: Sutaupyti
+Edit: Redaguoti
