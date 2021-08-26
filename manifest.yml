@@ -1,5 +1,9 @@
-version: 1.51.3
+version: 1.51.4
 history:
+  1.51.4:
+    date: '2021-08-26'
+    title: I18N
+    description: 'Set i18n folder in form widget if param data/i18n/path is set.'
   1.51.3:
     date: '2021-08-26'
     title: Versions

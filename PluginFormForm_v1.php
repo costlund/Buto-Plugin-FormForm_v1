@@ -114,12 +114,17 @@ class PluginFormForm_v1{
    * <p>'yml:/theme/[theme]/form/my_form.yml'</p>
    */
   public static function widget_render($data){
+    $data_obj = new PluginWfArray($data);
     /**
      * i18n.
      */
     wfPlugin::includeonce('i18n/translate_v1');
     $i18n = new PluginI18nTranslate_v1();
-    $i18n->setPath('/plugin/form/form_v1/i18n');
+    if(!$data_obj->get('data/i18n/path')){
+      $i18n->setPath('/plugin/form/form_v1/i18n');
+    }else{
+      $i18n->setPath($data_obj->get('data/i18n/path'));
+    }
     /**
      * Handle data param.
      */
@@ -158,8 +163,6 @@ class PluginFormForm_v1{
      * Create form and include dependencies.
      */
     wfPlugin::includeonce('wf/array');
-    //$form_data = new PluginWfArray($widget_data->get());
-    $data_obj = new PluginWfArray($data);
     $scripts = array();
     /**
      * Get from db via schema.
