@@ -1,5 +1,9 @@
-version: 1.51.4
+version: 1.51.5
 history:
+  1.51.5:
+    date: '2021-09-13'
+    title: I18N
+    description: 'Set i18n to false in submit button and inputs.'
   1.51.4:
     date: '2021-08-26'
     title: I18N
