@@ -1,5 +1,9 @@
-version: 1.51.6
+version: 1.51.7
 history:
+  1.51.7:
+    date: '2021-09-27'
+    title: I18N
+    description: 'Translate.'
   1.51.6:
     date: '2021-09-24'
     title: I18N
