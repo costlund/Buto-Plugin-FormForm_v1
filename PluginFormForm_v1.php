@@ -347,10 +347,10 @@ class PluginFormForm_v1{
   }
   /**
    * 
-   * @param type $key
-   * @param type $value
-   * @param type $default
-   * @return type
+   * @param string $key
+   * @param array $value
+   * @param array $default
+   * @return array
    */
   private function getRow($key, $value, $default){
     $scripts = array();
@@ -630,7 +630,8 @@ class PluginFormForm_v1{
   }
   /**
    * Capture post from form via ajax.
-   * @param type $data
+   * @param array $data
+   * @return string
    */
   public static function widget_capture($data){
     wfPlugin::includeonce('wf/array');
@@ -706,8 +707,8 @@ class PluginFormForm_v1{
   }
   /**
    * Bind request params to form.
-   * @param type $form
-   * @return boolean
+   * @param boolean $preserve_default
+   * @return null
    */
   public function bind($preserve_default = false){
     $form = $this->data;
@@ -820,8 +821,7 @@ class PluginFormForm_v1{
   }
   /**
    * Validate form.
-   * @param type $form
-   * @return type
+   * @return boolean
    */
   public function validate(){
     $form = $this->data;
@@ -915,13 +915,11 @@ class PluginFormForm_v1{
         }
     }
     $this->data = $form;
-    //return $form;
     return $this->isValid();
   }
   /**
    * Bind and validate form.
-   * @param type $form
-   * @return type
+   * @return boolean
    */      
   public function bindAndValidate(){
     $this->bind();
@@ -930,10 +928,9 @@ class PluginFormForm_v1{
   }
   /**
    * Set error for a field.
-   * @param type $form
-   * @param type $field
-   * @param type $message
-   * @return type
+   * @param string $field
+   * @param string $message
+   * @return null
    */
   public function setErrorField($field, $message){
     $form = $this->data;
@@ -1003,10 +1000,10 @@ class PluginFormForm_v1{
   }
   /**
    * Validate email.
-   * @param type $field
-   * @param type $form
-   * @param type $data
-   * @return type
+   * @param string $field
+   * @param array $form
+   * @param array $data
+   * @return array
    */
   public function validate_email($field, $form, $data = array()){
     if(wfArray::get($form, "items/$field/is_valid") && wfArray::get($form, "items/$field/post_value")){
@@ -1019,9 +1016,9 @@ class PluginFormForm_v1{
   }
   /**
    * Validate password.
-   * @param type $field
-   * @param type $form
-   * @param type $data
+   * @param string $field
+   * @param array $form
+   * @param array $data
    * @return type
    */
   public function validate_password($field, $form, $data = array()){
@@ -1036,9 +1033,9 @@ class PluginFormForm_v1{
   }
   /**
    * Validate password.
-   * @param type $password
-   * @param type $settings
-   * @return boolean
+   * @param string $password
+   * @param array $settings
+   * @return array
    */
   private function validatePasswordAbcdef09($password, $settings = array()) {
     // '$\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$';
@@ -1106,10 +1103,10 @@ class PluginFormForm_v1{
   }
   /**
    * Validate equal.
-   * @param type $field
-   * @param type $form
-   * @param type $data
-   * @return type
+   * @param string $field
+   * @param array $form
+   * @param array $data
+   * @return array
    */
   public function validate_equal($field, $form, $data = array('value' => 'some value')){
     if(wfArray::get($form, "items/$field/is_valid")){
@@ -1122,10 +1119,10 @@ class PluginFormForm_v1{
   }
   /**
    * Validate date.
-   * @param type $field
-   * @param type $form
-   * @param type $data
-   * @return type
+   * @param string $field
+   * @param array $form
+   * @param array $data
+   * @return array
    */
   public function validate_date($field, $form, $data = array()){
     if(wfArray::get($form, "items/$field/is_valid") && wfArray::get($form, "items/$field/post_value")){
@@ -1138,7 +1135,7 @@ class PluginFormForm_v1{
   }
   /**
    * Check if value is a date.
-   * @param type $value
+   * @param string $value
    * @return boolean
    */
   public static function isDate($value){
@@ -1162,10 +1159,10 @@ class PluginFormForm_v1{
   }
   /**
    * Validate numeric.
-   * @param type $field
-   * @param type $form
+   * @param string $field
+   * @param array $form
    * @param PluginWfArray $data
-   * @return type
+   * @return array
    */
   public function validate_numeric($field, $form, $data = array()){
     wfPlugin::includeonce('wf/array');
@@ -1193,10 +1190,10 @@ class PluginFormForm_v1{
   }
   /**
    * Validate integer.
-   * @param type $field
-   * @param type $form
-   * @param type $data
-   * @return type
+   * @param string $field
+   * @param array $form
+   * @param array $data
+   * @return array
    */
   public function validate_integer($field, $form, $data = array()){
     /**
@@ -1220,10 +1217,10 @@ class PluginFormForm_v1{
   /**
    * Check double and decimals.
    * Param data/decimals must be set.
-   * @param type $field
-   * @param type $form
-   * @param type $data
-   * @return type
+   * @param string $field
+   * @param array $form
+   * @param array $data
+   * @return array
    */
   public function validate_double($field, $form, $data = array()){
     /**
@@ -1312,19 +1309,15 @@ class PluginFormForm_v1{
   }
   /**
    * Capture method.
-   * @param type $plugin
-   * @param type $method
-   * @param type $form
-   * @return type
+   * @param string $type
+   * @return null
    */
   public function runCaptureMethod($type = 'validation_before'){
     $data = new PluginWfArray($this->data);
     $method = $data->get($type.'/method');
     wfPlugin::includeonce($data->get($type.'/plugin'));
     $obj = wfSettings::getPluginObj($data->get($type.'/plugin'));
-    //return $obj->$method($form);
     $this->data = $obj->$method($this->data);
-    //return $obj->$method($this->data);
     return null;
   }
   public function test_validation_before($form){
