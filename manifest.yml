@@ -1,5 +1,9 @@
-version: 1.51.10
+version: 1.51.11
 history:
+  1.51.11:
+    date: '2021-09-27'
+    title: I18N
+    description: Translate.
   1.51.10:
     date: '2021-10-27'
     title: Versions
