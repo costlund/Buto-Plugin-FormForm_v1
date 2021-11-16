@@ -1,5 +1,9 @@
-version: 1.51.11
+version: 1.51.12
 history:
+  1.51.12:
+    date: '2021-11-16'
+    title: Versions
+    description: 'Versions update.'
   1.51.11:
     date: '2021-09-27'
     title: I18N
@@ -272,7 +276,7 @@ plugin:
     version: '1.0'
   -
     name: eternicode/bootstrapdatepicker2
-    version: 1.5.1
+    version: 1.6.0
   -
     name: string/array
     version: 1.3.0
@@ -281,7 +285,7 @@ plugin:
     version: 1.2.1
   -
     name: mail/queue
-    version: 1.7.0
+    version: 1.7.1
   -
     name: wf/yml
     version: 1.3.1
