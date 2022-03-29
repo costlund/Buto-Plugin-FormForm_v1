@@ -1,5 +1,9 @@
-version: 1.51.14
+version: 1.52.0
 history:
+  1.52.0:
+    date: '2022-03-23'
+    title: Options
+    description: 'Add options with json for better performance.'
   1.51.14:
     date: '2022-01-03'
     title: Versions

@@ -236,7 +236,7 @@ class PluginFormForm_v1{
     $form_row = array();
     if(sizeof($default['items']) > 0){
       foreach ($default['items'] as $key => $value) {
-        $row = $form_form_v1->getRow($key, $value, $default);
+        $row = $form_form_v1->getRow($key, $value, $default, $i18n);
         if($row){
           $form_row[] = $row['element'];
           foreach ($row['script'] as $key => $value) {
@@ -352,7 +352,7 @@ class PluginFormForm_v1{
    * @param array $default
    * @return array
    */
-  private function getRow($key, $value, $default){
+  private function getRow($key, $value, $default, $i18n){
     $scripts = array();
     $default_value = array(
         'label' => $key,
@@ -477,34 +477,21 @@ class PluginFormForm_v1{
            * 
            */
           $type = 'select';
-          $option = array();
           $settings = new PluginWfArray();
           if($default_value['i18n']===false){
             $settings->set('event/document_render_string/disabled', true);
           }
-          $option_match = false;
-          foreach ($default_value['option'] as $key2 => $value2) {
-            $temp = array();
-            $temp['value'] = $key2;
-            if((string)$default_value['default']===(string)$key2){
-              $temp['selected'] = 'true';
-              $option_match = true;
+          if(is_array($default_value['option'])){
+            if($default_value['i18n']){
+              foreach($default_value['option'] as $k => $v){
+                $default_value['option'][$k] = $i18n->translateFromTheme($v);
+
+              }
             }
-            $option[] = wfDocument::createHtmlElement('option', $value2, $temp, $settings->get());
+            $data_option = $default['id']."_".$key."_option";
+            $scripts[] = wfDocument::createHtmlElement('script', "var $data_option = ".json_encode($default_value['option']));
+            $scripts[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.add_option($data_option, '".$default['id']."_$key', '".(string)$default_value['default']."');");
           }
-          /**
-           * If default value not match.
-           */
-          if($default_value['option'] && $default_value['default'] && !$option_match){
-            $temp = array();
-            $temp['value'] = $default_value['default'];
-            $temp['selected'] = 'true';
-            $option[] = wfDocument::createHtmlElement('option', '(No match on '.$default_value['default'].')', $temp, $settings->get());
-          }
-          /**
-           * 
-           */
-          $innerHTML = $option;
         }
         break;
       case 'hidden':

@@ -347,5 +347,21 @@ function plugin_form_form_v1(){
       document.getElementById(data.id).onkeyup = function(){ this.value = this.value.replace(',', '.'); }    
     }
   }
+  this.add_option = function(data, id, default_option){
+    var selected = '';
+    var select_match = false;
+    for (const property in data) {
+      if(property==default_option){
+        selected = ' selected';
+        select_match = true;
+      }else{
+        selected = '';
+      }
+      $('#'+id).append("<option value='" + property+ "' "+selected+">" + data[property] + "</option>");
+    }
+    if(default_option.length && !select_match){
+      $('#'+id).append("<option value='" + default_option + "' selected>(Value " + default_option + " has no option)</option>");
+    }
+  }
 }
 var PluginFormForm_v1 = new plugin_form_form_v1();
