@@ -16,7 +16,7 @@ data:
 
 *Param items/id/default will get value from request param name id.* 
 Param capture is called after validation.
-Param i18n/path is used on validate.
+Param i18n/path is used on validate and translate options.
 
 ```
 buttons_align_right: false
