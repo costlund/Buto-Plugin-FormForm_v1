@@ -557,7 +557,9 @@ class PluginFormForm_v1{
                 'data-content' => $value->get('info/text'),
                 'data-original-title' => $default_value['label'],
                 'data-placement' => $data_placement
-                ));
+                ),
+                $value->get('info/settings')
+            );
             $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('#info_".$default_value['element_id']."').popover(); }) ");
             
           }else{
@@ -576,7 +578,9 @@ class PluginFormForm_v1{
                 'data-placement' => $data_placement,
                 'data-content' => $value->get('info/text'),
                 'onclick' => "$('.wf_form_v2').popover('hide');"
-                ));
+                ),
+                $value->get('info/settings')
+              );
             $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('[data-toggle=\"popover\"]').popover()}) ");
           }
         }

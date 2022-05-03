@@ -1,5 +1,9 @@
-version: 1.52.1
+version: 1.52.2
 history:
+  1.52.2:
+    date: '2022-05-03'
+    title: Info
+    description: 'Info supports settings param.'
   1.52.1:
     date: '2022-04-29'
     title: Readme

@@ -95,6 +95,15 @@ validation_before:
   method: _a_method_
 ```
 
+### Info
+Param info supports settings. 
+In this example we omit i18n.
+```
+    info:
+      settings:
+        i18n: false
+```
+
 ### Layout
 Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.
 ```
