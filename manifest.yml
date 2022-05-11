@@ -1,5 +1,9 @@
-version: 1.52.2
+version: 1.52.3
 history:
+  1.52.3:
+    date: '2022-05-11'
+    title: Readme
+    description: 'Readme improvement.'
   1.52.2:
     date: '2022-05-03'
     title: Info

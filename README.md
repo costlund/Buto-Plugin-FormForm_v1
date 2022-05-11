@@ -58,6 +58,7 @@ items:
       text: 'Select a member.'
     settings:
       enabled: false
+    i18n: false
   attribute_example:
     type: varchar
     label: To upper case
