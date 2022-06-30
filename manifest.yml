@@ -1,5 +1,9 @@
-version: 1.52.4
+version: 1.52.5
 history:
+  1.52.5:
+    date: '2022-06-30'
+    title: Versions
+    description: 'Versions update.'
   1.52.4:
     date: '2022-06-07'
     title: Versions
@@ -298,7 +302,7 @@ plugin:
     version: 1.7.8
   -
     name: wf/mysql
-    version: 1.14.7
+    version: 1.14.8
   -
     name: wysiwyg/nicedit
     version: '1.0'
@@ -313,7 +317,7 @@ plugin:
     version: 1.2.1
   -
     name: mail/queue
-    version: 1.8.4
+    version: 1.9.0
   -
     name: wf/yml
     version: 1.4.0
