@@ -482,15 +482,60 @@ class PluginFormForm_v1{
             $settings->set('event/document_render_string/disabled', true);
           }
           if(is_array($default_value['option'])){
+            /**
+             * i18n
+             */
             if($default_value['i18n']){
               foreach($default_value['option'] as $k => $v){
                 $default_value['option'][$k] = $i18n->translateFromTheme($v);
 
               }
             }
-            $data_option = $default['id']."_".$key."_option";
-            $scripts[] = wfDocument::createHtmlElement('script', "var $data_option = ".json_encode($default_value['option']));
-            $scripts[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.add_option($data_option, '".$default['id']."_$key', '".(string)$default_value['default']."');");
+            /**
+             * 
+             */
+            if(true){
+              $option = array();
+              $option_match = false;
+              foreach ($default_value['option'] as $key2 => $value2) {
+                $temp = array();
+                $temp['value'] = $key2;
+                /**
+                 * 
+                 */
+                if((string)$default_value['default']===(string)$key2){
+                  $temp['selected'] = 'true';
+                  $option_match = true;
+                }
+                /**
+                 * 
+                 */
+                $option[] = wfDocument::createHtmlElement('option', $value2, $temp, $settings->get());
+              }
+              /**
+               * 
+               */
+              if($default_value['option'] && $default_value['default'] && !$option_match){
+                $temp = array();
+                $temp['value'] = $default_value['default'];
+                $temp['selected'] = 'true';
+                $option[] = wfDocument::createHtmlElement('option', '(No match on '.$default_value['default'].')', $temp, $settings->get());
+              }
+              /**
+               * 
+               */
+              $innerHTML = $option;
+            }else{
+              /**
+               * 2022-07-13
+               * Omit this code due to unpredicted behavor. 
+               * Should be removed in the future.
+               * Also js method add_option should be removed.
+               */
+              $data_option = $default['id']."_".$key."_option";
+              $scripts[] = wfDocument::createHtmlElement('script', "var $data_option = ".json_encode($default_value['option']));
+              $scripts[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.add_option($data_option, '".$default['id']."_$key', '".(string)$default_value['default']."');");
+            }
           }
         }
         break;

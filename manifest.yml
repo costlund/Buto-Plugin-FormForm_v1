@@ -1,5 +1,9 @@
-version: 1.52.5
+version: 1.53.0
 history:
+  1.53.0:
+    date: '2022-07-13'
+    title: Options
+    description: 'Add back code removed in version 1.52.0. Options is now embeded in form load process.'
   1.52.5:
     date: '2022-06-30'
     title: Versions
