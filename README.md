@@ -96,6 +96,15 @@ validation_before:
   method: _a_method_
 ```
 
+### Textarea
+Default rows in a textarea are 5. Set param rows to change it.
+```
+  description:
+    type: text
+    label: Description
+    rows: 20
+```
+
 ### Info
 Param info supports settings. 
 In this example we omit i18n.

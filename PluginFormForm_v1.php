@@ -371,7 +371,8 @@ class PluginFormForm_v1{
         'html' => false,
         'i18n' => true,
         'settings' => array(),
-        'attribute' => array()
+        'attribute' => array(),
+        'rows' => 5
             );
     $value = new PluginWfArray($value);
     if($value->get('class_add')){
@@ -405,6 +406,7 @@ class PluginFormForm_v1{
       case 'text':
         $type = 'textarea';
         $attribute['wrap'] = $default_value['wrap'];
+        $attribute['rows'] = $default_value['rows'];
         $innerHTML = $default_value['default'];
         /**
          * HTML editor via Nic Editor.

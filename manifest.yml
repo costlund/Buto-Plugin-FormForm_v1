@@ -1,5 +1,9 @@
-version: 1.53.0
+version: 1.54.0
 history:
+  1.54.0:
+    date: '2022-09-07'
+    title: Textarea
+    description: 'Add param rows for type text.'
   1.53.0:
     date: '2022-07-13'
     title: Options
