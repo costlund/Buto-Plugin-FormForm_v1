@@ -64,6 +64,9 @@ items:
     label: To upper case
     attribute:
       onkeyup: this.value=this.value.toUpperCase()
+render:
+  plugin: xxx/yyy
+  method: form_render
 capture:
   plugin: xxx/yyy
   method: form_capture
