@@ -777,8 +777,12 @@ class PluginFormForm_v1{
         }elseif($i->get('placeholder')==='@'){
           $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_email');
         }
-      }elseif($i->get('type')=='date' && !$i->get('validator')){
-        $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_date');
+      }elseif($i->get('type')=='date'){
+        if(!isset($form['items'][$k]['validator'])){
+          $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_date');
+        }else{
+          $form['items'][$k]['validator'] = array_merge(array(array('plugin' => 'form/form_v1', 'method' => 'validate_date')), $form['items'][$k]['validator']);
+        }
       }
     }
     /**

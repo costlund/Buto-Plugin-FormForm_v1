@@ -1,5 +1,9 @@
-version: 1.54.3
+version: 1.55.0
 history:
+  1.55.0:
+    date: '2022-09-28'
+    title: Date validator
+    description: 'Add date validator first in all date item.'
   1.54.3:
     date: '2022-09-27'
     title: Versions
