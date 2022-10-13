@@ -1,5 +1,9 @@
-version: 1.55.0
+version: 1.56.0
 history:
+  1.56.0:
+    date: '2022-10-13'
+    title: Validator
+    description: 'Replace javascript alert with bootstrap modal. Show this as default.'
   1.55.0:
     date: '2022-09-28'
     title: Date validator

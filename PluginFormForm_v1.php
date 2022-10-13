@@ -192,7 +192,7 @@ class PluginFormForm_v1{
         'submit_method' => 'null',
         'ctrl_s_save' => false,
         'focus_first_element' => true,
-        'embed_alert' => true,
+        'embed_alert' => false,
         'buttons_align_right' => false
         );
     /**
@@ -673,12 +673,13 @@ class PluginFormForm_v1{
    */
   public static function widget_capture($data){
     wfPlugin::includeonce('wf/array');
+    $data = new PluginWfArray($data);
     $json = new PluginWfArray();
     /**
      * 
      */
     $form_form_v1 = new PluginFormForm_v1(true);
-    $form_form_v1->setData($data['data']);
+    $form_form_v1->setData($data->get('data'));
     $form_form_v1->bind();
     if($form_form_v1->hasValidationBefore()){
       $form_form_v1->runCaptureMethod('validation_before');
@@ -696,7 +697,14 @@ class PluginFormForm_v1{
       }
     }else{
       $errors = array();
-      $errors[] = "alert(\"".$form_form_v1->getErrors("\\n")."\");";
+      $er = $form_form_v1->getErrorsAsArray();
+      $content = '';
+      foreach($er['item'] as $v){
+        foreach($v as $v2){
+          $content .= "$v2<br>";
+        }
+      }
+      $errors[] = "PluginWfBootstrapjs.modal({id: 'my_modal', label: '".$er['errors'][0]."', content: '$content'});";
       /**
        * Set errors_script.
        */
