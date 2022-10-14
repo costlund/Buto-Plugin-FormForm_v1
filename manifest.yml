@@ -1,5 +1,9 @@
-version: 1.56.0
+version: 1.56.1
 history:
+  1.56.1:
+    date: '2022-10-14'
+    title: Validator
+    description: 'Add alert icon to modal.'
   1.56.0:
     date: '2022-10-13'
     title: Validator

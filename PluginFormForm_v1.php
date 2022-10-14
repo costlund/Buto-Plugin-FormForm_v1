@@ -704,7 +704,7 @@ class PluginFormForm_v1{
           $content .= "$v2<br>";
         }
       }
-      $errors[] = "PluginWfBootstrapjs.modal({id: 'my_modal', label: '".$er['errors'][0]."', content: '$content'});";
+      $errors[] = "PluginWfBootstrapjs.modal({id: 'my_modal', label: '".$er['errors'][0]."', content: '$content', icon: 'alert'});";
       /**
        * Set errors_script.
        */
