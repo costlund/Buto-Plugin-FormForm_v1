@@ -15,6 +15,12 @@ class PluginFormForm_v1{
       wfPlugin::enable('icons/octicons');
     }
   }
+  public static function translate($text){
+    wfPlugin::includeonce('i18n/translate_v1');
+    $i18n = new PluginI18nTranslate_v1();
+    $i18n->setPath('/plugin/form/form_v1/i18n');
+    return $i18n->translateFromTheme($text);
+  }
   public function setData($data){
     $this->data = $data;
   }
@@ -704,7 +710,8 @@ class PluginFormForm_v1{
           $content .= "$v2<br>";
         }
       }
-      $errors[] = "PluginWfBootstrapjs.modal({id: 'my_modal', label: '".$er['errors'][0]."', content: '$content', icon: 'alert'});";
+      $close_text = PluginFormForm_v1::translate('Close');
+      $errors[] = "PluginWfBootstrapjs.modal({id: 'my_modal', label: '".$er['errors'][0]."', content: '$content', icon: 'alert', footer_btn_close: true, footer_btn_close_text: '$close_text'});";
       /**
        * Set errors_script.
        */

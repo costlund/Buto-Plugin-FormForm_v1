@@ -1,5 +1,9 @@
-version: 1.56.1
+version: 1.56.2
 history:
+  1.56.2:
+    date: '2022-10-14'
+    title: Validator
+    description: 'Add close button to modal.'
   1.56.1:
     date: '2022-10-14'
     title: Validator
