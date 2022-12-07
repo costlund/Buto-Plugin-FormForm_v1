@@ -1,5 +1,9 @@
-version: 1.56.3
+version: 1.57.0
 history:
+  1.57.0:
+    date: '2022-12-07'
+    title: Validator
+    description: 'Add placeholder validator even if other validators is set.'
   1.56.3:
     date: '2022-11-17'
     title: Versions

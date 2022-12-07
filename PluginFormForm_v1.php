@@ -770,7 +770,7 @@ class PluginFormForm_v1{
      */
     foreach ($form['items'] as $k => $v) {
       $i = new PluginWfArray($v);
-      if($i->get('type')=='varchar' && !$i->get('validator')){
+      if($i->get('type')=='varchar'){
         if($i->get('placeholder')==='0'){
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/integer', 'method' => 'validate_integer', 'data' => $i->get('validator_data'));
         }elseif(substr($i->get('placeholder'), 0, 2)==='0.'){
