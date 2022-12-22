@@ -1,5 +1,9 @@
-version: 1.57.0
+version: 1.57.1
 history:
+  1.57.1:
+    date: '2022-12-22'
+    title: Readme
+    description: 'Improvements.'
   1.57.0:
     date: '2022-12-07'
     title: Validator

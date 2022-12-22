@@ -12,69 +12,152 @@ data:
   method: include               
 ```
 
-## Basic usage
 
-*Param items/id/default will get value from request param name id.* 
-Param capture is called after validation.
-Param i18n/path is used on validate and translate options.
+## Widget render
+```
+type: widget
+data:
+  plugin: 'form/form_v1'
+  method: render
+  data: _check_below_
+```
+
+## Data
 
 ```
-buttons_align_right: false
 url: _url_where_to_post_
 ajax: true
-_ajax_element: Use this to put ajax request in an element. 
 submit_value: Save
 id: _my_form_
-focus_first_element: true
-i18n:
-  path: /plugin/_some_/_plugin_/i18n
 items:
   id:
     type: varchar
     label: ID
+  date:
+    type: date
+    label: Date
+  text:
+    type: text
+    label: Text
+```
+
+Mandatory.
+```
+    mandatory: true
+```
+
+Default. Value from request param name id.
+```
     default: get:id
-  customer_no:
-    type: varchar
-    label: Customer number
+```
+
+I18N. Turn off.
+```
+    i18n: false
+```
+
+Attribute.
+```
+    attribute:
+      onkeyup: this.value=this.value.toUpperCase()
+```
+
+Class only one.
+```
+    class: _user_only_this_class_
+```
+
+Class add.
+```
+    class_add: _add_a_class_
+```
+
+Placeholder.
+```
+    placeholder: 'Text (1-10)'
+```
+
+Validator.
+```
     validator:
       -
         plugin: form/form_v1
         method: validate_integer
-    mandatory: true
-  date:
-    type: date
-    label: Date
-    placeholder: 'yyyy-mm-dd'
-    class: _user_only_this_class_
-    class_add: _add_a_class_
-  memb_account_id:
-    type: varchar
-    label: Member
-    mandatory: true
-    default: rs:memb_account_id
-    option: method:memb_inc/abo:option_memb_account
-    option_OR_FROM_YML_STRING_: yml:/plugin/_folder_/_folder_/mysql/schema.yml:field/level/option 
-    info:
-      text: 'Select a member.'
+```
+
+Settings.
+```
     settings:
       enabled: false
-    i18n: false
-  attribute_example:
-    type: varchar
-    label: To upper case
-    attribute:
-      onkeyup: this.value=this.value.toUpperCase()
+```
+
+Info text.
+```
+    info:
+      text: 'Select a member.'
+```
+
+Options method.
+```
+    option: method:memb_inc/abo:option_memb_account
+```
+
+Options from yml.
+```
+    option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:field/level/option 
+```
+
+
+
+Focus on first element.
+```
+focus_first_element: true
+```
+
+
+Set element where to put ajax request (optional).
+```
+ajax_element: Use this to put ajax request in an element. 
+```
+
+
+
+Align buttons right.
+```
+buttons_align_right: false
+```
+
+Method on render.
+```
 render:
   plugin: xxx/yyy
   method: form_render
+```
+
+Method on capture. Is called after validation.
+```
 capture:
   plugin: xxx/yyy
   method: form_capture
+```
+
+I18N. Param i18n/path is used on validate and translate options.
+```
+i18n:
+  path: /plugin/_some_/_plugin_/i18n
+```
+
+I18N. Change global param.
+```
 settings:
   globals:
     -
       path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
       value: '/plugin/_folder_/_folder_/i18n'
+```
+
+Elements.
+```
 elements_above:
   -
     type: p
@@ -92,6 +175,7 @@ elements_after:
     type: p
     innerHTML: Element after form element.
 ```
+
 Validate before.
 ```
 validation_before:
