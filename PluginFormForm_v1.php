@@ -496,9 +496,12 @@ class PluginFormForm_v1{
             if($default_value['i18n']){
               foreach($default_value['option'] as $k => $v){
                 $default_value['option'][$k] = $i18n->translateFromTheme($v);
-
               }
             }
+            /**
+             * 
+             */
+            $default_value['default'] = wfSettings::getGlobalsFromString($default_value['default']);
             /**
              * 
              */

@@ -1,5 +1,9 @@
-version: 1.57.2
+version: 1.57.3
 history:
+  1.57.3:
+    date: '2023-01-25'
+    title: Option
+    description: 'Handle default value for option.'
   1.57.2:
     date: '2023-01-02'
     title: Versions
