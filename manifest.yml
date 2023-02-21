@@ -1,5 +1,9 @@
-version: 1.57.3
+version: 1.58.0
 history:
+  1.58.0:
+    date: '2023-02-21'
+    title: Validate digits
+    description: 'Add validator validate/digits, validate_digits.'
   1.57.3:
     date: '2023-01-25'
     title: Option
@@ -392,6 +396,9 @@ plugin:
   -
     name: include/js
     version: 1.2.0
+  -
+    name: validate/digits
+    version: 1.0.0
 sys:
   -
     name: mercury

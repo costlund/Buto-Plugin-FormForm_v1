@@ -775,12 +775,19 @@ class PluginFormForm_v1{
       $i = new PluginWfArray($v);
       if($i->get('type')=='varchar'){
         if($i->get('placeholder')==='0'){
+          /**
+           * valdate/integer, validate_integer
+           */
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/integer', 'method' => 'validate_integer', 'data' => $i->get('validator_data'));
         }elseif(substr($i->get('placeholder'), 0, 2)==='0.'){
+          /**
+           * validate_double, validate_double
+           */
           $i->set('validator_data/decimals', strlen($i->get('placeholder'))-2);
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/double', 'method' => 'validate_double', 'data' => $i->get('validator_data'));
         }elseif(substr($i->get('placeholder'), 0, 6)==='Text ('){
           /**
+           * validate/string, validate_length_minmax
            * Example: Text (4-8)
            */
           $str = substr($i->get('placeholder'), 6);
@@ -792,7 +799,15 @@ class PluginFormForm_v1{
           $plugin = new PluginStringArray();
           $str = new PluginWfArray($plugin->from_char($str, '-'));
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/string', 'method' => 'validate_length_minmax', 'data' => array('min' => $str->get('0'), 'max' => $str->get('1')));
+        }elseif( strstr($i->get('placeholder'), ' digits)')){
+          $length = $i->get('placeholder');
+          $length = substr($length, 1, strpos($length, ' ')-1);
+          $length = (int)$length;
+          $form['items'][$k]['validator'][] = array('plugin' => 'validate/digits', 'method' => 'validate_digits', 'data' => array('length' => $length));
         }elseif($i->get('placeholder')==='@'){
+          /**
+           * form/form_v1, validate_email
+           */
           $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_email');
         }
       }elseif($i->get('type')=='date'){
