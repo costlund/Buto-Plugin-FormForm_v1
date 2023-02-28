@@ -565,7 +565,7 @@ class PluginFormForm_v1{
       if($type=='div'){
         return $value->get();
       }else{
-        $element = array();
+        $element = new PluginWfArray();
         $input = wfDocument::createHtmlElement($type, $innerHTML, $attribute, array('i18n' => false));
         /**
          * Label.
@@ -575,12 +575,12 @@ class PluginFormForm_v1{
           if($default_value['type']=='checkbox'){
             $label->set('innerHTML', array($input, wfDocument::createHtmlElement('span', $label->get('innerHTML'))));
           }
-          $element['label'] = $label->get();
+          $element->set('label', $label->get());
           /**
            * Mandatory label.
            */
           if($default_value['mandatory']){
-            $element['mandatory'] = wfDocument::createHtmlElement('label', '*', array('id' => 'label_mandatory_'.$default_value['element_id']));
+            $element->set('mandatory', wfDocument::createHtmlElement('label', '*', array('id' => 'label_mandatory_'.$default_value['element_id'])));
           }
         }
         /**
@@ -591,7 +591,7 @@ class PluginFormForm_v1{
           if(strlen($default_value['default'])){
             $display = '';
           }
-          $element['map_icon'] = wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', null, array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginFormForm_v1.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right"));
+          $element->set('map_icon', wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', null, array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginFormForm_v1.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right")));
         }
         /**
          * Info icon.
@@ -603,19 +603,19 @@ class PluginFormForm_v1{
             if($value->get('info/position')){
               $data_placement = $value->get('info/position');
             }
-            $element['glyphicon_info'] = wfDocument::createHtmlElement('span', array(wfDocument::createWidget('icons/octicons', 'svg', array('name' => 'info'))), array(
-                'id' => 'info_'.$default_value['element_id'],
-                'style' => 'opacity:0.4',
-                'tabindex' => '-1',
-                'data-toggle' => 'popover',
-                'data-trigger' => 'focus',
-                'data-html' => "true",
-                'data-content' => $value->get('info/text'),
-                'data-original-title' => $default_value['label'],
-                'data-placement' => $data_placement
-                ),
-                $value->get('info/settings')
-            );
+            $element->set('glyphicon_info', wfDocument::createHtmlElement('span', array(wfDocument::createWidget('icons/octicons', 'svg', array('name' => 'info'))), array(
+              'id' => 'info_'.$default_value['element_id'],
+              'style' => 'opacity:0.4',
+              'tabindex' => '-1',
+              'data-toggle' => 'popover',
+              'data-trigger' => 'focus',
+              'data-html' => "true",
+              'data-content' => $value->get('info/text'),
+              'data-original-title' => $default_value['label'],
+              'data-placement' => $data_placement
+              ),
+              $value->get('info/settings')
+            ));
             $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('#info_".$default_value['element_id']."').popover(); }) ");
             
           }else{
@@ -623,20 +623,20 @@ class PluginFormForm_v1{
             if($value->get('info/position')){
               $data_placement = $value->get('info/position');
             }
-            $element['glyphicon_info'] = wfDocument::createHtmlElement('span', null, array(
-                'id' => 'info_'.$default_value['element_id'],
-                'title' => $default_value['label'], 
-                'class' => 'wf_form_v2 glyphicon glyphicon-info-sign', 
-                'style' => 'float:right;cursor:pointer',
-                'data-toggle' => 'popover',
-                'data-trigger' => 'click',
-                'data-html' => true,
-                'data-placement' => $data_placement,
-                'data-content' => $value->get('info/text'),
-                'onclick' => "$('.wf_form_v2').popover('hide');"
-                ),
-                $value->get('info/settings')
-              );
+            $element->set('glyphicon_info', wfDocument::createHtmlElement('span', null, array(
+              'id' => 'info_'.$default_value['element_id'],
+              'title' => $default_value['label'], 
+              'class' => 'wf_form_v2 glyphicon glyphicon-info-sign', 
+              'style' => 'float:right;cursor:pointer',
+              'data-toggle' => 'popover',
+              'data-trigger' => 'click',
+              'data-html' => true,
+              'data-placement' => $data_placement,
+              'data-content' => $value->get('info/text'),
+              'onclick' => "$('.wf_form_v2').popover('hide');"
+              ),
+              $value->get('info/settings')
+            ));
             $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('[data-toggle=\"popover\"]').popover()}) ");
           }
         }
@@ -653,7 +653,7 @@ class PluginFormForm_v1{
          * 
          */
         if($default_value['type']!='checkbox'){
-          $element['input'] = $input;
+          $element->set('input', $input);
         }
         /**
          * Class.
@@ -662,7 +662,13 @@ class PluginFormForm_v1{
         if($default_value['type']=='checkbox'){
           $class_div = 'checkbox';
         }
-        return array('element' => wfDocument::createHtmlElement('div', $element, array(
+        /**
+         * placeholder, i18n
+         */
+        if($element->get('input/attribute/placeholder')){
+          $element->set('input/attribute/placeholder', str_replace('digits', $this->i18n->translateFromTheme('digits'), $element->get('input/attribute/placeholder')));
+        }
+        return array('element' => wfDocument::createHtmlElement('div', $element->get(), array(
                 'id' => 'div_'.$default['id'].'_'.$key, 
                 'class' => $class_div.' '.$value->get('container_class'), 
                 'style' => $value->get('container_style')
