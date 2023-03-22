@@ -650,6 +650,15 @@ class PluginFormForm_v1{
           $scripts[] = wfDocument::createHtmlElement('script', "PluginFormForm_v1.input_placeholder(". json_encode(array('id' => $default_value['element_id'], 'placeholder' => $default_value['placeholder'])).");");
         }
         /**
+         * Change class form-control to form-select if element is select (Bootstap 5).
+         */
+        $user = wfUser::getSession();
+        if($user->get('plugin/twitter/bootstrap530v/include')){
+          if($input['type'] == 'select'){
+            $input['attribute']['class'] = str_replace('form-control', 'form-select', $input['attribute']['class']);
+          }
+        }
+        /**
          * 
          */
         if($default_value['type']!='checkbox'){
@@ -1467,10 +1476,14 @@ class PluginFormForm_v1{
     wfPlugin::enable('include/js');
     $element[] = wfDocument::createWidget('include/js', 'include', array('src' => '/plugin/form/form_v1/PluginFormForm_v1.js'));
     /**
-     * Unset Bootstrap width attribute form select elements.
+     * Unset Bootstrap width attribute form select elements, Bootstrap 4.
      */
-    $element[] = wfDocument::createHtmlElement('style', "select.form-control{width:unset !important}");
-    wfDocument::renderElement($element);
+     $element[] = wfDocument::createHtmlElement('style', "select.form-control{width:unset !important}");
+    /**
+     * Unset Bootstrap width attribute form select elements, Bootstrap 5.
+     */
+    $element[] = wfDocument::createHtmlElement('style', "select.form-select{width:unset !important}");
+     wfDocument::renderElement($element);
   }
   /**
    * Email form data via capture call.

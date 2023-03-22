@@ -1,5 +1,9 @@
-version: 1.58.1
+version: 1.58.2
 history:
+  1.58.2:
+    date: '2023-03-22'
+    title: Bootstrap
+    description: 'Changes according to version 5.'
   1.58.1:
     date: '2023-02-28'
     title: I18N
