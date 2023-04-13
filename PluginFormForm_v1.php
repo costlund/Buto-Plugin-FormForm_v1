@@ -667,7 +667,7 @@ class PluginFormForm_v1{
         /**
          * Class.
          */
-        $class_div = 'form-group';
+        $class_div = 'mb-3';
         if($default_value['type']=='checkbox'){
           $class_div = 'checkbox';
         }
@@ -688,7 +688,7 @@ class PluginFormForm_v1{
     }
   }
   private static function getLabel($default_value){
-    return wfDocument::createHtmlElementAsObject('label', $default_value['label'], array('for' => $default_value['element_id'], 'id' => 'label_'.$default_value['element_id']));
+    return wfDocument::createHtmlElementAsObject('label', $default_value['label'], array('class' => 'form-label', 'for' => $default_value['element_id'], 'id' => 'label_'.$default_value['element_id']));
   }
   /**
    * Capture post from form via ajax.
@@ -1478,29 +1478,13 @@ class PluginFormForm_v1{
     /**
      * Unset Bootstrap width attribute form select elements, Bootstrap 4.
      */
-     $element[] = wfDocument::createHtmlElement('style', "select.form-control{width:unset !important}");
+    $element[] = wfDocument::createHtmlElement('style', "select.form-control{width:unset !important}");
     /**
      * Unset Bootstrap width attribute form select elements, Bootstrap 5.
      */
     $element[] = wfDocument::createHtmlElement('style', "select.form-select{width:unset !important}");
      wfDocument::renderElement($element);
   }
-  /**
-   * Email form data via capture call.
-   * Call this as an capture method from form yml data to send multiple emails.
-   #code-yml#
-    capture:
-      plugin: 'wf/form_v2'
-      method: send
-      data:
-        phpmailer: 'Phpmailer data...'
-        mailqueue: true
-        email:
-          - 'me@world.com'
-        script:
-          - "location.reload();"
-   #code#
-   */
   public function send($form){
     $form = new PluginWfArray($form);
     if(!is_array($form->get('capture/data'))){
