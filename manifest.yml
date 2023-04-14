@@ -1,5 +1,9 @@
-version: 1.58.3
+version: 1.59.0
 history:
+  1.59.0:
+    date: '2023-04-14'
+    title: Validation modal
+    description: 'Remove close button in validation modal. Change to smaller size. Set background to warning. Disable backdrop.'
   1.58.3:
     date: '2023-04-13'
     title: Bootstrap

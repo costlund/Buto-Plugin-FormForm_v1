@@ -728,8 +728,7 @@ class PluginFormForm_v1{
           $content .= "$v2<br>";
         }
       }
-      $close_text = PluginFormForm_v1::translate('Close');
-      $errors[] = "PluginWfBootstrapjs.modal({id: 'my_modal', label: '".$er['errors'][0]."', content: '$content', icon: 'alert', footer_btn_close: true, footer_btn_close_text: '$close_text'});";
+      $errors[] = "PluginWfBootstrapjs.modal({id: 'my_modal', label: '".$er['errors'][0]."', content: '$content', icon: 'alert', size: 'sm', backdrop: false, body_bg: 'warning'});";
       /**
        * Set errors_script.
        */
