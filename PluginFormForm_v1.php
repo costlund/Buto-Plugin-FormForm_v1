@@ -54,9 +54,9 @@ class PluginFormForm_v1{
           exit('PluginFormForm_v1 says: Table should only have one primary key.');
         }else{
           $primary_key = $key;
-          if(strstr($item->get('type'), 'varchar(')){
+          if(wfSettings::strstr($item->get('type'), 'varchar(')){
             $primary_type = 's';
-          }elseif(strstr($item->get('type'), 'int(')){
+          }elseif(wfSettings::strstr($item->get('type'), 'int(')){
             $primary_type = 'i';
           }
         }
@@ -86,7 +86,7 @@ class PluginFormForm_v1{
     foreach ($field as $key => $value) {
       $sql .= "$key, ";
     }
-    $sql = substr($sql, 0, strlen($sql)-2);
+    $sql = wfSettings::sub_str($sql, 0, strlen($sql)-2);
     $sql .= " from ".$form->get('table')." where $primary_key=?;";
     $select = array();
     foreach ($field as $key => $value) {
@@ -643,7 +643,7 @@ class PluginFormForm_v1{
         /**
          * Input placeholder
          */
-        if($default_value['type']=='varchar' && strstr($default_value['placeholder'], '0.')){
+        if($default_value['type']=='varchar' && wfSettings::strstr($default_value['placeholder'], '0.')){
           /**
            * Add script.
            */
@@ -793,19 +793,19 @@ class PluginFormForm_v1{
            * valdate/integer, validate_integer
            */
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/integer', 'method' => 'validate_integer', 'data' => $i->get('validator_data'));
-        }elseif(substr($i->get('placeholder'), 0, 2)==='0.'){
+        }elseif(wfSettings::sub_str($i->get('placeholder'), 0, 2)==='0.'){
           /**
            * validate_double, validate_double
            */
           $i->set('validator_data/decimals', strlen($i->get('placeholder'))-2);
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/double', 'method' => 'validate_double', 'data' => $i->get('validator_data'));
-        }elseif(substr($i->get('placeholder'), 0, 6)==='Text ('){
+        }elseif(wfSettings::sub_str($i->get('placeholder'), 0, 6)==='Text ('){
           /**
            * validate/string, validate_length_minmax
            * Example: Text (4-8)
            */
-          $str = substr($i->get('placeholder'), 6);
-          $str = substr($str, 0, strlen($str)-1);
+          $str = wfSettings::sub_str($i->get('placeholder'), 6);
+          $str = wfSettings::sub_str($str, 0, strlen($str)-1);
           /**
            * 
            */
@@ -813,9 +813,9 @@ class PluginFormForm_v1{
           $plugin = new PluginStringArray();
           $str = new PluginWfArray($plugin->from_char($str, '-'));
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/string', 'method' => 'validate_length_minmax', 'data' => array('min' => $str->get('0'), 'max' => $str->get('1')));
-        }elseif( strstr($i->get('placeholder'), ' digits)')){
+        }elseif( wfSettings::strstr($i->get('placeholder'), ' digits)')){
           $length = $i->get('placeholder');
-          $length = substr($length, 1, strpos($length, ' ')-1);
+          $length = wfSettings::sub_str($length, 1, strpos($length, ' ')-1);
           $length = (int)$length;
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/digits', 'method' => 'validate_digits', 'data' => array('length' => $length));
         }elseif($i->get('placeholder')==='@'){
@@ -973,7 +973,7 @@ class PluginFormForm_v1{
     //Validate php code injection.
     foreach ($form['items'] as $key => $value) {
       if($value['is_valid']){
-        if (isset($value['post_value']) && (strstr($value['post_value'], '<?php') || strstr($value['post_value'], '?>'))) {
+        if (isset($value['post_value']) && (wfSettings::strstr($value['post_value'], '<?php') || wfSettings::strstr($value['post_value'], '?>'))) {
             $form['items'][$key]['errors'][] = $i18n->translateFromTheme('?label has illegal character.', array('?label' => $form['items'][$key]['label']));
             $form['items'][$key]['is_valid'] = false;
         }                
@@ -1331,7 +1331,7 @@ class PluginFormForm_v1{
   }
   private function check_decimals($num, $data = array()){
     $num = str_replace(',', '.', $num);
-    if(strstr($num, '.')){
+    if(wfSettings::strstr($num, '.')){
       /**
        * We deal with a decimal value.
        * Counting decimals.
@@ -1441,16 +1441,16 @@ class PluginFormForm_v1{
       foreach ($form->get('items') as $key => $value) {
         $sql .= "$key=?, ";
       }
-      $sql = substr($sql, 0, strlen($sql)-2);
+      $sql = wfSettings::sub_str($sql, 0, strlen($sql)-2);
       $sql .= " where $primary_key=?;";
       $params = array();
       foreach ($form->get('items') as $key => $value) {
         $item = new PluginWfArray($value);
         
         $type = null;
-        if(strstr($field->get("$key/type"), 'varchar(')){
+        if(wfSettings::strstr($field->get("$key/type"), 'varchar(')){
           $type = 's';
-        }elseif(strstr($field->get("$key/type"), 'int(')){
+        }elseif(wfSettings::strstr($field->get("$key/type"), 'int(')){
           $type = 'i';
         }
         $params[$key] = array('type' => $type, 'value' => $item->get('post_value'));
