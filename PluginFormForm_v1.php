@@ -86,7 +86,7 @@ class PluginFormForm_v1{
     foreach ($field as $key => $value) {
       $sql .= "$key, ";
     }
-    $sql = wfPhpfunc::substr($sql, 0, strlen($sql)-2);
+    $sql = wfPhpfunc::substr($sql, 0, wfPhpfunc::strlen($sql)-2);
     $sql .= " from ".$form->get('table')." where $primary_key=?;";
     $select = array();
     foreach ($field as $key => $value) {
@@ -188,7 +188,7 @@ class PluginFormForm_v1{
     $default = array(
         'submit_value' => 'Send',
         'submit_class' => 'btn btn-primary',
-        'id' => str_replace('.', '', uniqid(mt_rand(), true)),
+        'id' => wfPhpfunc::str_replace('.', '', uniqid(mt_rand(), true)),
         'script' => null,
         'ajax' => false,
         'url' => '/doc/_',
@@ -588,7 +588,7 @@ class PluginFormForm_v1{
          */
         if($default_value['type'] == 'map'){
           $display = 'none';
-          if(strlen($default_value['default'])){
+          if(wfPhpfunc::strlen($default_value['default'])){
             $display = '';
           }
           $element->set('map_icon', wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', null, array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginFormForm_v1.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right")));
@@ -655,7 +655,7 @@ class PluginFormForm_v1{
         $user = wfUser::getSession();
         if($user->get('plugin/twitter/bootstrap530v/include')){
           if($input['type'] == 'select'){
-            $input['attribute']['class'] = str_replace('form-control', 'form-select', $input['attribute']['class']);
+            $input['attribute']['class'] = wfPhpfunc::str_replace('form-control', 'form-select', $input['attribute']['class']);
           }
         }
         /**
@@ -675,7 +675,7 @@ class PluginFormForm_v1{
          * placeholder, i18n
          */
         if($element->get('input/attribute/placeholder')){
-          $element->set('input/attribute/placeholder', str_replace('digits', $this->i18n->translateFromTheme('digits'), $element->get('input/attribute/placeholder')));
+          $element->set('input/attribute/placeholder', wfPhpfunc::str_replace('digits', $this->i18n->translateFromTheme('digits'), $element->get('input/attribute/placeholder')));
         }
         return array('element' => wfDocument::createHtmlElement('div', $element->get(), array(
                 'id' => 'div_'.$default['id'].'_'.$key, 
@@ -797,7 +797,7 @@ class PluginFormForm_v1{
           /**
            * validate_double, validate_double
            */
-          $i->set('validator_data/decimals', strlen($i->get('placeholder'))-2);
+          $i->set('validator_data/decimals', wfPhpfunc::strlen($i->get('placeholder'))-2);
           $form['items'][$k]['validator'][] = array('plugin' => 'validate/double', 'method' => 'validate_double', 'data' => $i->get('validator_data'));
         }elseif(wfPhpfunc::substr($i->get('placeholder'), 0, 6)==='Text ('){
           /**
@@ -805,7 +805,7 @@ class PluginFormForm_v1{
            * Example: Text (4-8)
            */
           $str = wfPhpfunc::substr($i->get('placeholder'), 6);
-          $str = wfPhpfunc::substr($str, 0, strlen($str)-1);
+          $str = wfPhpfunc::substr($str, 0, wfPhpfunc::strlen($str)-1);
           /**
            * 
            */
@@ -946,7 +946,7 @@ class PluginFormForm_v1{
         continue;
       }
         if(isset($value['mandatory']) && $value['mandatory']){
-            if(isset($value['post_value']) && strlen($value['post_value'])){
+            if(isset($value['post_value']) && wfPhpfunc::strlen($value['post_value'])){
                 $form['items'][$key]['is_valid'] = true;
             }else{
                 $form['items'][$key]['is_valid'] = false;
@@ -1175,7 +1175,7 @@ class PluginFormForm_v1{
     }
     if($data['item']['length']['default_with_settings']){
       // Replace length tag.
-      $data['item']['length']['match'] = str_replace('[length]', $data['item']['length']['default_with_settings'], $data['item']['length']['match']);
+      $data['item']['length']['match'] = wfPhpfunc::str_replace('[length]', $data['item']['length']['default_with_settings'], $data['item']['length']['match']);
     }
     $data['match'] = '$\S*';
     foreach ($data['item'] as $key => $value) {
@@ -1257,7 +1257,7 @@ class PluginFormForm_v1{
     wfPlugin::includeonce('wf/array');
     $default = array('min' => 0, 'max' => 999999);
     $data = new PluginWfArray(array_merge($default, $data));
-    if(wfArray::get($form, "items/$field/is_valid") && strlen(wfArray::get($form, "items/$field/post_value"))){
+    if(wfArray::get($form, "items/$field/is_valid") && wfPhpfunc::strlen(wfArray::get($form, "items/$field/post_value"))){
       if (!is_numeric(wfArray::get($form, "items/$field/post_value"))) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
         $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not numeric!', array('?label' => wfArray::get($form, "items/$field/label"))));
@@ -1288,7 +1288,7 @@ class PluginFormForm_v1{
     /**
      * Using plugin validate/integer instead.
      */
-    if(wfArray::get($form, "items/$field/is_valid") && strlen(wfArray::get($form, "items/$field/post_value"))){ // Only if valid and has data.
+    if(wfArray::get($form, "items/$field/is_valid") && wfPhpfunc::strlen(wfArray::get($form, "items/$field/post_value"))){ // Only if valid and has data.
       if (!$this->is_integer(wfArray::get($form, "items/$field/post_value"))) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
         $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not an integer!', array('?label' => wfArray::get($form, "items/$field/label"))));
@@ -1318,7 +1318,7 @@ class PluginFormForm_v1{
     if(!isset($data['decimals'])){
       throw new Exception('PluginFormForm_v1.validate_double SAYS param data/decimals is not included.');
     }
-    if(wfArray::get($form, "items/$field/is_valid") && strlen(wfArray::get($form, "items/$field/post_value"))){ // Only if valid and has data.
+    if(wfArray::get($form, "items/$field/is_valid") && wfPhpfunc::strlen(wfArray::get($form, "items/$field/post_value"))){ // Only if valid and has data.
       if (!$this->is_double(wfArray::get($form, "items/$field/post_value"), $data)) {
         $form = wfArray::set($form, "items/$field/is_valid", false);
         $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not a double!', array('?label' => wfArray::get($form, "items/$field/label"))));
@@ -1330,14 +1330,14 @@ class PluginFormForm_v1{
     return $form;    
   }
   private function check_decimals($num, $data = array()){
-    $num = str_replace(',', '.', $num);
+    $num = wfPhpfunc::str_replace(',', '.', $num);
     if(wfPhpfunc::strstr($num, '.')){
       /**
        * We deal with a decimal value.
        * Counting decimals.
        */
-      $x = preg_split('/_dot_/', str_replace('.', '_dot_', $num));
-      if(strlen($x[1]) > $data['decimals']){
+      $x = preg_split('/_dot_/', wfPhpfunc::str_replace('.', '_dot_', $num));
+      if(wfPhpfunc::strlen($x[1]) > $data['decimals']){
         return false;
       }else{
         return true;
@@ -1347,7 +1347,7 @@ class PluginFormForm_v1{
     }
   }
   private function is_double($num, $data = array()){
-    $num = str_replace(',', '.', $num);
+    $num = wfPhpfunc::str_replace(',', '.', $num);
     if($num == '0'){
       return true;
     }
@@ -1441,7 +1441,7 @@ class PluginFormForm_v1{
       foreach ($form->get('items') as $key => $value) {
         $sql .= "$key=?, ";
       }
-      $sql = wfPhpfunc::substr($sql, 0, strlen($sql)-2);
+      $sql = wfPhpfunc::substr($sql, 0, wfPhpfunc::strlen($sql)-2);
       $sql .= " where $primary_key=?;";
       $params = array();
       foreach ($form->get('items') as $key => $value) {
