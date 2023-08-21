@@ -431,7 +431,7 @@ class PluginFormForm_v1{
       case 'map':
         $type = 'input';
         $attribute['type'] = 'text';
-        $attribute['value'] = htmlentities($default_value['default']);
+        $attribute['value'] = htmlentities((string) $default_value['default']);
         $attribute['style'] = 'display:none';
         $attribute['onchange'] = "if(this.value.length){document.getElementById('span_map_icon_".$default_value['element_id']."').style.display='';}else{document.getElementById('span_map_icon_".$default_value['element_id']."').style.display='none';}";
         break;
@@ -449,7 +449,7 @@ class PluginFormForm_v1{
         if(!$default_value['option']){
           $type = 'input';
           $attribute['type'] = 'text';
-          $attribute['value'] = htmlentities($default_value['default']);
+          $attribute['value'] = htmlentities((string) $default_value['default']);
           $attribute['placeholder'] = $default_value['placeholder'];
           if(false){
             /**
