@@ -1536,7 +1536,7 @@ class PluginFormForm_v1{
       wfPlugin::includeonce('mail/queue');
       $mail = new PluginMailQueue(true);
       foreach ($form->get('capture/data/email') as $key => $email) {
-        $mail->create($form->get('capture/data/subject'), $body, $email, null, null, null, null, wfUser::getSession()->get('user_id'), 'contact');      
+        $mail->create($form->get('capture/data/subject'), $body, $email, null, null, null, null, wfUser::getSession()->get('user_id'), $form->get('capture/data/mailqueue_tag'));      
       }
     }
     /**

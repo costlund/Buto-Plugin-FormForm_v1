@@ -1,5 +1,9 @@
-version: 1.63.0
+version: 1.64.0
 history:
+  1.64.0:
+    date: '2023-09-06'
+    title: 'Send mail'
+    description: 'Add param mailqueue_tag in send method.'
   1.63.0:
     date: '2023-08-21'
     title: 'PHP 8.2'

@@ -331,6 +331,7 @@ capture:
   data:
     phpmailer: 'yml:/theme/[theme]/config/phpmailer.yml'
     mailqueue: true
+    mailqueue_tag: '_my_tag_'
     subject: 'Contact from my homepage'
     email:
       - 'me@world.com'
