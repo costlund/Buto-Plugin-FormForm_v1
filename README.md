@@ -22,7 +22,7 @@ data:
   data: _check_below_
 ```
 
-## Data
+### Data
 
 ```
 url: _url_where_to_post_
@@ -264,10 +264,32 @@ settings:
       value: '/plugin/_folder_/_folder_/i18n'
 ```
 
+### Handle submit
+Add a button with script to handle submit.
+```
+buttons:
+  -
+    type: a
+    attribute: 
+      class: btn btn-primary
+      data-content: Are you sure?
+      onclick: |
+        if(confirm(this.getAttribute('data-content'))){
+          document.getElementById('_btn_save_').click();
+        }
+    innerHTML: Save
+```
+Hide default button.
+```
+elements_below:
+  -
+    type: script
+    innerHTML: document.getElementById('_btn_save_').style.display = 'none'
+```
 
 ## PHP
 
-Render form.
+### Render form
 
 ```
 $form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
@@ -275,7 +297,7 @@ $widget = wfDocument::createWidget('form/form_v1', 'render', $form->get());
 wfDocument::renderElement(array($widget));
 ```
 
-Capture form.
+### Capture form
 
 ```
 $form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
@@ -284,7 +306,7 @@ wfDocument::renderElement(array($widget));
 ```
 
 
-Set defaults from array.
+### Set defaults from array
 
 ```
 $obj = new PluginFormForm_v1();
@@ -293,7 +315,7 @@ $obj->setDefaultsFromArray(array('name' => 'James Smith'));
 $form = new PluginWfArray($obj->data);
 ```
 
-Capture method.
+### Capture method
 
 ```
 public function form_capture(){
@@ -373,7 +395,7 @@ items:
 ```
 
 
-### Errors in PHP
+## Errors in PHP
 
 Params is_valid, errors and errors_script should be set in a validator script.
 
@@ -389,7 +411,7 @@ items:
       - alert('Error script for name field.')
 ```
 
-### Options method
+## Options method
 SQL
 ```
 db_option:
@@ -421,7 +443,7 @@ items:
     default: rs:friends_id
     option: method:my/plugin:option_friends
 ```
-### Using param ajax_element
+## Using param ajax_element
 When this is set form will be sent to this element by id. In this case one has to deal with validation like this.
 ```
 public function page_form_capture(){
