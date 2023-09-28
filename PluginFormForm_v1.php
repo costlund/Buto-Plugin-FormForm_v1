@@ -1497,6 +1497,17 @@ class PluginFormForm_v1{
       $item = new PluginWfArray($value);
       $label = $item->get('label');
       $post_value = $item->get('post_value');
+      /**
+       * checkbox
+       */
+      if($item->get('type')=='checkbox' && !$post_value){
+        $post_value = '(not checked)';
+      }elseif($item->get('type')=='checkbox' && $post_value=='1'){
+        $post_value = '(checked)';
+      }
+      /**
+       * 
+       */
       $body .= "<p><strong>$label</strong></p>";
       $body .= "<p>$post_value</p>";
     }

@@ -1,5 +1,9 @@
-version: 1.64.2
+version: 1.64.3
 history:
+  1.64.3:
+    date: '2023-09-28'
+    title: Send
+    description: 'Add checkbox values in method send.'
   1.64.2:
     date: '2023-09-25'
     title: Readme
