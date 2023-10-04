@@ -291,6 +291,15 @@ class PluginFormForm_v1{
      * Attribute.
      */
     $form_attribute = array('id' => $default['id'], 'method' => 'post', 'role' => 'form', 'onsubmit' => 'return false');
+    /**
+     * autocomplete
+     */
+    if(isset($default['autocomplete'])){
+      $form_attribute['autocomplete'] = $default['autocomplete'];
+    }
+    /**
+     * 
+     */
     if($default['target']){
       $form_attribute['target'] = $default['target'];
     }

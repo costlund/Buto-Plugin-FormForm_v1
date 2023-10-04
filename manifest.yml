@@ -1,5 +1,9 @@
-version: 1.64.3
+version: 1.64.4
 history:
+  1.64.4:
+    date: '2023-10-03'
+    title: Autocomplete
+    description: 'Add form attribute autocomplete. Readme update.'
   1.64.3:
     date: '2023-09-28'
     title: Send

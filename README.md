@@ -12,7 +12,6 @@ data:
   method: include               
 ```
 
-
 ## Widget render
 ```
 type: widget
@@ -29,6 +28,16 @@ url: _url_where_to_post_
 ajax: true
 submit_value: Save
 id: _my_form_
+```
+
+#### Autocomplete
+Optional form attribute.
+```
+autocomplete: off
+```
+
+#### Items
+```
 items:
   id:
     type: varchar
@@ -41,43 +50,46 @@ items:
     label: Text
 ```
 
-Mandatory.
+##### Mandatory
 ```
     mandatory: true
 ```
 
-Default. Value from request param name id.
+##### Default
+Value from request param name id.
 ```
     default: get:id
 ```
 
-I18N. Turn off.
+##### I18N
+Turn off.
 ```
     i18n: false
 ```
 
-Attribute.
+##### Attribute
 ```
     attribute:
       onkeyup: this.value=this.value.toUpperCase()
 ```
 
-Class only one.
+##### Class
+Only this class.
 ```
     class: _user_only_this_class_
 ```
 
-Class add.
+##### Class add
 ```
     class_add: _add_a_class_
 ```
 
-Placeholder.
+##### Placeholder
 ```
     placeholder: 'Text (1-10)'
 ```
 
-Validator.
+##### Validators
 ```
     validator:
       -
@@ -85,48 +97,56 @@ Validator.
         method: validate_integer
 ```
 
-Settings.
+##### Settings
 ```
     settings:
       enabled: false
 ```
 
-Info text.
+##### Info text
 ```
     info:
       text: 'Select a member.'
 ```
 
-Options method.
+##### Options 
+
+```
+    option:
+      '': ''
+      'Yes': 'Yes'
+```
+
+
+###### Method
 ```
     option: method:memb_inc/abo:option_memb_account
 ```
 
-Options from yml.
+###### yml
 ```
     option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:field/level/option 
 ```
 
-
-
+#### Focus
 Focus on first element.
 ```
 focus_first_element: true
 ```
 
-
+#### Ajax element
 Set element where to put ajax request (optional).
 ```
 ajax_element: Use this to put ajax request in an element. 
 ```
 
-
-
+#### Buttons align
 Align buttons right.
 ```
 buttons_align_right: false
 ```
 
+#### Render method
 Method on render.
 ```
 render:
@@ -134,6 +154,7 @@ render:
   method: form_render
 ```
 
+#### Capture method
 Method on capture. Is called after validation.
 ```
 capture:
@@ -141,13 +162,13 @@ capture:
   method: form_capture
 ```
 
-I18N. Param i18n/path is used on validate and translate options.
+#### I18N
+Param i18n/path is used on validate and translate options.
 ```
 i18n:
   path: /plugin/_some_/_plugin_/i18n
 ```
-
-I18N. Change global param.
+Change global param.
 ```
 settings:
   globals:
@@ -156,7 +177,7 @@ settings:
       value: '/plugin/_folder_/_folder_/i18n'
 ```
 
-Elements.
+#### Elements
 ```
 elements_above:
   -
@@ -176,7 +197,7 @@ elements_after:
     innerHTML: Element after form element.
 ```
 
-Validate before.
+#### Validate before
 ```
 validation_before:
   plugin: _plugin_/_plugin_
