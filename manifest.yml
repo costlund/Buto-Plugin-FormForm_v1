@@ -1,5 +1,9 @@
-version: 1.64.4
+version: 1.64.5
 history:
+  1.64.5:
+    date: '2023-10-25'
+    title: I18N
+    description: 'Add the globals settings if param i18n/path is set.'
   1.64.4:
     date: '2023-10-03'
     title: Autocomplete

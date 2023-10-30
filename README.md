@@ -164,11 +164,13 @@ capture:
 
 #### I18N
 Param i18n/path is used on validate and translate options.
+This also sets the globals if not set.
 ```
 i18n:
   path: /plugin/_some_/_plugin_/i18n
 ```
 Change global param.
+Omit this if param i18n/path is set and should be the same.
 ```
 settings:
   globals:

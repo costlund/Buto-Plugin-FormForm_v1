@@ -130,29 +130,43 @@ class PluginFormForm_v1{
       $i18n->setPath('/plugin/form/form_v1/i18n');
     }else{
       $i18n->setPath($data_obj->get('data/i18n/path'));
-    }
-    /**
-     * Handle data param.
-     */
-    if(wfArray::isKey($data, 'data')){
-      if(!is_array(wfArray::get($data, 'data'))){
-        /**
-         * If not an array it must be path to file.
-         */
-        $filename = wfArray::get($GLOBALS, 'sys/app_dir').wfArray::get($data, 'data');
-        if(file_exists($filename)){
-          $data['data'] = sfYaml::load($filename);
-        }else{
-          throw new Exception("Could not find file $filename.");
-        }
+      /**
+       * Set globals i18n if not set.
+       */
+      if($data_obj->get('data/settings/globals/0/path_to_key') != 'settings/plugin/i18n/translate_v1/settings/path'){
+        $data_obj->set('data/settings/globals/', array('path_to_key' => 'settings/plugin/i18n/translate_v1/settings/path', 'value' => $data_obj->get('data/i18n/path')));
       }
-    }else{
-      throw new Exception("Param data is not set.");
     }
     /**
      * 
      */
-    $widget_data = new PluginWfArray($data['data']);
+    if(false){
+      /**
+       * Do not thing this is to be used anymore due to converting yml file string to array is done before (231025). 
+       */
+      /**
+       * Handle data param.
+       */
+      if(wfArray::isKey($data, 'data')){
+        if(!is_array(wfArray::get($data, 'data'))){
+          /**
+           * If not an array it must be path to file.
+           */
+          $filename = wfArray::get($GLOBALS, 'sys/app_dir').wfArray::get($data, 'data');
+          if(file_exists($filename)){
+            $data['data'] = sfYaml::load($filename);
+          }else{
+            throw new Exception("Could not find file $filename.");
+          }
+        }
+      }else{
+        throw new Exception("Param data is not set.");
+      }
+    }
+    /**
+     * 
+     */
+    $widget_data = new PluginWfArray($data_obj->get('data'));
     /**
      * Set data from request param on get:_name_ items.
      */
