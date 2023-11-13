@@ -1,5 +1,9 @@
-version: 1.64.5
+version: 1.64.6
 history:
+  1.64.6:
+    date: '2023-11-13'
+    title: Checkbox
+    description: 'Add checkbox classes.'
   1.64.5:
     date: '2023-10-25'
     title: I18N

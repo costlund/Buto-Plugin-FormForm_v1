@@ -409,7 +409,7 @@ class PluginFormForm_v1{
     }
     $default_value = array_merge($default_value, $value->get());
     if($default_value['type']=='checkbox'){
-      $default_value['class'] = null;
+      $default_value['class'] = 'form-check-input';
     }
     if($default_value['type']=='date' && !$default_value['placeholder']){
       $default_value['placeholder'] = 'YYYY-MM-DD';
@@ -596,7 +596,7 @@ class PluginFormForm_v1{
         if(wfArray::get($attribute, 'type') != 'hidden'){
           $label = PluginFormForm_v1::getLabel($default_value);
           if($default_value['type']=='checkbox'){
-            $label->set('innerHTML', array($input, wfDocument::createHtmlElement('span', $label->get('innerHTML'))));
+            $label->set('innerHTML', array($input, wfDocument::createHtmlElement('span', $label->get('innerHTML'), array('class' => 'form-check-label'))));
           }
           $element->set('label', $label->get());
           /**
