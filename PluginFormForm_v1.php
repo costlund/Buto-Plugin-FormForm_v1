@@ -646,21 +646,21 @@ class PluginFormForm_v1{
             if($value->get('info/position')){
               $data_placement = $value->get('info/position');
             }
-            $element->set('glyphicon_info', wfDocument::createHtmlElement('span', null, array(
+            wfPlugin::enable('icons/bootstrap_v1_8_1');
+            $icon = wfDocument::createWidget('icons/bootstrap_v1_8_1', 'icon', array('icon' => 'info-circle'));
+            $element->set('info_text', wfDocument::createHtmlElement('span', array($icon), array(
               'id' => 'info_'.$default_value['element_id'],
               'title' => $default_value['label'], 
-              'class' => 'wf_form_v2 glyphicon glyphicon-info-sign', 
+              'class' => '', 
               'style' => 'float:right;cursor:pointer',
-              'data-toggle' => 'popover',
-              'data-trigger' => 'click',
-              'data-html' => true,
-              'data-placement' => $data_placement,
-              'data-content' => $value->get('info/text'),
-              'onclick' => "$('.wf_form_v2').popover('hide');"
+              'data-bs-toggle' => 'popover',
+              'data-bs-trigger' => 'click',
+              'data-bs-placement' => $data_placement,
+              'data-bs-content' => $value->get('info/text'),
+              'onclick' => "$('#".'info_'.$default_value['element_id']."').popover('toggle');"
               ),
               $value->get('info/settings')
             ));
-            $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('[data-toggle=\"popover\"]').popover()}) ");
           }
         }
         /**
