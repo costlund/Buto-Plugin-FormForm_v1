@@ -652,9 +652,9 @@ class PluginFormForm_v1{
               'id' => 'info_'.$default_value['element_id'],
               'title' => $default_value['label'], 
               'class' => '', 
-              'style' => 'float:right;cursor:pointer',
+              'style' => 'cursor:pointer',
               'data-bs-toggle' => 'popover',
-              'data-bs-trigger' => 'click',
+              'data-bs-trigger' => 'manual',
               'data-bs-placement' => $data_placement,
               'data-bs-content' => $value->get('info/text'),
               'onclick' => "$('#".'info_'.$default_value['element_id']."').popover('toggle');"
