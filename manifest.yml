@@ -1,5 +1,9 @@
-version: 1.64.8
+version: 1.64.9
 history:
+  1.64.9:
+    date: '2023-12-07'
+    title: Popover
+    description: 'Changes according to Bootstrap version 5.'
   1.64.8:
     date: '2023-11-23'
     title: Popover

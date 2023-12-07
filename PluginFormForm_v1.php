@@ -621,7 +621,28 @@ class PluginFormForm_v1{
          */
         if($value->get('info/text')){
           $user = wfUser::getSession();
-          if($user->get('plugin/twitter/bootstrap413v/include')){
+          if($user->get('plugin/twitter/bootstrap530v/include')){
+            $data_placement = 'bottom';
+            if($value->get('info/position')){
+              $data_placement = $value->get('info/position');
+            }
+            wfPlugin::enable('icons/bootstrap_v1_8_1');
+            $icon = wfDocument::createWidget('icons/bootstrap_v1_8_1', 'icon', array('icon' => 'info-circle'));
+            $element->set('info_text', wfDocument::createHtmlElement('span', array($icon), array(
+              'id' => 'info_'.$default_value['element_id'],
+              'title' => $default_value['label'], 
+              'class' => '', 
+              'style' => 'cursor:pointer',
+              'data-bs-toggle' => 'popover',
+              'data-bs-trigger' => 'manual',
+              'data-bs-html' => 'true',
+              'data-bs-placement' => $data_placement,
+              'data-bs-content' => $value->get('info/text'),
+              'onclick' => "$('#".'info_'.$default_value['element_id']."').popover('toggle');"
+              ),
+              $value->get('info/settings')
+            ));
+          }else{
             $data_placement = 'bottom';
             if($value->get('info/position')){
               $data_placement = $value->get('info/position');
@@ -640,27 +661,6 @@ class PluginFormForm_v1{
               $value->get('info/settings')
             ));
             $scripts[] = wfDocument::createHtmlElement('script', " $(function () {  $('#info_".$default_value['element_id']."').popover(); }) ");
-            
-          }else{
-            $data_placement = 'bottom';
-            if($value->get('info/position')){
-              $data_placement = $value->get('info/position');
-            }
-            wfPlugin::enable('icons/bootstrap_v1_8_1');
-            $icon = wfDocument::createWidget('icons/bootstrap_v1_8_1', 'icon', array('icon' => 'info-circle'));
-            $element->set('info_text', wfDocument::createHtmlElement('span', array($icon), array(
-              'id' => 'info_'.$default_value['element_id'],
-              'title' => $default_value['label'], 
-              'class' => '', 
-              'style' => 'cursor:pointer',
-              'data-bs-toggle' => 'popover',
-              'data-bs-trigger' => 'manual',
-              'data-bs-placement' => $data_placement,
-              'data-bs-content' => $value->get('info/text'),
-              'onclick' => "$('#".'info_'.$default_value['element_id']."').popover('toggle');"
-              ),
-              $value->get('info/settings')
-            ));
           }
         }
         /**
