@@ -125,7 +125,7 @@ Only this class.
 
 ###### yml
 ```
-    option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:field/level/option 
+    option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:tables/TABLE_NAME/field/FIELD_NAME/option 
 ```
 
 #### Focus
