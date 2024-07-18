@@ -1,53 +1,26 @@
 # Buto-Plugin-FormForm_v1
-Form plugin.
 
-## Include in head
+<p>Form plugin.</p>
 
-Include in head section.
+<a name="key_0"></a>
 
-```
-type: widget
-data:
-  plugin: 'form/form_v1'
-  method: include               
-```
+## Usage
 
-## Widget render
-```
-type: widget
-data:
-  plugin: 'form/form_v1'
-  method: render
-  data: yml:/plugin/my/plugin/form/form.yml
-```
 
-## Widget capture
-```
-type: widget
-data:
-  plugin: 'form/form_v1'
-  method: capture
-  data: yml:/plugin/my/plugin/form/form.yml
-```
+
+<a name="key_0_0"></a>
 
 ### Data
 
-```
-url: _url_where_to_post_
+<p>Create yml file and call it from widgets.</p>
+<pre><code>url: _url_where_to_post_
 ajax: true
 submit_value: Save
-id: _my_form_
-```
-
-#### Autocomplete
-Optional form attribute.
-```
-autocomplete: off
-```
-
-#### Items
-```
-items:
+id: _my_form_</code></pre>
+<p>Optional form attribute.</p>
+<pre><code>autocomplete: off</code></pre>
+<p>Items.</p>
+<pre><code>items:
   id:
     type: varchar
     label: ID
@@ -57,140 +30,73 @@ items:
   text:
     type: text
     label: Text
-```
-
-##### Mandatory
-```
-    mandatory: true
-```
-
-##### Default
-Value from request param name id.
-```
-    default: get:id
-```
-
-##### I18N
-Turn off.
-```
-    i18n: false
-```
-
-##### Attribute
-```
-    attribute:
-      onkeyup: this.value=this.value.toUpperCase()
-```
-
-##### Class
-Only this class.
-```
-    class: _user_only_this_class_
-```
-
-##### Class add
-```
-    class_add: _add_a_class_
-```
-
-##### Placeholder
-```
-    placeholder: 'Text (1-10)'
-```
-
-##### Validators
-```
-    validator:
+    rows: 20 (optional, default 5)</code></pre>
+<p>Mandatory.</p>
+<pre><code>    mandatory: true</code></pre>
+<p>Default from request param id.</p>
+<pre><code>    default: get:id</code></pre>
+<p>I18n can be turned off.</p>
+<pre><code>    i18n: false</code></pre>
+<p>Attributes.</p>
+<pre><code>    attribute:
+      onkeyup: this.value=this.value.toUpperCase()</code></pre>
+<p>Class.</p>
+<pre><code>    class: _user_only_this_class_</code></pre>
+<p>Class add.</p>
+<pre><code>    class_add: _add_a_class_</code></pre>
+<p>Placehoder.</p>
+<pre><code>    placeholder: 'Text (1-10)'</code></pre>
+<p>Validators.</p>
+<pre><code>    validator:
       -
         plugin: form/form_v1
-        method: validate_integer
-```
-
-##### Settings
-```
-    settings:
-      enabled: false
-```
-
-##### Info text
-```
-    info:
+        method: validate_integer</code></pre>
+<p>Settings.</p>
+<pre><code>    settings:
+      enabled: false</code></pre>
+<p>Info text.</p>
+<pre><code>    info:
       text: 'Select a member.'
-```
-
-##### Options 
-
-```
-    option:
+      i18n: false (optional, default true)</code></pre>
+<p>Options.</p>
+<pre><code>    option:
       '': ''
-      'Yes': 'Yes'
-```
-
-
-###### Method
-```
-    option: method:memb_inc/abo:option_memb_account
-```
-
-###### yml
-```
-    option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:tables/TABLE_NAME/field/FIELD_NAME/option 
-```
-
-#### Focus
-Focus on first element.
-```
-focus_first_element: true
-```
-
-#### Ajax element
-Set element where to put ajax request (optional).
-```
-ajax_element: Use this to put ajax request in an element. 
-```
-
-#### Buttons align
-Align buttons right.
-```
-buttons_align_right: false
-```
-
-#### Render method
-Method on render.
-```
-render:
+      'Yes': 'Yes'</code></pre>
+<p>Options from method.</p>
+<pre><code>    option: method:memb_inc/abo:option_memb_account</code></pre>
+<p>Options from yml.</p>
+<pre><code>    option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:tables/TABLE_NAME/field/FIELD_NAME/option </code></pre>
+<p>Focus on first element.</p>
+<pre><code>focus_first_element: true</code></pre>
+<p>Set element where to put ajax request (optional).</p>
+<pre><code>ajax_element: Use this to put ajax request in an element.</code></pre>
+<p>Align buttons right.</p>
+<pre><code>buttons_align_right: false</code></pre>
+<p>Render methods.</p>
+<pre><code>render:
   plugin: xxx/yyy
-  method: form_render
-```
-
-#### Capture method
-Method on capture. Is called after validation.
-```
-capture:
+  method: form_render</code></pre>
+<p>Validation methods.</p>
+<pre><code>validation_before:
+  plugin: _plugin_/_plugin_
+  method: _a_method_</code></pre>
+<p>Capture methods called after validation.</p>
+<pre><code>capture:
   plugin: xxx/yyy
-  method: form_capture
-```
-
-#### I18N
-Param i18n/path is used on validate and translate options.
-This also sets the globals if not set.
-```
-i18n:
-  path: /plugin/_some_/_plugin_/i18n
-```
-Change global param.
-Omit this if param i18n/path is set and should be the same.
-```
-settings:
+  method: form_capture</code></pre>
+<p>Param i18n/path is used on validate and translate options.
+This also sets the globals if not set.</p>
+<pre><code>i18n:
+  path: /plugin/_some_/_plugin_/i18n</code></pre>
+<p>Change global param.
+Omit this if param i18n/path is set and should be the same.</p>
+<pre><code>settings:
   globals:
     -
       path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
-      value: '/plugin/_folder_/_folder_/i18n'
-```
-
-#### Elements
-```
-elements_above:
+      value: '/plugin/_folder_/_folder_/i18n'</code></pre>
+<p>Elements outside form.</p>
+<pre><code>elements_above:
   -
     type: p
     innerHTML: Element inside form element first.
@@ -205,38 +111,10 @@ elements_before:
 elements_after:
   -
     type: p
-    innerHTML: Element after form element.
-```
-
-#### Validate before
-```
-validation_before:
-  plugin: _plugin_/_plugin_
-  method: _a_method_
-```
-
-### Textarea
-Default rows in a textarea are 5. Set param rows to change it.
-```
-  description:
-    type: text
-    label: Description
-    rows: 20
-```
-
-### Info
-Param info supports settings. 
-In this example we omit i18n.
-```
-    info:
-      settings:
-        i18n: false
-```
-
-### Layout
-Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.
-```
-layout:
+    innerHTML: Element after form element.</code></pre>
+<p>Layout.
+Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.</p>
+<pre><code>layout:
   -
     type: div
     attribute: {class: row}
@@ -251,12 +129,9 @@ layout:
           class: col-md-4
           style: 
             padding-top: 30px
-        innerHTML: 'item[{"id": "save", "type": "control"}]'
-```
-Using type control to only move the form element.
-```
-layout:
-  -
+        innerHTML: 'item[{"id": "save", "type": "control"}]'</code></pre>
+<p>Using type control to only move the form element.</p>
+<pre><code>  -
     type: div
     attribute: {class: row}
     innerHTML:
@@ -267,39 +142,16 @@ layout:
       -
         type: div
         attribute: {class: col-md-12}
-        innerHTML: 'item[{"id": "description", "type": "control"}]'
-```
-
-### Buttons align right
-
-Set to true if buttons should be align right.
-
-### Submit method
-Set optional submit javascript method. Could be handy for extra validation.
-```
-submit_method: 'my_form_method()'
-```
-
-### Save on CTRL+S
-Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be included.
-```
-ctrl_s_save: true
-```
-
-### Settings
-Settings param will be set for form element. This example show how to change i18n path.
-```
-settings:
-  globals:
-    -
-      path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
-      value: '/plugin/_folder_/_folder_/i18n'
-```
-
-### Handle submit
-Add a button with script to handle submit.
-```
-buttons:
+        innerHTML: 'item[{"id": "description", "type": "control"}]'</code></pre>
+<p>Submit method.
+Set optional submit javascript method. Could be handy for extra validation.</p>
+<pre><code>submit_method: 'my_form_method()'</code></pre>
+<p>Save on CTRL+S.
+Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be included.</p>
+<pre><code>ctrl_s_save: true</code></pre>
+<p>Handle submit.
+Add a button with script to handle submit.</p>
+<pre><code>buttons:
   -
     type: a
     attribute: 
@@ -309,77 +161,60 @@ buttons:
         if(confirm(this.getAttribute('data-content'))){
           document.getElementById('_btn_save_').click();
         }
-    innerHTML: Save
-```
-Hide default button.
-```
-elements_below:
+    innerHTML: Save</code></pre>
+<p>Hide default button.</p>
+<pre><code>elements_below:
   -
     type: script
-    innerHTML: document.getElementById('_btn_save_').style.display = 'none'
-```
+    innerHTML: document.getElementById('_btn_save_').style.display = 'none'</code></pre>
 
-## PHP
+<a name="key_0_1"></a>
 
-### Render form
+### PHP
 
-```
-$form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
-$widget = wfDocument::createWidget('form/form_v1', 'render', $form->get());
-wfDocument::renderElement(array($widget));
-```
-
-### Capture form
-
-```
-$form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
-$widget = wfDocument::createWidget('form/form_v1', 'capture', $form->get());
-wfDocument::renderElement(array($widget));
-```
-
-
-### Set defaults from array
-
-```
-$obj = new PluginFormForm_v1();
-$obj->setData($form->get());
-$obj->setDefaultsFromArray(array('name' => 'James Smith'));
-$form = new PluginWfArray($obj->data);
-```
-
-### Capture method
-
-```
-public function form_capture(){
+<p>Render form.</p>
+<pre><code>$form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
+$widget = wfDocument::createWidget('form/form_v1', 'render', $form-&gt;get());
+wfDocument::renderElement(array($widget));</code></pre>
+<p>Capture form.</p>
+<pre><code>$form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
+$widget = wfDocument::createWidget('form/form_v1', 'capture', $form-&gt;get());
+wfDocument::renderElement(array($widget));</code></pre>
+<p>Set defaults from array.</p>
+<pre><code>$obj = new PluginFormForm_v1();
+$obj-&gt;setData($form-&gt;get());
+$obj-&gt;setDefaultsFromArray(array('name' =&gt; 'James Smith'));
+$form = new PluginWfArray($obj-&gt;data);</code></pre>
+<p>Capture method.</p>
+<pre><code>public function form_capture(){
   // To something...
   return array("alert('Some javascript to be fired.');");
-}
-```
+}</code></pre>
 
+<a name="key_0_2"></a>
 
+### Wait indicator
 
-## Wait indicator
+<p>A loading image will appears in form button when form is submitted.</p>
 
-A loading image will appears in form button when form is submitted.
+<a name="key_0_3"></a>
 
-## Wait indicator (deprecated)
+### Wait indicator (deprecated)
 
-Deprecated due to scroll problem.
-
-Include this widget in head section to get an wait indicator.
-
-```
-type: widget
+<p>Deprecated due to scroll problem.
+Include this widget in head section to get an wait indicator.</p>
+<pre><code>type: widget
 data:
   plugin: bootstrap/alertwait
-  method: include            
-```
+  method: include            </code></pre>
 
-## Send form as mail using send method.
-If param mailqueue is true phpmailer is omited. Proper settings for PluginMailQueue is required.
-Param subject is only in usage if mailqueue is in use.
-```
-capture:
+<a name="key_0_4"></a>
+
+### Send form as mail using send method
+
+<p>If param mailqueue is true phpmailer is omited. Proper settings for PluginMailQueue is required.
+Param subject is only in usage if mailqueue is in use.</p>
+<pre><code>capture:
   plugin: 'form/form_v1'
   method: send
   data:
@@ -390,49 +225,36 @@ capture:
     email:
       - 'me@world.com'
     script:
-      - "alert('Message was sent.');location.href='/';"  
-```
+      - "alert('Message was sent.');location.href='/';"  </code></pre>
 
-## Focus first element
-As default focus is on first element. One could turn it of by this parameter.
+<a name="key_0_5"></a>
 
-```
-focus_first_element: false
-```
+### Placeholder
 
-## Placeholder
-
-### Script
-
-If type is date and placeholder is empty it will be set to YYYY-MM-DD.
-If placeholder is 0.* a script to replace comma (,) with dot (.) is added.
-
-### Validators
-
-- If placeholder is 0 validator validate_integer is added in widget_capture.
-- If placeholder is 0.* validator validate_double is added in widget_capture.
-- If placeholder is "Text (1-4)" validator is added for min/max length.
-- If placeholder is "(33 digits)" validator validate/digits, validate_digits is added (with length of 33).
-
-One could add validator data via param validator_data.
-```
-items:
+<p>If type is date and placeholder is empty it will be set to YYYY-MM-DD.
+If placeholder is 0.* a script to replace comma (,) with dot (.) is added.</p>
+<ul>
+<li>If placeholder is 0 validator validate_integer is added in widget_capture.</li>
+<li>If placeholder is 0.* validator validate_double is added in widget_capture.</li>
+<li>If placeholder is "Text (1-4)" validator is added for min/max length.</li>
+<li>If placeholder is "(33 digits)" validator validate/digits, validate_digits is added (with length of 33).</li>
+</ul>
+<p>One could add validator data via param validator_data.</p>
+<pre><code>items:
   price:
     type: varchar
     label: Price
     placeholder: '0'
     validator_data:
       min: 1
-      max: 10
-```
+      max: 10</code></pre>
 
+<a name="key_0_6"></a>
 
-## Errors in PHP
+### Errors in PHP
 
-Params is_valid, errors and errors_script should be set in a validator script.
-
-```
-items:
+<p>Params is_valid, errors and errors_script should be set in a validator script.</p>
+<pre><code>items:
   name:
     type: varchar
     label: Name
@@ -440,13 +262,14 @@ items:
     errors:
       - Error in name field.
     errors_script:
-      - alert('Error script for name field.')
-```
+      - alert('Error script for name field.')</code></pre>
 
-## Options method
-SQL
-```
-db_option:
+<a name="key_0_7"></a>
+
+### Options method
+
+<p>SQL.</p>
+<pre><code>db_option:
   sql: |
     select
     id,
@@ -455,30 +278,28 @@ db_option:
     order by name
   select:
     - value
-    - option
-```
-Method
-```
-  public function option_friends(){
-    $temp = $this->db_option();
+    - option</code></pre>
+<p>Method</p>
+<pre><code>  public function option_friends(){
+    $temp = $this-&gt;db_option();
     $obj = new PluginFormForm_v1();
-    $option = $obj->getOption($temp);
+    $option = $obj-&gt;getOption($temp);
     return $option;
-  }
-```
-Form settings
-```
-items:
+  }</code></pre>
+<p>Form settings</p>
+<pre><code>items:
   friends_id:
     type: varchar
     label: Friend
     default: rs:friends_id
-    option: method:my/plugin:option_friends
-```
-## Using param ajax_element
-When this is set form will be sent to this element by id. In this case one has to deal with validation like this.
-```
-public function page_form_capture(){
+    option: method:my/plugin:option_friends</code></pre>
+
+<a name="key_0_8"></a>
+
+### Using param ajax_element
+
+<p>When this is set form will be sent to this element by id. In this case one has to deal with validation like this.</p>
+<pre><code>public function page_form_capture(){
   /**
     * Form data.
     */
@@ -488,16 +309,329 @@ public function page_form_capture(){
     */
   wfPlugin::includeonce('form/form_v1');
   $form = new PluginFormForm_v1();
-  $form->setData($data->get());
-  $form->bindAndValidate();
+  $form-&gt;setData($data-&gt;get());
+  $form-&gt;bindAndValidate();
   /**
     * Is valid/invalid?
     */
-  if(!$form->getData('is_valid')){
+  if(!$form-&gt;getData('is_valid')){
     exit('Some validation problem...');
   }else{
     exit('Do stuff...');
   }
-}
-```
+}</code></pre>
+
+<a name="key_1"></a>
+
+## Widgets
+
+
+
+<a name="key_1_0"></a>
+
+### widget_capture
+
+<p>Capture form.</p>
+<pre><code>type: widget
+data:
+  plugin: 'form/form_v1'
+  method: capture
+  data: yml:/plugin/my/plugin/form/form.yml</code></pre>
+
+<a name="key_1_1"></a>
+
+### widget_include
+
+<p>Include in document head.</p>
+<pre><code>type: widget
+data:
+  plugin: 'form/form_v1'
+  method: include               </code></pre>
+
+<a name="key_1_2"></a>
+
+### widget_render
+
+<p>Render form.</p>
+<pre><code>type: widget
+data:
+  plugin: 'form/form_v1'
+  method: render
+  data: yml:/plugin/my/plugin/form/form.yml</code></pre>
+
+<a name="key_2"></a>
+
+## Construct
+
+
+
+<a name="key_2_0"></a>
+
+### __construct
+
+
+
+<a name="key_3"></a>
+
+## Methods
+
+
+
+<a name="key_3_0"></a>
+
+### translate
+
+
+
+<a name="key_3_1"></a>
+
+### setData
+
+
+
+<a name="key_3_2"></a>
+
+### getData
+
+
+
+<a name="key_3_3"></a>
+
+### setDataFromFile
+
+
+
+<a name="key_3_4"></a>
+
+### getSchemaFieldPrimary
+
+
+
+<a name="key_3_5"></a>
+
+### setFormItemsDefaultFromDb
+
+
+
+<a name="key_3_6"></a>
+
+### getSchema
+
+
+
+<a name="key_3_7"></a>
+
+### getRow
+
+
+
+<a name="key_3_8"></a>
+
+### getLabel
+
+
+
+<a name="key_3_9"></a>
+
+### isValid
+
+
+
+<a name="key_3_10"></a>
+
+### hasValidationBefore
+
+
+
+<a name="key_3_11"></a>
+
+### hasCapture
+
+
+
+<a name="key_3_12"></a>
+
+### hasRender
+
+
+
+<a name="key_3_13"></a>
+
+### has
+
+
+
+<a name="key_3_14"></a>
+
+### bind
+
+
+
+<a name="key_3_15"></a>
+
+### setDefaultsFromArray
+
+
+
+<a name="key_3_16"></a>
+
+### setPostvalue
+
+
+
+<a name="key_3_17"></a>
+
+### setOptionFromArray
+
+
+
+<a name="key_3_18"></a>
+
+### getOption
+
+
+
+<a name="key_3_19"></a>
+
+### validate
+
+
+
+<a name="key_3_20"></a>
+
+### bindAndValidate
+
+
+
+<a name="key_3_21"></a>
+
+### setErrorField
+
+
+
+<a name="key_3_22"></a>
+
+### getErrors
+
+
+
+<a name="key_3_23"></a>
+
+### getErrorsScript
+
+
+
+<a name="key_3_24"></a>
+
+### getErrorsAsArray
+
+
+
+<a name="key_3_25"></a>
+
+### validate_email
+
+
+
+<a name="key_3_26"></a>
+
+### validate_password
+
+
+
+<a name="key_3_27"></a>
+
+### validatePasswordAbcdef09
+
+
+
+<a name="key_3_28"></a>
+
+### validate_equal
+
+
+
+<a name="key_3_29"></a>
+
+### validate_date
+
+
+
+<a name="key_3_30"></a>
+
+### isDate
+
+
+
+<a name="key_3_31"></a>
+
+### validate_numeric
+
+
+
+<a name="key_3_32"></a>
+
+### validate_integer
+
+
+
+<a name="key_3_33"></a>
+
+### is_integer
+
+
+
+<a name="key_3_34"></a>
+
+### validate_double
+
+
+
+<a name="key_3_35"></a>
+
+### check_decimals
+
+
+
+<a name="key_3_36"></a>
+
+### is_double
+
+
+
+<a name="key_3_37"></a>
+
+### saveToYml
+
+
+
+<a name="key_3_38"></a>
+
+### runCaptureMethod
+
+
+
+<a name="key_3_39"></a>
+
+### test_validation_before
+
+
+
+<a name="key_3_40"></a>
+
+### test_capture
+
+
+
+<a name="key_3_41"></a>
+
+### schema_capture
+
+
+
+<a name="key_3_42"></a>
+
+### send
+
+
 
