@@ -10,222 +10,312 @@ readme:
           name: Data
           description: |
             Create yml file and call it from widgets.
-            ````
-            url: _url_where_to_post_
-            ajax: true
-            submit_value: Save
-            id: _my_form_
-            ````
-            Optional form attribute.
-            ````
-            autocomplete: off
-            ````
-            Items.
-            ````
-            items:
-              id:
-                type: varchar
-                label: ID
-              date:
-                type: date
-                label: Date
-              text:
-                type: text
-                label: Text
-                rows: 20 (optional, default 5)
-            ````
-            Mandatory.
-            ````
-                mandatory: true
-            ````
-            Default from request param id.
-            ````
-                default: get:id
-            ````
-            I18n can be turned off.
-            ````
-                i18n: false
-            ````
-            Attributes.
-            ````
-                attribute:
-                  onkeyup: this.value=this.value.toUpperCase()
-            ````
-            Class.
-            ````
-                class: _user_only_this_class_
-            ````
-            Class add.
-            ````
-                class_add: _add_a_class_
-            ````
-            Placehoder.
-            ````
-                placeholder: 'Text (1-10)'
-            ````
-            Validators.
-            ````
-                validator:
-                  -
-                    plugin: form/form_v1
-                    method: validate_integer
-            ````
-            Settings.
-            ````
-                settings:
-                  enabled: false
-            ````
-            Info text.
-            ````
-                info:
-                  text: 'Select a member.'
-                  i18n: false (optional, default true)
-            ````
-            Options.
-            ````
-                option:
-                  '': ''
-                  'Yes': 'Yes'
-            ````
-            Options from method.
-            ````
-                option: method:memb_inc/abo:option_memb_account
-            ````
-            Options from yml.
-            ````
-                option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:tables/TABLE_NAME/field/FIELD_NAME/option 
-            ````
-            Focus on first element.
-            ````
-            focus_first_element: true
-            ````
-            Set element where to put ajax request (optional).
-            ````
-            ajax_element: Use this to put ajax request in an element.
-            ````
-            Align buttons right.
-            ````
-            buttons_align_right: false
-            ````
-            Render methods.
-            ````
-            render:
-              plugin: xxx/yyy
-              method: form_render
-            ````
-            Validation methods.
-            ````
-            validation_before:
-              plugin: _plugin_/_plugin_
-              method: _a_method_
-            ````
-            Capture methods called after validation.
-            ````
-            capture:
-              plugin: xxx/yyy
-              method: form_capture
-            ````
-            Param i18n/path is used on validate and translate options.
-            This also sets the globals if not set.
-            ````
-            i18n:
-              path: /plugin/_some_/_plugin_/i18n
-            ````
-            Change global param.
-            Omit this if param i18n/path is set and should be the same.
-            ````
-            settings:
-              globals:
+          item:
+            -
+              name: url (and more)
+              description: |
+                ````
+                url: _url_where_to_post_
+                ajax: true
+                submit_value: Save
+                id: _my_form_
+                ````
+            -
+              name: autocomplete
+              description: |
+                Optional form attribute.
+                ````
+                autocomplete: off
+                ````
+            -
+              name: items
+              description: |
+                Items.
+                ````
+                items:
+                  id:
+                    type: varchar
+                    label: ID
+                  date:
+                    type: date
+                    label: Date
+                  text:
+                    type: text
+                    label: Text
+                    rows: 20 (optional, default 5)
+                ````
+              item:
                 -
-                  path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
-                  value: '/plugin/_folder_/_folder_/i18n'
-            ````
-            Elements outside form.
-            ````
-            elements_above:
-              -
-                type: p
-                innerHTML: Element inside form element first.
-            elements_below:
-              -
-                type: p
-                innerHTML: Element inside form element below.
-            elements_before:
-              -
-                type: p
-                innerHTML: Element before form element.
-            elements_after:
-              -
-                type: p
-                innerHTML: Element after form element.
-            ````
-            Layout.
-            Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.
-            ````
-            layout:
-              -
-                type: div
-                attribute: {class: row}
-                innerHTML:
+                  name: mandatory
+                  description: |
+                    Mandatory.
+                    ````
+                        mandatory: true
+                    ````
+                -
+                  name: default
+                  description: |
+                    Default from request param id.
+                    ````
+                        default: get:id
+                    ````
+                -
+                  name: i18n
+                  description: |
+                    I18n can be turned off.
+                    ````
+                        i18n: false
+                    ````
+                -
+                  name: attribute
+                  description: |
+                    Attributes.
+                    ````
+                        attribute:
+                          onkeyup: this.value=this.value.toUpperCase()
+                    ````
+                -
+                  name: class
+                  description: |
+                    Class.
+                    ````
+                        class: _user_only_this_class_
+                    ````
+                -
+                  name: class_add
+                  description: |
+                    Class add.
+                    ````
+                        class_add: _add_a_class_
+                    ````
+                -
+                  name: placehoder
+                  description: |
+                    Placehoder.
+                    ````
+                        placeholder: 'Text (1-10)'
+                    ````
+                -
+                  name: validator
+                  description: |
+                    Validators.
+                    ````
+                        validator:
+                          -
+                            plugin: form/form_v1
+                            method: validate_integer
+                    ````
+                -
+                  name: settings
+                  description: |
+                    Settings.
+                    ````
+                        settings:
+                          enabled: false
+                    ````
+                -
+                  name: info
+                  description: |
+                    Info text.
+                    ````
+                        info:
+                          text: 'Select a member.'
+                          i18n: false (optional, default true)
+                    ````
+                -
+                  name: option
+                  description: |
+                    Options.
+                    ````
+                        option:
+                          '': ''
+                          'Yes': 'Yes'
+                    ````
+                -
+                  name: option (method)
+                  description: |
+                    Options from method.
+                    ````
+                        option: method:memb_inc/abo:option_memb_account
+                    ````
+                -
+                  name: option (yml)
+                  description: |
+                    Options from yml.
+                    ````
+                        option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:tables/TABLE_NAME/field/FIELD_NAME/option 
+                    ````
+            -
+              name: focus_first_element
+              description: |
+                Focus on first element.
+                ````
+                focus_first_element: true
+                ````
+            -
+              name: ajax_element
+              description: |
+                Set element where to put ajax request (optional).
+                ````
+                ajax_element: Use this to put ajax request in an element.
+                ````
+            -
+              name: buttons_align_right
+              description: |
+                Align buttons right.
+                ````
+                buttons_align_right: false
+                ````
+            -
+              name: render
+              description: |
+                Render methods.
+                ````
+                render:
+                  plugin: xxx/yyy
+                  method: form_render
+                ````
+            -
+              name: validation_before
+              description: |
+                Validation methods.
+                ````
+                validation_before:
+                  plugin: _plugin_/_plugin_
+                  method: _a_method_
+                ````
+            -
+              name: capture
+              description: |
+                Capture methods called after validation.
+                ````
+                capture:
+                  plugin: xxx/yyy
+                  method: form_capture
+                ````
+            -
+              name: i18n
+              description: |
+                Param i18n/path is used on validate and translate options.
+                This also sets the globals if not set.
+                ````
+                i18n:
+                  path: /plugin/_some_/_plugin_/i18n
+                ````
+            -
+              name: settings
+              description: |
+                Change global param.
+                Omit this if param i18n/path is set and should be the same.
+                ````
+                settings:
+                  globals:
+                    -
+                      path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
+                      value: '/plugin/_folder_/_folder_/i18n'
+                ````
+            -
+              name: elements (4)
+              description: |
+                Elements outside form.
+                ````
+                elements_above:
+                  -
+                    type: p
+                    innerHTML: Element inside form element first.
+                elements_below:
+                  -
+                    type: p
+                    innerHTML: Element inside form element below.
+                elements_before:
+                  -
+                    type: p
+                    innerHTML: Element before form element.
+                elements_after:
+                  -
+                    type: p
+                    innerHTML: Element after form element.
+                ````
+            -
+              name: layout
+              description: |
+                Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.
+                ````
+                layout:
                   -
                     type: div
-                    attribute: {class: col-md-6}
-                    innerHTML: 'item[{"id": "name", "type": "div"}]'
+                    attribute: {class: row}
+                    innerHTML:
+                      -
+                        type: div
+                        attribute: {class: col-md-6}
+                        innerHTML: 'item[{"id": "name", "type": "div"}]'
+                      -
+                        type: div
+                        attribute: 
+                          class: col-md-4
+                          style: 
+                            padding-top: 30px
+                        innerHTML: 'item[{"id": "save", "type": "control"}]'
+                ````
+                Using type control to only move the form element.
+                ````
                   -
                     type: div
+                    attribute: {class: row}
+                    innerHTML:
+                      -
+                        type: div
+                        attribute: {class: col-md-12 font-weight-bold}
+                        innerHTML: Description
+                      -
+                        type: div
+                        attribute: {class: col-md-12}
+                        innerHTML: 'item[{"id": "description", "type": "control"}]'
+                ````
+            -
+              name: submit_method
+              description: |
+                Submit method.
+                Set optional submit javascript method. Could be handy for extra validation.
+                ````
+                submit_method: 'my_form_method()'
+                ````
+            -
+              name: ctrl_s_save
+              description: |
+                Save on CTRL+S.
+                Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be included.
+                ````
+                ctrl_s_save: true
+                ````
+            -
+              name: buttons
+              description: |
+                Handle submit.
+                Add a button with script to handle submit.
+                ````
+                buttons:
+                  -
+                    type: a
                     attribute: 
-                      class: col-md-4
-                      style: 
-                        padding-top: 30px
-                    innerHTML: 'item[{"id": "save", "type": "control"}]'
-            ````
-            Using type control to only move the form element.
-            ````
-              -
-                type: div
-                attribute: {class: row}
-                innerHTML:
+                      class: btn btn-primary
+                      data-content: Are you sure?
+                      onclick: |
+                        if(confirm(this.getAttribute('data-content'))){
+                          document.getElementById('_btn_save_').click();
+                        }
+                    innerHTML: Save
+                ````
+            -
+              name: Hide default button.
+              description: |
+                ````
+                elements_below:
                   -
-                    type: div
-                    attribute: {class: col-md-12 font-weight-bold}
-                    innerHTML: Description
-                  -
-                    type: div
-                    attribute: {class: col-md-12}
-                    innerHTML: 'item[{"id": "description", "type": "control"}]'
-            ````
-            Submit method.
-            Set optional submit javascript method. Could be handy for extra validation.
-            ````
-            submit_method: 'my_form_method()'
-            ````
-            Save on CTRL+S.
-            Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be included.
-            ````
-            ctrl_s_save: true
-            ````
-            Handle submit.
-            Add a button with script to handle submit.
-            ````
-            buttons:
-              -
-                type: a
-                attribute: 
-                  class: btn btn-primary
-                  data-content: Are you sure?
-                  onclick: |
-                    if(confirm(this.getAttribute('data-content'))){
-                      document.getElementById('_btn_save_').click();
-                    }
-                innerHTML: Save
-            ````
-            Hide default button.
-            ````
-            elements_below:
-              -
-                type: script
-                innerHTML: document.getElementById('_btn_save_').style.display = 'none'
-            ````
+                    type: script
+                    innerHTML: document.getElementById('_btn_save_').style.display = 'none'
+                ````
         -
           name: PHP
           description: |

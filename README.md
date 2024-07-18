@@ -13,12 +13,27 @@
 ### Data
 
 <p>Create yml file and call it from widgets.</p>
+
+<a name="key_0_0_0"></a>
+
+#### url (and more)
+
 <pre><code>url: _url_where_to_post_
 ajax: true
 submit_value: Save
 id: _my_form_</code></pre>
+
+<a name="key_0_0_1"></a>
+
+#### autocomplete
+
 <p>Optional form attribute.</p>
 <pre><code>autocomplete: off</code></pre>
+
+<a name="key_0_0_2"></a>
+
+#### items
+
 <p>Items.</p>
 <pre><code>items:
   id:
@@ -31,63 +46,168 @@ id: _my_form_</code></pre>
     type: text
     label: Text
     rows: 20 (optional, default 5)</code></pre>
+
+<a name="key_0_0_2_0"></a>
+
+##### mandatory
+
 <p>Mandatory.</p>
 <pre><code>    mandatory: true</code></pre>
+
+<a name="key_0_0_2_1"></a>
+
+##### default
+
 <p>Default from request param id.</p>
 <pre><code>    default: get:id</code></pre>
+
+<a name="key_0_0_2_2"></a>
+
+##### i18n
+
 <p>I18n can be turned off.</p>
 <pre><code>    i18n: false</code></pre>
+
+<a name="key_0_0_2_3"></a>
+
+##### attribute
+
 <p>Attributes.</p>
 <pre><code>    attribute:
       onkeyup: this.value=this.value.toUpperCase()</code></pre>
+
+<a name="key_0_0_2_4"></a>
+
+##### class
+
 <p>Class.</p>
 <pre><code>    class: _user_only_this_class_</code></pre>
+
+<a name="key_0_0_2_5"></a>
+
+##### class_add
+
 <p>Class add.</p>
 <pre><code>    class_add: _add_a_class_</code></pre>
+
+<a name="key_0_0_2_6"></a>
+
+##### placehoder
+
 <p>Placehoder.</p>
 <pre><code>    placeholder: 'Text (1-10)'</code></pre>
+
+<a name="key_0_0_2_7"></a>
+
+##### validator
+
 <p>Validators.</p>
 <pre><code>    validator:
       -
         plugin: form/form_v1
         method: validate_integer</code></pre>
+
+<a name="key_0_0_2_8"></a>
+
+##### settings
+
 <p>Settings.</p>
 <pre><code>    settings:
       enabled: false</code></pre>
+
+<a name="key_0_0_2_9"></a>
+
+##### info
+
 <p>Info text.</p>
 <pre><code>    info:
       text: 'Select a member.'
       i18n: false (optional, default true)</code></pre>
+
+<a name="key_0_0_2_10"></a>
+
+##### option
+
 <p>Options.</p>
 <pre><code>    option:
       '': ''
       'Yes': 'Yes'</code></pre>
+
+<a name="key_0_0_2_11"></a>
+
+##### option (method)
+
 <p>Options from method.</p>
 <pre><code>    option: method:memb_inc/abo:option_memb_account</code></pre>
+
+<a name="key_0_0_2_12"></a>
+
+##### option (yml)
+
 <p>Options from yml.</p>
 <pre><code>    option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:tables/TABLE_NAME/field/FIELD_NAME/option </code></pre>
+
+<a name="key_0_0_3"></a>
+
+#### focus_first_element
+
 <p>Focus on first element.</p>
 <pre><code>focus_first_element: true</code></pre>
+
+<a name="key_0_0_4"></a>
+
+#### ajax_element
+
 <p>Set element where to put ajax request (optional).</p>
 <pre><code>ajax_element: Use this to put ajax request in an element.</code></pre>
+
+<a name="key_0_0_5"></a>
+
+#### buttons_align_right
+
 <p>Align buttons right.</p>
 <pre><code>buttons_align_right: false</code></pre>
+
+<a name="key_0_0_6"></a>
+
+#### render
+
 <p>Render methods.</p>
 <pre><code>render:
   plugin: xxx/yyy
   method: form_render</code></pre>
+
+<a name="key_0_0_7"></a>
+
+#### validation_before
+
 <p>Validation methods.</p>
 <pre><code>validation_before:
   plugin: _plugin_/_plugin_
   method: _a_method_</code></pre>
+
+<a name="key_0_0_8"></a>
+
+#### capture
+
 <p>Capture methods called after validation.</p>
 <pre><code>capture:
   plugin: xxx/yyy
   method: form_capture</code></pre>
+
+<a name="key_0_0_9"></a>
+
+#### i18n
+
 <p>Param i18n/path is used on validate and translate options.
 This also sets the globals if not set.</p>
 <pre><code>i18n:
   path: /plugin/_some_/_plugin_/i18n</code></pre>
+
+<a name="key_0_0_10"></a>
+
+#### settings
+
 <p>Change global param.
 Omit this if param i18n/path is set and should be the same.</p>
 <pre><code>settings:
@@ -95,6 +215,11 @@ Omit this if param i18n/path is set and should be the same.</p>
     -
       path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
       value: '/plugin/_folder_/_folder_/i18n'</code></pre>
+
+<a name="key_0_0_11"></a>
+
+#### elements (4)
+
 <p>Elements outside form.</p>
 <pre><code>elements_above:
   -
@@ -112,8 +237,12 @@ elements_after:
   -
     type: p
     innerHTML: Element after form element.</code></pre>
-<p>Layout.
-Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.</p>
+
+<a name="key_0_0_12"></a>
+
+#### layout
+
+<p>Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.</p>
 <pre><code>layout:
   -
     type: div
@@ -143,12 +272,27 @@ Using param layout to place controls. Using type div to move div with label and 
         type: div
         attribute: {class: col-md-12}
         innerHTML: 'item[{"id": "description", "type": "control"}]'</code></pre>
+
+<a name="key_0_0_13"></a>
+
+#### submit_method
+
 <p>Submit method.
 Set optional submit javascript method. Could be handy for extra validation.</p>
 <pre><code>submit_method: 'my_form_method()'</code></pre>
+
+<a name="key_0_0_14"></a>
+
+#### ctrl_s_save
+
 <p>Save on CTRL+S.
 Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be included.</p>
 <pre><code>ctrl_s_save: true</code></pre>
+
+<a name="key_0_0_15"></a>
+
+#### buttons
+
 <p>Handle submit.
 Add a button with script to handle submit.</p>
 <pre><code>buttons:
@@ -162,7 +306,11 @@ Add a button with script to handle submit.</p>
           document.getElementById('_btn_save_').click();
         }
     innerHTML: Save</code></pre>
-<p>Hide default button.</p>
+
+<a name="key_0_0_16"></a>
+
+#### Hide default button.
+
 <pre><code>elements_below:
   -
     type: script
