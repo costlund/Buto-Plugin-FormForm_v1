@@ -18,7 +18,16 @@ type: widget
 data:
   plugin: 'form/form_v1'
   method: render
-  data: _check_below_
+  data: yml:/plugin/my/plugin/form/form.yml
+```
+
+## Widget capture
+```
+type: widget
+data:
+  plugin: 'form/form_v1'
+  method: capture
+  data: yml:/plugin/my/plugin/form/form.yml
 ```
 
 ### Data
