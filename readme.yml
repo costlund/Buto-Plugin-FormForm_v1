@@ -182,7 +182,21 @@ readme:
                 ````
                 validation_before:
                   plugin: _plugin_/_plugin_
-                  method: _a_method_
+                  method: form_validate
+                ````
+                Example in PHP.
+                ````
+                public function form_validate($form){
+                  $form = new PluginWfArray($form);
+                  if(wfRequest::get('id')){
+                    $rs = $this->db_memb_messages_one_by_inc();
+                    if($rs->get('count_mail')){
+                      $form->set("items/id/is_valid", false);
+                      $form->set("items/id/errors/", 'One could not edit if there is mail!');
+                    }
+                  }
+                  return $form->get();
+                }
                 ````
             -
               name: capture

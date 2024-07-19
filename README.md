@@ -184,7 +184,19 @@ id: _my_form_</code></pre>
 <p>Validation methods.</p>
 <pre><code>validation_before:
   plugin: _plugin_/_plugin_
-  method: _a_method_</code></pre>
+  method: form_validate</code></pre>
+<p>Example in PHP.</p>
+<pre><code>public function form_validate($form){
+  $form = new PluginWfArray($form);
+  if(wfRequest::get('id')){
+    $rs = $this-&gt;db_memb_messages_one_by_inc();
+    if($rs-&gt;get('count_mail')){
+      $form-&gt;set("items/id/is_valid", false);
+      $form-&gt;set("items/id/errors/", 'One could not edit if there is mail!');
+    }
+  }
+  return $form-&gt;get();
+}</code></pre>
 
 <a name="key_0_0_8"></a>
 
