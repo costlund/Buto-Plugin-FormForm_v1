@@ -50,8 +50,9 @@ function plugin_form_form_v1(){
     /**
      * Create modal.
      */
-    PluginWfBootstrapjs.modal({id: 'modal_map', url: null, lable: 'Map', size: '', fade: false});
-    document.getElementById('modal_map_body').style.height = '300px';
+    PluginWfBootstrapjs.modal({id: 'modal_map', url: null, lable: 'Map', size: 'lg', fade: false});
+    document.getElementById('modal_map_footer').style.display = '';
+    document.getElementById('modal_map_body').style.height = '400px';
     /**
      * Create map.
      */
@@ -70,7 +71,7 @@ function plugin_form_form_v1(){
         'scrollwheel':true,
         'draggable':true, 
         'mapTypeId': map_data.map_type_id, 
-        'markerzzz':[{'position':{'geocode':'Göteborg', 'latzzz': '20', 'lngzzz': '20'},'draggable':true}]
+        'marker':[{'position':{'geocode':'', 'lat': '20', 'lng': '20'},'draggable':true}]
       }
     });
     /**
@@ -88,13 +89,6 @@ function plugin_form_form_v1(){
     document.getElementById('modal_map_footer').appendChild(input);
     var searchBox = new google.maps.places.SearchBox(input);
     PluginGoogleMaps.getMap().controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
-//    // Bias the SearchBox results towards current map's viewport.
-//    PluginGoogleMaps.getMap().addListener('bounds_changed', function() {
-//      searchBox.setBounds(PluginGoogleMaps.getMap().getBounds());
-//    });
-    searchBox.addListener('places_changed', function() {
-      //console.log('places_changed...');
-    });
     var markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
@@ -122,15 +116,7 @@ function plugin_form_form_v1(){
           anchor: new google.maps.Point(17, 34),
           scaledSize: new google.maps.Size(25, 25)
         };
-        // Create a marker for each place.
-//        markers.push(new google.maps.Marker({
-//          map: PluginGoogleMaps.getMap(),
-//          icon: icon,
-//          title: place.name,
-//          position: place.geometry.location
-//        }));
         if (place.geometry.viewport) {
-          // Only geocodes have viewport.
           bounds.union(place.geometry.viewport);
         } else {
           bounds.extend(place.geometry.location);
@@ -152,8 +138,7 @@ function plugin_form_form_v1(){
     var btn = document.createElement('a');
     btn.innerHTML = 'Set my location';
     btn.href = '#!';
-    btn.className = 'btn btn-defaultzzz';
-    btn.setAttribute('data-dismisszzz', 'modal');
+    btn.className = 'btn';
     btn.onclick = function(){
       navigator.geolocation.getCurrentPosition(function(location){
         PluginGoogleMaps.getMap().setCenter(new google.maps.LatLng(location.coords.latitude, location.coords.longitude));
@@ -166,12 +151,12 @@ function plugin_form_form_v1(){
      */
     var btn = document.createElement('button');
     btn.innerHTML = 'Clear';
-    btn.className = 'btn btn-default';
-    btn.setAttribute('data-dismiss', 'modal');
+    btn.className = 'btn btn-secondary';
     btn.onclick = function(){
       var c = PluginGoogleMaps.getMap().getCenter();
       document.getElementById(id).value = '';
       document.getElementById(id).onchange();
+      $('#modal_map').modal('hide');
     }
     document.getElementById('modal_map_footer').appendChild(btn);
     /**
@@ -179,12 +164,12 @@ function plugin_form_form_v1(){
      */
     var btn = document.createElement('button');
     btn.innerHTML = 'Ok';
-    btn.className = 'btn btn-default';
-    btn.setAttribute('data-dismiss', 'modal');
+    btn.className = 'btn btn-primary';
     btn.onclick = function(){
       var c = PluginGoogleMaps.getMap().getCenter();
       document.getElementById(id).value = '{"lat": "'+c.lat()+'", "lng": "'+c.lng()+'", "map_type_id": "'+PluginGoogleMaps.getMap().getMapTypeId()+'", "zoom": "'+PluginGoogleMaps.getMap().getZoom()+'"}';
       document.getElementById(id).onchange();
+      $('#modal_map').modal('hide');
     }
     document.getElementById('modal_map_footer').appendChild(btn);
     /**
