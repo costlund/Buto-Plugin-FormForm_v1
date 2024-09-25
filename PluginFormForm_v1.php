@@ -452,12 +452,7 @@ class PluginFormForm_v1{
         $attribute['value'] = $default_value['default'];
         break;
       case 'map':
-        $type = 'input';
-        $attribute['type'] = 'text';
-        $attribute['value'] = htmlentities((string) $default_value['default']);
-        $attribute['style'] = 'display:none';
-        $attribute['onchange'] = "if(this.value.length){document.getElementById('span_map_icon_".$default_value['element_id']."').style.display='';}else{document.getElementById('span_map_icon_".$default_value['element_id']."').style.display='none';}";
-        break;
+        throw new Exception(__CLASS__.'::'.__FUNCTION__.' says: Type map is deprecated in version 1.64.15. Check readme of google/maps how to implement map features.');
         break;
       case 'color':
         $type = 'input';
@@ -605,19 +600,6 @@ class PluginFormForm_v1{
           if($default_value['mandatory']){
             $element->set('mandatory', wfDocument::createHtmlElement('label', '*', array('id' => 'label_mandatory_'.$default_value['element_id'])));
           }
-        }
-        /**
-         * Map.
-         */
-        if($default_value['type'] == 'map'){
-          $display = 'none';
-          if(wfPhpfunc::strlen($default_value['default'])){
-            $display = '';
-          }
-          /**
-           * Create new element to click on.
-           */
-          $element->set('map_icon', wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', '(position)', array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginGoogleMaps.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right;height:40px")));
         }
         /**
          * Info icon.

@@ -1,5 +1,9 @@
-version: 1.64.14
+version: 1.64.15
 history:
+  1.64.15:
+    date: '2024-09-25'
+    title: Map
+    description: 'Adjustments due to plugin google/maps.'
   1.64.14:
     date: '2024-09-25'
     title: Map
