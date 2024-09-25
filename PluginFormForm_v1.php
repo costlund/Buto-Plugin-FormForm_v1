@@ -614,7 +614,10 @@ class PluginFormForm_v1{
           if(wfPhpfunc::strlen($default_value['default'])){
             $display = '';
           }
-          $element->set('map_icon', wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', '(is set)', array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginFormForm_v1.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right;height:40px")));
+          /**
+           * Create new element to click on.
+           */
+          $element->set('map_icon', wfDocument::createHtmlElement('a', array(wfDocument::createHtmlElement('span', '(position)', array('id' => 'span_map_icon_'.$default_value['element_id'], 'class' => 'glyphicon glyphicon-map-marker', 'style' => "display:$display"))), array('onclick' => "PluginGoogleMaps.showMap('".$default_value['element_id']."');", 'class' => 'form-control', 'style' => "text-align:right;height:40px")));
         }
         /**
          * Info icon.
