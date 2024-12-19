@@ -150,7 +150,7 @@ readme:
               description: |
                 Focus on first element.
                 ````
-                focus_first_element: true
+                focus_first_element: false
                 ````
             -
               name: ajax_element

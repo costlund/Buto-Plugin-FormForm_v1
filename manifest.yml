@@ -1,5 +1,9 @@
-version: 1.64.15
+version: 1.64.16
 history:
+  1.64.16:
+    date: '2024-12-19'
+    title: Focus
+    description: 'Change focus_first_element to false as default.'
   1.64.15:
     date: '2024-09-25'
     title: Map

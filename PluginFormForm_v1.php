@@ -211,7 +211,7 @@ class PluginFormForm_v1{
         'submit_on_enter' => false,
         'submit_method' => 'null',
         'ctrl_s_save' => false,
-        'focus_first_element' => true,
+        'focus_first_element' => false,
         'embed_alert' => false,
         'buttons_align_right' => false
         );
