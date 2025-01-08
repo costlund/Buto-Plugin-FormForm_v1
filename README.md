@@ -152,7 +152,7 @@ id: _my_form_</code></pre>
 #### focus_first_element
 
 <p>Focus on first element.</p>
-<pre><code>focus_first_element: true</code></pre>
+<pre><code>focus_first_element: false</code></pre>
 
 <a name="key_0_0_4"></a>
 
