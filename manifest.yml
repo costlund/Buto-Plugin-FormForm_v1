@@ -1,5 +1,9 @@
-version: 1.64.16
+version: 1.64.17
 history:
+  1.64.17:
+    date: '2025-02-19'
+    title: Type
+    description: 'Handle if type is not set in method bind.'
   1.64.16:
     date: '2024-12-19'
     title: Focus

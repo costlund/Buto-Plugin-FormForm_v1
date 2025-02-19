@@ -845,6 +845,9 @@ class PluginFormForm_v1{
      */
     foreach ($form['items'] as $key => $value) {
       $str = wfRequest::get($key);
+      if(!isset($form['items'][$key]['type'])){
+        $form['items'][$key]['type'] = 'varchar';
+      }
       if($form['items'][$key]['type']=='checkbox'){
         if($str=='on'){$str=true;}
       }
