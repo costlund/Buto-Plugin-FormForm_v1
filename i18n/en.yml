@@ -1,4 +1,3 @@
-'The form does not pass validation.': 'The form does not pass validation.'
 '?label is empty.': '?label is empty.'
 '?label has illegal character.': '?label has illegal character.'
 '?label is not a date!': '?label is not a date!'
@@ -17,3 +16,6 @@ Search: Search
 'Create invoice': 'Create invoice'
 Yes: Yes
 Close: Close
+'Validation error.': 'Validation error.'
+digits: digits
+Get: Get

@@ -1,4 +1,4 @@
-'The form does not pass validation.': 'Formuläret klarade inte valideringen.'
+'Validation error.': 'Valideringsfel.'
 '?label is empty.': '?label är tomt.'
 '?label has illegal character.': '?label har felaktiga tecken.'
 '?label is not a date!': '?label är inte ett datum!'
@@ -18,3 +18,4 @@ Search: Sök
 Yes: Ja
 Close: Stäng
 digits: siffror
+Get: Hämta

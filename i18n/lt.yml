@@ -1,4 +1,3 @@
-'The form does not pass validation.': 'Forma neperduoda patvirtinimo.'
 '?label is empty.': '?label tuščia.'
 '?label has illegal character.': '?label turi neteisėtą pobūdį.'
 '?label is not a date!': '?label nėra data!'
@@ -17,3 +16,6 @@ Search: Quaerere
 'Create invoice': 'Sukurti sąskaitą faktūrą'
 Yes: Sì
 Close: Chiudere
+'Validation error.': 'Errore di convalida.'
+digits: cifre
+Get: Ottieni

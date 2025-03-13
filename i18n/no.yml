@@ -1,4 +1,3 @@
-'The form does not pass validation.': 'Skjemaet består ikke validering.'
 '?label is empty.': '?label er tom.'
 '?label has illegal character.': '?label har ulovlig karakter.'
 '?label is not a date!': '?label er ikke en dato!'
@@ -17,3 +16,6 @@ Search: Søk
 'Create invoice': 'Opprett faktura'
 Yes: Ja
 Close: Lukk
+'Validation error.': Valideringsfeil.
+digits: sifre
+Get: Bli

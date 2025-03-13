@@ -1010,7 +1010,7 @@ class PluginFormForm_v1{
     foreach ($form['items'] as $key => $value) {
         if(!$value['is_valid']){
             $form['is_valid'] = false;
-            $form['errors'][] = $i18n->translateFromTheme('The form does not pass validation.');
+            $form['errors'][] = $i18n->translateFromTheme('Validation error.');
             break;
         }
     }

@@ -1,5 +1,13 @@
-version: 1.64.17
+version: 1.64.19
 history:
+  1.64.19:
+    date: '2025-03-13'
+    title: I18N
+    description: 'Translations.'
+  1.64.18:
+    date: '2025-03-06'
+    title: I18N
+    description: 'Translate Get.'
   1.64.17:
     date: '2025-02-19'
     title: Type
