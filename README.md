@@ -94,7 +94,7 @@ id: _my_form_</code></pre>
 
 ##### placehoder
 
-<p>Placehoder.</p>
+<p>Placeholder.</p>
 <pre><code>    placeholder: 'Text (1-10)'</code></pre>
 
 <a name="key_0_0_2_7"></a>
@@ -398,6 +398,8 @@ If placeholder is 0.* a script to replace comma (,) with dot (.) is added.</p>
 <li>If placeholder is 0.* validator validate_double is added in widget_capture.</li>
 <li>If placeholder is "Text (1-4)" validator is added for min/max length.</li>
 <li>If placeholder is "(33 digits)" validator validate/digits, validate_digits is added (with length of 33).</li>
+<li>If placeholder is "@" validator validate_email is added.</li>
+<li>If placeholder is "Link" validator validate_link is added.</li>
 </ul>
 <p>One could add validator data via param validator_data.</p>
 <pre><code>items:

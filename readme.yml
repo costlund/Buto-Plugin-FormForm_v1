@@ -91,7 +91,7 @@ readme:
                 -
                   name: placehoder
                   description: |
-                    Placehoder.
+                    Placeholder.
                     ````
                         placeholder: 'Text (1-10)'
                     ````
@@ -396,6 +396,7 @@ readme:
             ````
         -
           name: Placeholder
+          date: '2025-04-28'
           description: |
             If type is date and placeholder is empty it will be set to YYYY-MM-DD.
             If placeholder is 0.* a script to replace comma (,) with dot (.) is added.
@@ -403,6 +404,8 @@ readme:
             - If placeholder is 0.* validator validate_double is added in widget_capture.
             - If placeholder is "Text (1-4)" validator is added for min/max length.
             - If placeholder is "(33 digits)" validator validate/digits, validate_digits is added (with length of 33).
+            - If placeholder is "@" validator validate_email is added.
+            - If placeholder is "Link" validator validate_link is added.
 
             One could add validator data via param validator_data.
             ````

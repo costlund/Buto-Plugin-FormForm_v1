@@ -831,6 +831,11 @@ class PluginFormForm_v1{
            * form/form_v1, validate_email
            */
           $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_email');
+        }elseif($i->get('placeholder')==='Link'){
+          /**
+           * form/form_v1, validate_link
+           */
+          $form['items'][$k]['validator'][] = array('plugin' => 'form/form_v1', 'method' => 'validate_link');
         }
       }elseif($i->get('type')=='date'){
         if(!isset($form['items'][$k]['validator'])){
@@ -1111,6 +1116,18 @@ class PluginFormForm_v1{
         $form = wfArray::set($form, "items/$field/is_valid", false);
         $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not an email!', array('?label' => $this->i18n->translateFromTheme(wfArray::get($form, "items/$field/label")))));
       }
+    }
+    return $form;
+  }
+  public function validate_link($field, $form, $data = array()){
+    if(wfArray::get($form, "items/$field/is_valid") && wfArray::get($form, "items/$field/post_value")){
+      if ( 
+           substr(wfArray::get($form, "items/$field/post_value"), 0, 7) != 'http://' 
+           && substr(wfArray::get($form, "items/$field/post_value"), 0, 8) != 'https://' 
+         ) {
+        $form = wfArray::set($form, "items/$field/is_valid", false);
+        $form = wfArray::set($form, "items/$field/errors/", $this->i18n->translateFromTheme('?label is not a link (should start with http:// or https://)!', array('?label' => $this->i18n->translateFromTheme(wfArray::get($form, "items/$field/label")))));
+       }
     }
     return $form;
   }

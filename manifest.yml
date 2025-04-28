@@ -1,5 +1,9 @@
-version: 1.64.19
+version: 1.65.0
 history:
+  1.65.0:
+    date: '2025-04-28'
+    title: Link
+    description: 'Add link validator.'
   1.64.19:
     date: '2025-03-13'
     title: I18N
