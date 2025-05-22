@@ -1,5 +1,9 @@
-version: 1.65.0
+version: 1.66.0
 history:
+  1.66.0:
+    date: '2025-05-22'
+    title: Json failed
+    description: 'Add More link to display request content when parse to json failed.'
   1.65.0:
     date: '2025-04-28'
     title: Link

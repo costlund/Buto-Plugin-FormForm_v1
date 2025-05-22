@@ -1,5 +1,6 @@
 function plugin_form_form_v1(){
   this.btn_submit = null;
+  this.d = null;
   /**
    * Move controls if form has own layout.
    * @param {type} data
@@ -63,7 +64,8 @@ function plugin_form_form_v1(){
           try {
             json_data = JSON.parse(d);
           } catch(e) {
-            alert('PluginFormForm_v1 says: There was a problem when trying to post this form to '+data.url+'!');
+            PluginFormForm_v1.d = d;
+            alert('PluginFormForm_v1 says: There was a problem when trying to post this form to '+data.url+'! <a href="#" onclick="PluginFormForm_v1.alert_d()">More!</a>');
             return null;
           }          
           /**
@@ -122,6 +124,9 @@ function plugin_form_form_v1(){
         return false; 
       }
     }
+  }
+  this.alert_d = function(){
+    alert(PluginFormForm_v1.d);
   }
   this.loading_add = function(data){
     var img = document.createElement('img');
