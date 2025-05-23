@@ -1517,10 +1517,21 @@ class PluginFormForm_v1{
     if(!is_array($form->get('capture/data'))){
       $form->set('capture/data', wfSettings::getSettingsFromYmlString($form->get('capture/data')));
     }
+    $body = null;
+    /**
+     * session_id
+     */
+    if($form->get('items/session_id')){
+      if($form->get('items/session_id/post_value')==session_id()){
+        $body .= "<p><i>Session ID posted was the same as in request!</i></p>";
+      }else{
+        $body .= "<p><i>Session ID posted was NOT the same as in request!</i></p>";
+      }
+      $form->set('items/session_id/post_value', '(removed)');
+    }
     /**
      * Body.
      */
-    $body = null;
     foreach ($form->get('items') as $key => $value) {
       $item = new PluginWfArray($value);
       $label = $item->get('label');

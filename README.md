@@ -795,5 +795,16 @@ data:
 
 ### send
 
-
+<p>Capture method to send all form data.</p>
+<pre><code>capture:
+  plugin: 'form/form_v1'
+  method: send
+  data:
+    email:
+      - 'me@world.com'
+    script:
+      - "alert('Message was sent!');location.href='/';"  
+    mailqueue: true
+    subject: Contact message</code></pre>
+<p>If item session_id is included in form extra text is added to body who tells if session_id() was the same posted as in request.</p>
 

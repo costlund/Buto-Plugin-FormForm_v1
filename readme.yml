@@ -623,3 +623,19 @@ readme:
           name: schema_capture
         -
           name: send
+          date: '2025-05-23'
+          description: |
+            Capture method to send all form data.
+            ````
+            capture:
+              plugin: 'form/form_v1'
+              method: send
+              data:
+                email:
+                  - 'me@world.com'
+                script:
+                  - "alert('Message was sent!');location.href='/';"  
+                mailqueue: true
+                subject: Contact message
+            ````
+            If item session_id is included in form extra text is added to body who tells if session_id() was the same posted as in request.
