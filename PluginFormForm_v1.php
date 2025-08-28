@@ -6,6 +6,7 @@
 class PluginFormForm_v1{
   private $i18n = null;
   public $data = array();
+  private $formatDouble = null;
   function __construct($buto = false) {
     if($buto){
       wfPlugin::includeonce('wf/array');
@@ -13,6 +14,8 @@ class PluginFormForm_v1{
       $this->i18n = new PluginI18nTranslate_v1();
       $this->i18n->setPath('/plugin/form/form_v1/i18n');
       wfPlugin::enable('icons/octicons');
+      wfPlugin::includeonce('format/double');
+      $this->formatDouble = new PluginFormatDouble();
     }
   }
   public static function translate($text){
@@ -414,6 +417,19 @@ class PluginFormForm_v1{
     if($default_value['type']=='date' && !$default_value['placeholder']){
       $default_value['placeholder'] = 'YYYY-MM-DD';
     }
+    /**
+     * Format default if placeholder 0.0, 0.00, 0.000.
+     */
+    if($default_value['default'] && $default_value['placeholder']==='0.0'){
+      $default_value['default'] = $this->formatDouble->format($default_value['default'], 1);
+    }elseif($default_value['default'] && $default_value['placeholder']==='0.00'){
+      $default_value['default'] = $this->formatDouble->format($default_value['default'], 2);
+    }elseif($default_value['default'] && $default_value['placeholder']==='0.000'){
+      $default_value['default'] = $this->formatDouble->format($default_value['default'], 3);
+    }
+    /**
+     * 
+     */
     $type = null;
     $innerHTML = null;
     $attribute = array('name' => $default_value['name'], 'id' => $default_value['element_id'], 'class' => $default_value['class'], 'style' => $default_value['style']);
