@@ -170,16 +170,23 @@ id: _my_form_</code></pre>
 
 <a name="key_0_0_6"></a>
 
-#### render
+#### Methods
+
+<p>Methods to run on render, capture, validation.
+One could replace param plugin with "[plugin]" to run current plugin in the request.</p>
+
+<a name="key_0_0_6_0"></a>
+
+##### render
 
 <p>Render methods.</p>
 <pre><code>render:
   plugin: xxx/yyy
   method: form_render</code></pre>
 
-<a name="key_0_0_7"></a>
+<a name="key_0_0_6_1"></a>
 
-#### validation_before
+##### validation_before
 
 <p>Validation methods.</p>
 <pre><code>validation_before:
@@ -198,16 +205,16 @@ id: _my_form_</code></pre>
   return $form-&gt;get();
 }</code></pre>
 
-<a name="key_0_0_8"></a>
+<a name="key_0_0_6_2"></a>
 
-#### capture
+##### capture
 
 <p>Capture methods called after validation.</p>
 <pre><code>capture:
   plugin: xxx/yyy
   method: form_capture</code></pre>
 
-<a name="key_0_0_9"></a>
+<a name="key_0_0_7"></a>
 
 #### i18n
 
@@ -216,7 +223,7 @@ This also sets the globals if not set.</p>
 <pre><code>i18n:
   path: /plugin/_some_/_plugin_/i18n</code></pre>
 
-<a name="key_0_0_10"></a>
+<a name="key_0_0_8"></a>
 
 #### settings
 
@@ -228,7 +235,7 @@ Omit this if param i18n/path is set and should be the same.</p>
       path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
       value: '/plugin/_folder_/_folder_/i18n'</code></pre>
 
-<a name="key_0_0_11"></a>
+<a name="key_0_0_9"></a>
 
 #### elements (4)
 
@@ -250,7 +257,7 @@ elements_after:
     type: p
     innerHTML: Element after form element.</code></pre>
 
-<a name="key_0_0_12"></a>
+<a name="key_0_0_10"></a>
 
 #### layout
 
@@ -285,7 +292,7 @@ elements_after:
         attribute: {class: col-md-12}
         innerHTML: 'item[{"id": "description", "type": "control"}]'</code></pre>
 
-<a name="key_0_0_13"></a>
+<a name="key_0_0_11"></a>
 
 #### submit_method
 
@@ -293,7 +300,7 @@ elements_after:
 Set optional submit javascript method. Could be handy for extra validation.</p>
 <pre><code>submit_method: 'my_form_method()'</code></pre>
 
-<a name="key_0_0_14"></a>
+<a name="key_0_0_12"></a>
 
 #### ctrl_s_save
 
@@ -301,7 +308,7 @@ Set optional submit javascript method. Could be handy for extra validation.</p>
 Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be included.</p>
 <pre><code>ctrl_s_save: true</code></pre>
 
-<a name="key_0_0_15"></a>
+<a name="key_0_0_13"></a>
 
 #### buttons
 
@@ -319,7 +326,7 @@ Add a button with script to handle submit.</p>
         }
     innerHTML: Save</code></pre>
 
-<a name="key_0_0_16"></a>
+<a name="key_0_0_14"></a>
 
 #### Hide default button.
 

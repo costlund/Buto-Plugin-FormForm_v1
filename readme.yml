@@ -166,47 +166,54 @@ readme:
                 ````
                 buttons_align_right: false
                 ````
+
             -
-              name: render
+              name: Methods
               description: |
-                Render methods.
-                ````
-                render:
-                  plugin: xxx/yyy
-                  method: form_render
-                ````
-            -
-              name: validation_before
-              description: |
-                Validation methods.
-                ````
-                validation_before:
-                  plugin: _plugin_/_plugin_
-                  method: form_validate
-                ````
-                Example in PHP.
-                ````
-                public function form_validate($form){
-                  $form = new PluginWfArray($form);
-                  if(wfRequest::get('id')){
-                    $rs = $this->db_memb_messages_one_by_inc();
-                    if($rs->get('count_mail')){
-                      $form->set("items/id/is_valid", false);
-                      $form->set("items/id/errors/", 'One could not edit if there is mail!');
+                Methods to run on render, capture, validation.
+                One could replace param plugin with "[plugin]" to run current plugin in the request.
+              item:           
+                -
+                  name: render
+                  description: |
+                    Render methods.
+                    ````
+                    render:
+                      plugin: xxx/yyy
+                      method: form_render
+                    ````
+                -
+                  name: validation_before
+                  description: |
+                    Validation methods.
+                    ````
+                    validation_before:
+                      plugin: _plugin_/_plugin_
+                      method: form_validate
+                    ````
+                    Example in PHP.
+                    ````
+                    public function form_validate($form){
+                      $form = new PluginWfArray($form);
+                      if(wfRequest::get('id')){
+                        $rs = $this->db_memb_messages_one_by_inc();
+                        if($rs->get('count_mail')){
+                          $form->set("items/id/is_valid", false);
+                          $form->set("items/id/errors/", 'One could not edit if there is mail!');
+                        }
+                      }
+                      return $form->get();
                     }
-                  }
-                  return $form->get();
-                }
-                ````
-            -
-              name: capture
-              description: |
-                Capture methods called after validation.
-                ````
-                capture:
-                  plugin: xxx/yyy
-                  method: form_capture
-                ````
+                    ````
+                -
+                  name: capture
+                  description: |
+                    Capture methods called after validation.
+                    ````
+                    capture:
+                      plugin: xxx/yyy
+                      method: form_capture
+                    ````
             -
               name: i18n
               description: |

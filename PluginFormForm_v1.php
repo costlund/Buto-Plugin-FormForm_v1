@@ -125,6 +125,12 @@ class PluginFormForm_v1{
   public static function widget_render($data){
     $data_obj = new PluginWfArray($data);
     /**
+     * 
+     */
+    if($data_obj->get('data/render/plugin')=='[plugin]'){
+      $data_obj->set('data/render/plugin', wfGlobals::get('plugin'));
+    }
+    /**
      * i18n.
      */
     wfPlugin::includeonce('i18n/translate_v1');
@@ -722,6 +728,15 @@ class PluginFormForm_v1{
   public static function widget_capture($data){
     wfPlugin::includeonce('wf/array');
     $data = new PluginWfArray($data);
+    /**
+     * 
+     */
+    if($data->get('data/capture/plugin')=='[plugin]'){
+      $data->set('data/capture/plugin', wfGlobals::get('plugin'));
+    }
+    if($data->get('data/validation_before/plugin')=='[plugin]'){
+      $data->set('data/validation_before/plugin', wfGlobals::get('plugin'));
+    }
     $json = new PluginWfArray();
     /**
      * 

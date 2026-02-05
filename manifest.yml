@@ -1,5 +1,9 @@
-version: 1.67.1
+version: 1.68.0
 history:
+  1.68.0:
+    date: '2026-02-05'
+    title: Methods
+    description: 'Add replacement methods for plugin in methods.'
   1.67.1:
     date: '2025-08-28'
     title: Format double
