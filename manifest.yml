@@ -1,5 +1,9 @@
-version: 1.68.0
+version: 1.68.1
 history:
+  1.68.1:
+    date: '2026-02-05'
+    title: Methods
+    description: 'One could also omit plugin param in methods to pick up current request plugin.'
   1.68.0:
     date: '2026-02-05'
     title: Methods

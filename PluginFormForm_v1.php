@@ -117,6 +117,18 @@ class PluginFormForm_v1{
     }
     return $form;
   }
+  private static function handle_plugin($obj, $type = 'render'){
+    /**
+     * type: render, capture, validation_before
+     */
+    if($obj->get("data/$type/plugin")=='[plugin]'){
+      $obj->set("data/$type/plugin", wfGlobals::get('plugin'));
+    }
+    if($obj->get("data/$type") && !strlen((string)$obj->get("data/$type/plugin"))){
+      $obj->set("data/$type/plugin", wfGlobals::get('plugin'));
+    }
+    return $obj;
+  }
   /**
    * <p>Render a form.</p> 
    * <p>Consider to add data in separate yml file because you need to pic it up again when handle posting values. Use widget to handle post request if necessary.</p> 
@@ -127,9 +139,7 @@ class PluginFormForm_v1{
     /**
      * 
      */
-    if($data_obj->get('data/render/plugin')=='[plugin]'){
-      $data_obj->set('data/render/plugin', wfGlobals::get('plugin'));
-    }
+    $data_obj = PluginFormForm_v1::handle_plugin($data_obj, 'render');
     /**
      * i18n.
      */
@@ -731,12 +741,8 @@ class PluginFormForm_v1{
     /**
      * 
      */
-    if($data->get('data/capture/plugin')=='[plugin]'){
-      $data->set('data/capture/plugin', wfGlobals::get('plugin'));
-    }
-    if($data->get('data/validation_before/plugin')=='[plugin]'){
-      $data->set('data/validation_before/plugin', wfGlobals::get('plugin'));
-    }
+    $data = PluginFormForm_v1::handle_plugin($data, 'capture');
+    $data = PluginFormForm_v1::handle_plugin($data, 'validation_before');
     $json = new PluginWfArray();
     /**
      * 

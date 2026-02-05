@@ -171,7 +171,8 @@ readme:
               name: Methods
               description: |
                 Methods to run on render, capture, validation.
-                One could replace param plugin with "[plugin]" to run current plugin in the request.
+                - One could omit param plugin to run current plugin in request.
+                - Or one could replace param plugin with "[plugin]" to run current plugin in the request.
               item:           
                 -
                   name: render

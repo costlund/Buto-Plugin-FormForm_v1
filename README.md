@@ -172,8 +172,11 @@ id: _my_form_</code></pre>
 
 #### Methods
 
-<p>Methods to run on render, capture, validation.
-One could replace param plugin with "[plugin]" to run current plugin in the request.</p>
+<p>Methods to run on render, capture, validation.</p>
+<ul>
+<li>One could omit param plugin to run current plugin in request.</li>
+<li>Or one could replace param plugin with "[plugin]" to run current plugin in the request.</li>
+</ul>
 
 <a name="key_0_0_6_0"></a>
 
