@@ -979,6 +979,14 @@ class PluginFormForm_v1{
       $i18n->path = $form['i18n']['path'];
     }
     /**
+     * 
+     */
+    foreach ($form['items'] as $key => $value) {
+      if(!isset($form['items'][$key]['label'])){
+        $form['items'][$key]['label'] = $key;
+      }
+    }
+    /**
      * Translate labels.
      */
     foreach ($form['items'] as $key => $value) {
