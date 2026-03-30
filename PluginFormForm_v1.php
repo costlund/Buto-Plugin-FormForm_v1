@@ -1323,7 +1323,7 @@ class PluginFormForm_v1{
    * Validate numeric.
    * @param string $field
    * @param array $form
-   * @param PluginWfArray $data
+   * @param array $data
    * @return array
    */
   public function validate_numeric($field, $form, $data = array()){
@@ -1564,20 +1564,12 @@ class PluginFormForm_v1{
     }
     $body = null;
     /**
-     * session_id
-     */
-    if($form->get('items/session_id')){
-      if($form->get('items/session_id/post_value')==session_id()){
-        $body .= "<p><i>Session ID posted was the same as in request!</i></p>";
-      }else{
-        $body .= "<p><i>Session ID posted was NOT the same as in request!</i></p>";
-      }
-      $form->set('items/session_id/post_value', '(removed)');
-    }
-    /**
      * Body.
      */
     foreach ($form->get('items') as $key => $value) {
+      if($key=='session_id'){
+        continue;
+      }
       $item = new PluginWfArray($value);
       $label = $item->get('label');
       $post_value = $item->get('post_value');
@@ -1595,6 +1587,22 @@ class PluginFormForm_v1{
       $body .= "<p><strong>$label</strong></p>";
       $body .= "<p>$post_value</p>";
     }
+    /**
+     * Security check
+     * session_id
+     */
+    if($form->get('items/session_id')){
+      $body .= "<p><strong>Security check</strong></p>";
+      if($form->get('items/session_id/post_value')==session_id()){
+        $body .= "<p><i>Session ID posted was the same as in request!</i></p>";
+      }else{
+        $body .= "<p><i>Session ID posted was NOT the same as in request!</i></p>";
+      }
+      $form->set('items/session_id/post_value', '(removed)');
+    }
+    /**
+     * 
+     */
     $body = "<html><body>".$body."</body></html>";
     /**
      * Send

@@ -1,5 +1,9 @@
-version: 1.68.2
+version: 1.68.3
 history:
+  1.68.3:
+    date: '2026-03-30'
+    title: Send
+    description: 'Security improvements in send method. Add body message at the bottom. Remove field session_id from body.'
   1.68.2:
     date: '2026-02-20'
     title: Validate
