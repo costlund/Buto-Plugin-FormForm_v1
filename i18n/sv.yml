@@ -20,3 +20,6 @@ Close: Stäng
 digits: siffror
 Get: Hämta
 ?label is not a link (should start with http:// or https://)!: ?label är inte en länk (måste starta med http:// eller https://)!
+Security check: Säkerhetskontroll
+Session ID posted was the same as in request!: SessionID som postades var samma som i förfrågan!
+Session ID posted was NOT the same as in request!: SessionID som postades var INTE samma som i förfrågan!

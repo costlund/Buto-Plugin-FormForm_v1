@@ -1,0 +1,43 @@
+-
+  type: html
+  innerHTML:
+    -
+      type: head
+      innerHTML:
+        -
+          type: style
+          innerHTML: ".content{}.content-parentheses::before{content: '(' !important}.content-parentheses::after{content: ')' !important}.content-colon::after{content: ':' !important}"
+    -
+      type: body
+      innerHTML:
+        -
+          type: div
+          innerHTML:
+            -
+              type: div
+              innerHTML:
+                - 
+                  type: strong
+                  attribute:
+                    class: content-colon
+                  innerHTML: form:label
+                - 
+                  type: span
+                  innerHTML: form:post_value
+        -
+          type: div
+          settings:
+            enabled: security:security_check
+            globals:
+              -
+                path_to_key: 'settings/plugin/i18n/translate_v1/settings/path'
+                value: '/plugin/form/form_v1/i18n'
+          innerHTML:
+            - 
+              type: strong
+              attribute:
+                class: content-colon
+              innerHTML: Security check
+            - 
+              type: span
+              innerHTML: security:security_check

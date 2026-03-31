@@ -1562,48 +1562,56 @@ class PluginFormForm_v1{
     if(!is_array($form->get('capture/data'))){
       $form->set('capture/data', wfSettings::getSettingsFromYmlString($form->get('capture/data')));
     }
-    $body = null;
     /**
-     * Body.
+     * 
      */
+    wfPlugin::includeonce('wf/yml');
+    $element = wfDocument::getElementFromFolder(__DIR__, 'method_send');
+    $items = array();
     foreach ($form->get('items') as $key => $value) {
       if($key=='session_id'){
         continue;
       }
-      $item = new PluginWfArray($value);
-      $label = $item->get('label');
-      $post_value = $item->get('post_value');
+      $i = new PluginWfArray($value);
+      $item = $element->get("0/innerHTML/1/innerHTML/0/innerHTML/0");
+      $item = new PluginWfArray($item);
       /**
        * checkbox
        */
-      if($item->get('type')=='checkbox' && !$post_value){
-        $post_value = '(not checked)';
-      }elseif($item->get('type')=='checkbox' && $post_value=='1'){
-        $post_value = '(checked)';
+      if($i->get('type')=='checkbox' && !$i->get('post_value')){
+        $i->set('post_value', '(not checked)');
+      }elseif($i->get('type')=='checkbox' && $i->get('post_value')=='on'){
+        $i->set('post_value', '(checked)');
       }
       /**
        * 
        */
-      $body .= "<p><strong>$label</strong></p>";
-      $body .= "<p>$post_value</p>";
+      $item->setByTag($i->get(), 'form');
+      /**
+       * 
+       */
+      $items[] = $item->get();
     }
     /**
      * Security check
      * session_id
      */
     if($form->get('items/session_id')){
-      $body .= "<p><strong>Security check</strong></p>";
       if($form->get('items/session_id/post_value')==session_id()){
-        $body .= "<p><i>Session ID posted was the same as in request!</i></p>";
+        $element->setByTag(array('security_check' => 'Session ID posted was the same as in request!'), 'security');
       }else{
-        $body .= "<p><i>Session ID posted was NOT the same as in request!</i></p>";
+        $element->setByTag(array('security_check' => 'Session ID posted was NOT the same as in request!'), 'security');
       }
-      $form->set('items/session_id/post_value', '(removed)');
+    }else{
+      $element->setByTag(array('security_check' => ''), 'security');
     }
+    $element->set("0/innerHTML/1/innerHTML/0/innerHTML", $items);
     /**
      * 
      */
-    $body = "<html><body>".$body."</body></html>";
+    wfDocument::$capture=2;
+    wfDocument::renderElement($element->get());
+    $body = wfDocument::getContent();
     /**
      * Send
      */
