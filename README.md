@@ -8,15 +8,21 @@
 
 
 
+
+
 <a name="key_0_0"></a>
 
 ### Data
+
+
 
 <p>Create yml file and call it from widgets.</p>
 
 <a name="key_0_0_0"></a>
 
 #### url (and more)
+
+
 
 <pre><code>url: _url_where_to_post_
 ajax: true
@@ -27,12 +33,16 @@ id: _my_form_</code></pre>
 
 #### autocomplete
 
+
+
 <p>Optional form attribute.</p>
 <pre><code>autocomplete: off</code></pre>
 
 <a name="key_0_0_2"></a>
 
 #### items
+
+
 
 <p>Items.</p>
 <pre><code>items:
@@ -51,12 +61,16 @@ id: _my_form_</code></pre>
 
 ##### mandatory
 
+
+
 <p>Mandatory.</p>
 <pre><code>    mandatory: true</code></pre>
 
 <a name="key_0_0_2_1"></a>
 
 ##### default
+
+
 
 <p>Default from request param id.</p>
 <pre><code>    default: get:id</code></pre>
@@ -65,12 +79,16 @@ id: _my_form_</code></pre>
 
 ##### i18n
 
+
+
 <p>I18n can be turned off.</p>
 <pre><code>    i18n: false</code></pre>
 
 <a name="key_0_0_2_3"></a>
 
 ##### attribute
+
+
 
 <p>Attributes.</p>
 <pre><code>    attribute:
@@ -80,12 +98,16 @@ id: _my_form_</code></pre>
 
 ##### class
 
+
+
 <p>Class.</p>
 <pre><code>    class: _user_only_this_class_</code></pre>
 
 <a name="key_0_0_2_5"></a>
 
 ##### class_add
+
+
 
 <p>Class add.</p>
 <pre><code>    class_add: _add_a_class_</code></pre>
@@ -94,12 +116,16 @@ id: _my_form_</code></pre>
 
 ##### placehoder
 
+
+
 <p>Placeholder.</p>
 <pre><code>    placeholder: 'Text (1-10)'</code></pre>
 
 <a name="key_0_0_2_7"></a>
 
 ##### validator
+
+
 
 <p>Validators.</p>
 <pre><code>    validator:
@@ -111,6 +137,8 @@ id: _my_form_</code></pre>
 
 ##### settings
 
+
+
 <p>Settings.</p>
 <pre><code>    settings:
       enabled: false</code></pre>
@@ -118,6 +146,8 @@ id: _my_form_</code></pre>
 <a name="key_0_0_2_9"></a>
 
 ##### info
+
+
 
 <p>Info text.</p>
 <pre><code>    info:
@@ -128,6 +158,8 @@ id: _my_form_</code></pre>
 
 ##### option
 
+
+
 <p>Options.</p>
 <pre><code>    option:
       '': ''
@@ -137,12 +169,16 @@ id: _my_form_</code></pre>
 
 ##### option (method)
 
+
+
 <p>Options from method.</p>
 <pre><code>    option: method:memb_inc/abo:option_memb_account</code></pre>
 
 <a name="key_0_0_2_12"></a>
 
 ##### option (yml)
+
+
 
 <p>Options from yml.</p>
 <pre><code>    option: yml:/plugin/_folder_/_folder_/mysql/schema.yml:tables/TABLE_NAME/field/FIELD_NAME/option </code></pre>
@@ -151,12 +187,16 @@ id: _my_form_</code></pre>
 
 #### focus_first_element
 
+
+
 <p>Focus on first element.</p>
 <pre><code>focus_first_element: false</code></pre>
 
 <a name="key_0_0_4"></a>
 
 #### ajax_element
+
+
 
 <p>Set element where to put ajax request (optional).</p>
 <pre><code>ajax_element: Use this to put ajax request in an element.</code></pre>
@@ -165,12 +205,16 @@ id: _my_form_</code></pre>
 
 #### buttons_align_right
 
+
+
 <p>Align buttons right.</p>
 <pre><code>buttons_align_right: false</code></pre>
 
 <a name="key_0_0_6"></a>
 
 #### Methods
+
+
 
 <p>Methods to run on render, capture, validation.</p>
 <ul>
@@ -182,6 +226,8 @@ id: _my_form_</code></pre>
 
 ##### render
 
+
+
 <p>Render methods.</p>
 <pre><code>render:
   plugin: xxx/yyy
@@ -190,6 +236,8 @@ id: _my_form_</code></pre>
 <a name="key_0_0_6_1"></a>
 
 ##### validation_before
+
+
 
 <p>Validation methods.</p>
 <pre><code>validation_before:
@@ -212,6 +260,8 @@ id: _my_form_</code></pre>
 
 ##### capture
 
+
+
 <p>Capture methods called after validation.</p>
 <pre><code>capture:
   plugin: xxx/yyy
@@ -221,6 +271,8 @@ id: _my_form_</code></pre>
 
 #### i18n
 
+
+
 <p>Param i18n/path is used on validate and translate options.
 This also sets the globals if not set.</p>
 <pre><code>i18n:
@@ -229,6 +281,8 @@ This also sets the globals if not set.</p>
 <a name="key_0_0_8"></a>
 
 #### settings
+
+
 
 <p>Change global param.
 Omit this if param i18n/path is set and should be the same.</p>
@@ -241,6 +295,8 @@ Omit this if param i18n/path is set and should be the same.</p>
 <a name="key_0_0_9"></a>
 
 #### elements (4)
+
+
 
 <p>Elements outside form.</p>
 <pre><code>elements_above:
@@ -263,6 +319,8 @@ elements_after:
 <a name="key_0_0_10"></a>
 
 #### layout
+
+
 
 <p>Using param layout to place controls. Using type div to move div with label and form element. Also button can be moved.</p>
 <pre><code>layout:
@@ -299,6 +357,8 @@ elements_after:
 
 #### submit_method
 
+
+
 <p>Submit method.
 Set optional submit javascript method. Could be handy for extra validation.</p>
 <pre><code>submit_method: 'my_form_method()'</code></pre>
@@ -307,6 +367,8 @@ Set optional submit javascript method. Could be handy for extra validation.</p>
 
 #### ctrl_s_save
 
+
+
 <p>Save on CTRL+S.
 Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be included.</p>
 <pre><code>ctrl_s_save: true</code></pre>
@@ -314,6 +376,8 @@ Save form when user enter CTRL+S on keyboard. Require plugin wf/onkeypress to be
 <a name="key_0_0_13"></a>
 
 #### buttons
+
+
 
 <p>Handle submit.
 Add a button with script to handle submit.</p>
@@ -333,6 +397,8 @@ Add a button with script to handle submit.</p>
 
 #### Hide default button.
 
+
+
 <pre><code>elements_below:
   -
     type: script
@@ -341,6 +407,8 @@ Add a button with script to handle submit.</p>
 <a name="key_0_1"></a>
 
 ### PHP
+
+
 
 <p>Render form.</p>
 <pre><code>$form = new PluginWfYml(__DIR__.'/form/_my_form.yml');
@@ -365,11 +433,15 @@ $form = new PluginWfArray($obj-&gt;data);</code></pre>
 
 ### Wait indicator
 
+
+
 <p>A loading image will appears in form button when form is submitted.</p>
 
 <a name="key_0_3"></a>
 
 ### Wait indicator (deprecated)
+
+
 
 <p>Deprecated due to scroll problem.
 Include this widget in head section to get an wait indicator.</p>
@@ -381,6 +453,8 @@ data:
 <a name="key_0_4"></a>
 
 ### Send form as mail using send method
+
+
 
 <p>If param mailqueue is true phpmailer is omited. Proper settings for PluginMailQueue is required.
 Param subject is only in usage if mailqueue is in use.</p>
@@ -400,6 +474,8 @@ Param subject is only in usage if mailqueue is in use.</p>
 <a name="key_0_5"></a>
 
 ### Placeholder
+
+
 
 <p>If type is date and placeholder is empty it will be set to YYYY-MM-DD.
 If placeholder is 0.* a script to replace comma (,) with dot (.) is added.</p>
@@ -425,6 +501,8 @@ If placeholder is 0.* a script to replace comma (,) with dot (.) is added.</p>
 
 ### Errors in PHP
 
+
+
 <p>Params is_valid, errors and errors_script should be set in a validator script.</p>
 <pre><code>items:
   name:
@@ -439,6 +517,8 @@ If placeholder is 0.* a script to replace comma (,) with dot (.) is added.</p>
 <a name="key_0_7"></a>
 
 ### Options method
+
+
 
 <p>SQL.</p>
 <pre><code>db_option:
@@ -470,6 +550,8 @@ If placeholder is 0.* a script to replace comma (,) with dot (.) is added.</p>
 
 ### Using param ajax_element
 
+
+
 <p>When this is set form will be sent to this element by id. In this case one has to deal with validation like this.</p>
 <pre><code>public function page_form_capture(){
   /**
@@ -499,9 +581,13 @@ If placeholder is 0.* a script to replace comma (,) with dot (.) is added.</p>
 
 
 
+
+
 <a name="key_1_0"></a>
 
 ### widget_capture
+
+
 
 <p>Capture form.</p>
 <pre><code>type: widget
@@ -514,6 +600,8 @@ data:
 
 ### widget_include
 
+
+
 <p>Include in document head.</p>
 <pre><code>type: widget
 data:
@@ -523,6 +611,8 @@ data:
 <a name="key_1_2"></a>
 
 ### widget_render
+
+
 
 <p>Render form.</p>
 <pre><code>type: widget
@@ -537,9 +627,13 @@ data:
 
 
 
+
+
 <a name="key_2_0"></a>
 
 ### __construct
+
+
 
 
 
@@ -549,9 +643,13 @@ data:
 
 
 
+
+
 <a name="key_3_0"></a>
 
 ### translate
+
+
 
 
 
@@ -561,9 +659,13 @@ data:
 
 
 
+
+
 <a name="key_3_2"></a>
 
 ### getData
+
+
 
 
 
@@ -573,9 +675,13 @@ data:
 
 
 
+
+
 <a name="key_3_4"></a>
 
 ### getSchemaFieldPrimary
+
+
 
 
 
@@ -585,9 +691,13 @@ data:
 
 
 
+
+
 <a name="key_3_6"></a>
 
 ### getSchema
+
+
 
 
 
@@ -597,9 +707,13 @@ data:
 
 
 
+
+
 <a name="key_3_8"></a>
 
 ### getLabel
+
+
 
 
 
@@ -609,9 +723,13 @@ data:
 
 
 
+
+
 <a name="key_3_10"></a>
 
 ### hasValidationBefore
+
+
 
 
 
@@ -621,9 +739,13 @@ data:
 
 
 
+
+
 <a name="key_3_12"></a>
 
 ### hasRender
+
+
 
 
 
@@ -633,9 +755,13 @@ data:
 
 
 
+
+
 <a name="key_3_14"></a>
 
 ### bind
+
+
 
 
 
@@ -645,9 +771,13 @@ data:
 
 
 
+
+
 <a name="key_3_16"></a>
 
 ### setPostvalue
+
+
 
 
 
@@ -657,9 +787,13 @@ data:
 
 
 
+
+
 <a name="key_3_18"></a>
 
 ### getOption
+
+
 
 
 
@@ -669,9 +803,13 @@ data:
 
 
 
+
+
 <a name="key_3_20"></a>
 
 ### bindAndValidate
+
+
 
 
 
@@ -681,9 +819,13 @@ data:
 
 
 
+
+
 <a name="key_3_22"></a>
 
 ### getErrors
+
+
 
 
 
@@ -693,9 +835,13 @@ data:
 
 
 
+
+
 <a name="key_3_24"></a>
 
 ### getErrorsAsArray
+
+
 
 
 
@@ -705,9 +851,13 @@ data:
 
 
 
+
+
 <a name="key_3_26"></a>
 
 ### validate_password
+
+
 
 
 
@@ -717,9 +867,13 @@ data:
 
 
 
+
+
 <a name="key_3_28"></a>
 
 ### validate_equal
+
+
 
 
 
@@ -729,9 +883,13 @@ data:
 
 
 
+
+
 <a name="key_3_30"></a>
 
 ### isDate
+
+
 
 
 
@@ -741,9 +899,13 @@ data:
 
 
 
+
+
 <a name="key_3_32"></a>
 
 ### validate_integer
+
+
 
 
 
@@ -753,9 +915,13 @@ data:
 
 
 
+
+
 <a name="key_3_34"></a>
 
 ### validate_double
+
+
 
 
 
@@ -765,9 +931,13 @@ data:
 
 
 
+
+
 <a name="key_3_36"></a>
 
 ### is_double
+
+
 
 
 
@@ -777,9 +947,13 @@ data:
 
 
 
+
+
 <a name="key_3_38"></a>
 
 ### runCaptureMethod
+
+
 
 
 
@@ -789,9 +963,13 @@ data:
 
 
 
+
+
 <a name="key_3_40"></a>
 
 ### test_capture
+
+
 
 
 
@@ -801,9 +979,13 @@ data:
 
 
 
+
+
 <a name="key_3_42"></a>
 
 ### send
+
+
 
 <p>Capture method to send all form data.</p>
 <pre><code>capture:
