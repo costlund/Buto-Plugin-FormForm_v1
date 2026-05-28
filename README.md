@@ -132,6 +132,13 @@ id: _my_form_</code></pre>
       -
         plugin: form/form_v1
         method: validate_integer</code></pre>
+<p>Example method.</p>
+<pre><code>public function validate_integer($field, $form, $data = array()){
+  $form = new PluginWfArray($form);
+  $form-&gt;set("items/$field/is_valid", false);
+  $form-&gt;set("items/$field/errors/", 'Some error!');
+  return $form-&gt;get();
+}</code></pre>
 
 <a name="key_0_0_2_8"></a>
 

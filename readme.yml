@@ -97,13 +97,24 @@ readme:
                     ````
                 -
                   name: validator
+                  date: '2026-05-27'
                   description: |
                     Validators.
+                    One could omit plugin param if same plugin as in request.
                     ````
                         validator:
                           -
                             plugin: form/form_v1
                             method: validate_integer
+                    ````
+                    Example method.
+                    ````
+                    public function validate_integer($field, $form, $data = array()){
+                      $form = new PluginWfArray($form);
+                      $form->set("items/$field/is_valid", false);
+                      $form->set("items/$field/errors/", 'Some error!');
+                      return $form->get();
+                    }
                     ````
                 -
                   name: settings

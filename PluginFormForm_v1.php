@@ -129,6 +129,16 @@ class PluginFormForm_v1{
     }
     return $obj;
   }
+  private static function handle_plugin_item($obj){
+    $obj = new PluginWfArray($obj);
+    if($obj->get("plugin")=='[plugin]'){
+      $obj->set("plugin", wfGlobals::get('plugin'));
+    }
+    if(!strlen((string)$obj->get("plugin"))){
+      $obj->set("plugin", wfGlobals::get('plugin'));
+    }
+    return $obj->get();
+  }
   /**
    * <p>Render a form.</p> 
    * <p>Consider to add data in separate yml file because you need to pic it up again when handle posting values. Use widget to handle post request if necessary.</p> 
@@ -1043,7 +1053,8 @@ class PluginFormForm_v1{
     // Validator
     foreach ($form['items'] as $key => $value) {
       if(wfArray::get($value, 'validator')){
-        foreach (wfArray::get($value, 'validator') as $key2 => $value2) {
+        foreach (wfArray::get($value, 'validator') as $value2) {
+          $value2 = $this->handle_plugin_item($value2);
           wfPlugin::includeonce($value2['plugin']);
           $obj = wfSettings::getPluginObj($value2['plugin']);
           $method = $value2['method'];
