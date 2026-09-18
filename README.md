@@ -127,7 +127,8 @@ id: _my_form_</code></pre>
 
 
 
-<p>Validators.</p>
+<p>Validators.
+One could omit plugin param if same plugin as in request.</p>
 <pre><code>    validator:
       -
         plugin: form/form_v1
